@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Souther&#39;s Blog">
-    <meta name="description" content="通信工程">
+    <meta name="description" content="通信工程 | 学生">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -146,7 +146,7 @@
         <div class="logo-name">Souther&#39;s Blog</div>
         <div class="logo-desc">
             
-            通信工程
+            通信工程 | 学生
             
         </div>
     </div>
@@ -402,7 +402,7 @@
 
 
             <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
+                <a href="#articles" class="waves-effect waves-light btn">
                     <i class="fa fa-angle-double-down"></i>开始阅读
                 </a>
 
@@ -611,42 +611,55 @@
                     
 
                     
+                        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
 
-                    
-                        <link rel="stylesheet" href="/libs/dplayer/DPlayer.min.css">
-<div class="video-player">
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
     
-    <div class="title center-align">
-        <i class="fas fa-video-camera"></i>&nbsp;&nbsp;推荐视频
-    </div>
+</style>
+<div class="music-player">
+    
+        <div class="title center-align">
+            <i class="fas fa-music"></i>&nbsp;&nbsp;听听音乐
+        </div>
     
     <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s12">
-            <div id="dplayer" class="dplayer-video"
-                    ></div>
-        </div>
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="6888975008"
+                   fixed='false'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='none'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='false'
+        >
+        </meting-js>
     </div>
 </div>
 
-<script src="/libs/dplayer/DPlayer.min.js"></script>
-<script>
-    $(function () {
-        new DPlayer({
-            container: document.getElementById('dplayer'),
-            autoplay: 'false' === 'true',
-            theme: '#42b983',
-            loop: 'false' === 'true',
-            lang: 'zh-CN' === 'zh-CN' ? 'zh-cn' : 'en',
-            preload: 'auto',
-            volume: Number('0.7'),
-            video: {
-                url: '/medias/video/GALA.mp4',
-                pic: '',
-                thumbnails: ''
-            }
-        });
-    });
-</script>
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+                        
 
                     
 
@@ -1398,60 +1411,6 @@
 
 
     <footer class="page-footer bg-color">
-    
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
     
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
