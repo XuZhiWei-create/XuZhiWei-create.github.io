@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Souther&#39;s Blog</title>
+  
+  <subtitle>旧时南风</subtitle>
+  <link href="https://xuzhiwei-create.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://xuzhiwei-create.github.io/"/>
+  <updated>2021-07-29T01:22:34.711Z</updated>
+  <id>https://xuzhiwei-create.github.io/</id>
+  
+  <author>
+    <name>旧时南风</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WIFI模块(esp8266)</title>
+    <link href="https://xuzhiwei-create.github.io/2021/07/25/wifi-mo-kuai/"/>
+    <id>https://xuzhiwei-create.github.io/2021/07/25/wifi-mo-kuai/</id>
+    <published>2021-07-25T14:36:48.000Z</published>
+    <updated>2021-07-29T01:22:34.711Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;固件下载错误进行擦除：&quot;&gt;&lt;a href=&quot;#固件下载错误进行擦除：&quot; class=&quot;headerlink&quot; title=&quot;固件下载错误进行擦除：&quot;&gt;&lt;/a&gt;固件下载错误进行擦除：&lt;/h1&gt;&lt;p&gt;资料：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="电子制作" scheme="https://xuzhiwei-create.github.io/categories/%E7%94%B5%E5%AD%90%E5%88%B6%E4%BD%9C/"/>
+    
+    
+    <category term="esp8266" scheme="https://xuzhiwei-create.github.io/tags/esp8266/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python</title>
+    <link href="https://xuzhiwei-create.github.io/2021/07/25/python/"/>
+    <id>https://xuzhiwei-create.github.io/2021/07/25/python/</id>
+    <published>2021-07-25T14:36:00.000Z</published>
+    <updated>2021-07-29T01:10:37.819Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;突然接手Python是因为要用Python2对esp8266固件清除，并且同时安装了Python2和Python3，相互兼容不冲突，重点就在2021年了，python2已经放弃维护了，他的pip很难装，网上教程都不太好，最后根据dos提示，才找到个网址，下载了还是不太新的p</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://xuzhiwei-create.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="Python" scheme="https://xuzhiwei-create.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>墨水屏</title>
+    <link href="https://xuzhiwei-create.github.io/2021/07/23/mo-shui-ping/"/>
+    <id>https://xuzhiwei-create.github.io/2021/07/23/mo-shui-ping/</id>
+    <published>2021-07-23T00:07:29.000Z</published>
+    <updated>2021-07-29T01:24:53.164Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://z3.ax1x.com/2021/07/25/WRCeKA.md.jpg&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="电子制作" scheme="https://xuzhiwei-create.github.io/categories/%E7%94%B5%E5%AD%90%E5%88%B6%E4%BD%9C/"/>
+    
+    
+    <category term="墨水屏" scheme="https://xuzhiwei-create.github.io/tags/%E5%A2%A8%E6%B0%B4%E5%B1%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VScode</title>
+    <link href="https://xuzhiwei-create.github.io/2021/07/21/vscode/"/>
+    <id>https://xuzhiwei-create.github.io/2021/07/21/vscode/</id>
+    <published>2021-07-21T03:09:00.000Z</published>
+    <updated>2021-07-29T01:12:55.466Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;入门配置：&quot;&gt;&lt;a href=&quot;#入门配置：&quot; class=&quot;headerlink&quot; title=&quot;入门配置：&quot;&gt;&lt;/a&gt;入门配置：&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="软件" scheme="https://xuzhiwei-create.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="VScode" scheme="https://xuzhiwei-create.github.io/tags/VScode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3D打印机</title>
+    <link href="https://xuzhiwei-create.github.io/2021/07/07/3d-da-yin-ji/"/>
+    <id>https://xuzhiwei-create.github.io/2021/07/07/3d-da-yin-ji/</id>
+    <published>2021-07-07T13:22:28.000Z</published>
+    <updated>2021-07-29T00:56:33.644Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://imgtu.com/i/Rq9MdI&quot;&gt;&lt;img src=&quot;https://z3.ax1x.com/2021/07/07/Rq9MdI.md.jpg&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="机械" scheme="https://xuzhiwei-create.github.io/categories/%E6%9C%BA%E6%A2%B0/"/>
+    
+    
+    <category term="3D打印" scheme="https://xuzhiwei-create.github.io/tags/3D%E6%89%93%E5%8D%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>航模-多旋翼（APM.2.8）</title>
+    <link href="https://xuzhiwei-create.github.io/2021/07/07/hang-mo-duo-xuan-yi-apm2-8/"/>
+    <id>https://xuzhiwei-create.github.io/2021/07/07/hang-mo-duo-xuan-yi-apm2-8/</id>
+    <published>2021-07-07T11:37:16.000Z</published>
+    <updated>2021-07-29T01:22:03.462Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://imgtu.com/i/RbbUlq&quot;&gt;&lt;img src=&quot;https://z3.ax1x.com/2021/07/07/RbbUlq.md.jpg&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="兴趣" scheme="https://xuzhiwei-create.github.io/categories/%E5%85%B4%E8%B6%A3/"/>
+    
+    
+    <category term="航模" scheme="https://xuzhiwei-create.github.io/tags/%E8%88%AA%E6%A8%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021.6.3</title>
+    <link href="https://xuzhiwei-create.github.io/2021/06/03/2021-6-3/"/>
+    <id>https://xuzhiwei-create.github.io/2021/06/03/2021-6-3/</id>
+    <published>2021-06-03T14:34:25.000Z</published>
+    <updated>2021-07-29T01:01:21.144Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;](&lt;a href=&quot;https://imgtu.com/i/288AA0&quot;&gt;https://imgtu.com/i/288AA0&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;通信课设终于做完了（智能温室大棚）</summary>
+    
+    
+    
+    <category term="生活" scheme="https://xuzhiwei-create.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="日志" scheme="https://xuzhiwei-create.github.io/tags/%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021.5.27</title>
+    <link href="https://xuzhiwei-create.github.io/2021/05/27/2021-5-27/"/>
+    <id>https://xuzhiwei-create.github.io/2021/05/27/2021-5-27/</id>
+    <published>2021-05-27T13:24:44.000Z</published>
+    <updated>2021-07-29T00:59:08.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://z3.ax1x.com/2021/05/27/2iJOBt.md.jpg&quot; alt=&quot;2iJOBt.md.jpg&quot;  /&gt;](&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://xuzhiwei-create.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="日志" scheme="https://xuzhiwei-create.github.io/tags/%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>51单片机学习4</title>
+    <link href="https://xuzhiwei-create.github.io/2021/04/24/51-dan-pian-ji-xue-xi-4/"/>
+    <id>https://xuzhiwei-create.github.io/2021/04/24/51-dan-pian-ji-xue-xi-4/</id>
+    <published>2021-04-24T02:05:10.000Z</published>
+    <updated>2021-07-29T00:49:43.187Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;A-D-Analog-to-Digital-模-数转换&quot;&gt;&lt;a href=&quot;#A-D-Analog-to-Digital-模-数转换&quot; class=&quot;headerlink&quot; title=&quot;A/D(Analog to</summary>
+        
+      
+    
+    
+    
+    <category term="单片机" scheme="https://xuzhiwei-create.github.io/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+    <category term="51单片机" scheme="https://xuzhiwei-create.github.io/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>51单片机学习3</title>
+    <link href="https://xuzhiwei-create.github.io/2021/04/23/51-dan-pian-ji-xue-xi-3/"/>
+    <id>https://xuzhiwei-create.github.io/2021/04/23/51-dan-pian-ji-xue-xi-3/</id>
+    <published>2021-04-23T12:04:24.000Z</published>
+    <updated>2021-07-29T00:48:14.643Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h1&gt;&lt;p&gt;​    键盘分为编码键盘和非编码键盘（是否有编码器）；非编码键盘分为独立键盘和行列式（矩阵式）键盘。&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="单片机" scheme="https://xuzhiwei-create.github.io/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+    <category term="51单片机" scheme="https://xuzhiwei-create.github.io/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>树莓派小电脑</title>
+    <link href="https://xuzhiwei-create.github.io/2021/04/23/shu-mei-pai-xiao-dian-nao/"/>
+    <id>https://xuzhiwei-create.github.io/2021/04/23/shu-mei-pai-xiao-dian-nao/</id>
+    <published>2021-04-23T11:41:22.000Z</published>
+    <updated>2021-07-29T01:27:22.100Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://imgtu.com/i/cXqGPU&quot;&gt;&lt;img src=&quot;https://z3.ax1x.com/2021/04/23/cXqGPU.md.jpg&quot; alt=&quot;cXqGPU.md.jpg&quot; style=&quot;zoom: 150%;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;树莓派4B4GV1.2，7寸ISP</summary>
+    
+    
+    
+    <category term="电子制作" scheme="https://xuzhiwei-create.github.io/categories/%E7%94%B5%E5%AD%90%E5%88%B6%E4%BD%9C/"/>
+    
+    
+    <category term="树莓派" scheme="https://xuzhiwei-create.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Github上搭建Hexo个人博客</title>
+    <link href="https://xuzhiwei-create.github.io/2021/04/11/github-shang-da-jian-hexo-ge-ren-bo-ke/"/>
+    <id>https://xuzhiwei-create.github.io/2021/04/11/github-shang-da-jian-hexo-ge-ren-bo-ke/</id>
+    <published>2021-04-11T13:19:59.000Z</published>
+    <updated>2021-07-29T01:06:11.335Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Hexo简介：&quot;&gt;&lt;a href=&quot;#Hexo简介：&quot; class=&quot;headerlink&quot; title=&quot;Hexo简介：&quot;&gt;&lt;/a&gt;Hexo简介：&lt;/h1&gt;&lt;p&gt;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用</summary>
+        
+      
+    
+    
+    
+    <category term="软件" scheme="https://xuzhiwei-create.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="前端" scheme="https://xuzhiwei-create.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021.4.9</title>
+    <link href="https://xuzhiwei-create.github.io/2021/04/09/2021-4-9/"/>
+    <id>https://xuzhiwei-create.github.io/2021/04/09/2021-4-9/</id>
+    <published>2021-04-09T13:09:36.000Z</published>
+    <updated>2021-07-29T00:55:48.740Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;img src=&quot;https://z3.ax1x.com/2021/04/09/cUYMjS.md.jpg&quot; alt=&quot;cUYMjS.md.jpg&quot; style=&quot;zoom: 200%;&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://xuzhiwei-create.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="日志" scheme="https://xuzhiwei-create.github.io/tags/%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>51单片机学习2</title>
+    <link href="https://xuzhiwei-create.github.io/2021/04/07/51-dan-pian-ji-xue-xi-2/"/>
+    <id>https://xuzhiwei-create.github.io/2021/04/07/51-dan-pian-ji-xue-xi-2/</id>
+    <published>2021-04-07T11:20:15.000Z</published>
+    <updated>2021-07-29T00:44:36.316Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;中断概念&quot;&gt;&lt;a href=&quot;#中断概念&quot; class=&quot;headerlink&quot; title=&quot;中断概念&quot;&gt;&lt;/a&gt;中断概念&lt;/h1&gt;&lt;p&gt;​    &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://imgtu.com/i/cGZAG6&quot;&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="单片机" scheme="https://xuzhiwei-create.github.io/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+    <category term="51单片机" scheme="https://xuzhiwei-create.github.io/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>51单片机学习1</title>
+    <link href="https://xuzhiwei-create.github.io/2021/04/05/51-dan-pian-ji-xue-xi-1/"/>
+    <id>https://xuzhiwei-create.github.io/2021/04/05/51-dan-pian-ji-xue-xi-1/</id>
+    <published>2021-04-05T12:04:43.000Z</published>
+    <updated>2021-07-29T00:37:00.948Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;硬件：（BST-M51&quot;&gt;&lt;a href=&quot;#硬件：（BST-M51&quot; class=&quot;headerlink&quot; title=&quot;硬件：（BST-M51)&quot;&gt;&lt;/a&gt;硬件：（BST-M51)&lt;/h1&gt;&lt;h2 id=&quot;51最小系统&quot;&gt;&lt;a href=&quot;#51最小系统&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="单片机" scheme="https://xuzhiwei-create.github.io/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+    <category term="51单片机" scheme="https://xuzhiwei-create.github.io/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>终于学会魔方了</title>
+    <link href="https://xuzhiwei-create.github.io/2021/04/04/zhong-yu-xue-hui-mo-fang-liao/"/>
+    <id>https://xuzhiwei-create.github.io/2021/04/04/zhong-yu-xue-hui-mo-fang-liao/</id>
+    <published>2021-04-04T08:14:03.000Z</published>
+    <updated>2021-07-29T01:29:17.133Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;起始&quot;&gt;&lt;a href=&quot;#起始&quot; class=&quot;headerlink&quot; title=&quot;起始&quot;&gt;&lt;/a&gt;起始&lt;/h1&gt;&lt;p&gt;​   </summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://xuzhiwei-create.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="魔方" scheme="https://xuzhiwei-create.github.io/tags/%E9%AD%94%E6%96%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JAVA环境搭建</title>
+    <link href="https://xuzhiwei-create.github.io/2021/04/01/java-huan-jing-da-jian/"/>
+    <id>https://xuzhiwei-create.github.io/2021/04/01/java-huan-jing-da-jian/</id>
+    <published>2021-04-01T12:57:21.000Z</published>
+    <updated>2021-07-29T01:08:13.836Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;JDK安装&quot;&gt;&lt;a href=&quot;#JDK安装&quot; class=&quot;headerlink&quot; title=&quot;JDK安装&quot;&gt;&lt;/a&gt;JDK安装&lt;/h1&gt;&lt;p&gt;​    Java程序需运行在JVM上，所以开发java程序必须先安装JDK&lt;/p&gt;
+&lt;p&gt;​    在&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://xuzhiwei-create.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="JAVA" scheme="https://xuzhiwei-create.github.io/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>个人日志</title>
+    <link href="https://xuzhiwei-create.github.io/2021/03/29/ge-ren-ri-zhi/"/>
+    <id>https://xuzhiwei-create.github.io/2021/03/29/ge-ren-ri-zhi/</id>
+    <published>2021-03-28T19:55:44.000Z</published>
+    <updated>2021-07-29T00:24:06.114Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;2021&quot;&gt;&lt;a href=&quot;#2021&quot; class=&quot;headerlink&quot; title=&quot;2021&quot;&gt;&lt;/a&gt;2021&lt;/h1&gt;&lt;h2 id=&quot;7月：&quot;&gt;&lt;a href=&quot;#7月：&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="日志" scheme="https://xuzhiwei-create.github.io/categories/%E6%97%A5%E5%BF%97/"/>
+    
+    
+    <category term="日志" scheme="https://xuzhiwei-create.github.io/tags/%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021RM落幕</title>
+    <link href="https://xuzhiwei-create.github.io/2021/03/28/2021-rm-luo-mu/"/>
+    <id>https://xuzhiwei-create.github.io/2021/03/28/2021-rm-luo-mu/</id>
+    <published>2021-03-28T14:35:11.000Z</published>
+    <updated>2021-07-29T00:22:50.676Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;2021RM高校联盟赛落幕&quot;&gt;&lt;a href=&quot;#2021RM高校联盟赛落幕&quot; class=&quot;headerlink&quot; title=&quot;2021RM高校联盟赛落幕&quot;&gt;&lt;/a&gt;2021RM高校联盟赛落幕&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="比赛" scheme="https://xuzhiwei-create.github.io/categories/%E6%AF%94%E8%B5%9B/"/>
+    
+    
+    <category term="RM" scheme="https://xuzhiwei-create.github.io/tags/RM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>站点日志</title>
+    <link href="https://xuzhiwei-create.github.io/2021/03/25/zhan-dian-ri-zhi/"/>
+    <id>https://xuzhiwei-create.github.io/2021/03/25/zhan-dian-ri-zhi/</id>
+    <published>2021-03-25T12:55:44.000Z</published>
+    <updated>2021-07-29T00:12:35.360Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;2021.4.11:新增并完善看板娘功能（看板娘首次登录为默认，可自行切换不同人物，下次打开即为最后一次切换的人物）。&lt;/p&gt;
+&lt;p&gt;2021.5.25：新增鼠标点击特效（额外配置时导致文件未备份，中间出了一点小差错，导致网页打开速度慢了一些）。&lt;/p&gt;
+&lt;p&gt;2021.5</summary>
+        
+      
+    
+    
+    
+    <category term="日志" scheme="https://xuzhiwei-create.github.io/categories/%E6%97%A5%E5%BF%97/"/>
+    
+    
+    <category term="日志" scheme="https://xuzhiwei-create.github.io/tags/%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+</feed>

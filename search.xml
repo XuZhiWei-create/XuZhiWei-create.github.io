@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>WIFI模块(esp8266)</title>
+      <link href="/2021/07/25/wifi-mo-kuai/"/>
+      <url>/2021/07/25/wifi-mo-kuai/</url>
+      
+        <content type="html"><![CDATA[<h1 id="固件下载错误进行擦除："><a href="#固件下载错误进行擦除：" class="headerlink" title="固件下载错误进行擦除："></a>固件下载错误进行擦除：</h1><p>资料：<a href="http://bbs.eeworld.com.cn/thread-497588-1-1.html">【一起玩esp8266】flash的擦除方法——专治疑难杂症</a></p><h1 id="硬件："><a href="#硬件：" class="headerlink" title="硬件："></a>硬件：</h1><p>ESP8266-12F：<br><a href="https://imgtu.com/i/Whud4e"><img src="https://z3.ax1x.com/2021/07/26/Whud4e.md.png" alt="Whud4e.md.png"></a><br>SMD-22封装，GPIO0-GPIO16共17个通用IO口，一个单通道ADC，GPIO6-GPIO11用于连接外部flash，不可用，支持SPI总线通信：GPIO12-GPIO15，支持I2C总线：GPIO4-GPIO5,串口通信：GPIO1-GPIO3。<br>NodeMcu:<br><a href="https://imgtu.com/i/WhKk5D"><img src="https://z3.ax1x.com/2021/07/26/WhKk5D.md.png" alt="WhKk5D.md.png"></a><br><a href="https://imgtu.com/i/WhKla8"><img src="https://z3.ax1x.com/2021/07/26/WhKla8.md.png" alt="WhKla8.md.png"></a><br><a href="https://imgtu.com/i/WRk40A"><img src="https://z3.ax1x.com/2021/07/25/WRk40A.md.png" alt="WRk40A.md.png"></a></p><h1 id="ESP8266开发之旅（博哥教程）："><a href="#ESP8266开发之旅（博哥教程）：" class="headerlink" title="ESP8266开发之旅（博哥教程）："></a>ESP8266开发之旅（博哥教程）：</h1><p><a href="https://www.arduino.cn/thread-44963-1-1.html">AT指令开发</a></p><h2 id="入门："><a href="#入门：" class="headerlink" title="入门："></a>入门：</h2><p><a href="https://imgtu.com/i/WfbcTg"><img src="https://z3.ax1x.com/2021/07/26/WfbcTg.md.png" alt="WfbcTg.md.png"></a></p><h3 id="一、IDE安装及硬件程序检测："><a href="#一、IDE安装及硬件程序检测：" class="headerlink" title="一、IDE安装及硬件程序检测："></a>一、IDE安装及硬件程序检测：</h3><p>esp01:<br><a href="https://imgtu.com/i/WfbcTg"><img src="https://z3.ax1x.com/2021/07/26/WfbcTg.md.png" alt="WfbcTg.md.png"></a><br><a href="https://imgtu.com/i/WhEJnU"><img src="https://z3.ax1x.com/2021/07/26/WhEJnU.md.png" alt="WhEJnU.md.png"></a></p><p>esp8266-12系列：<br><a href="https://imgtu.com/i/WhEdhR"><img src="https://z3.ax1x.com/2021/07/26/WhEdhR.md.png" alt="WhEdhR.md.png"></a></p><p>注意：烧录模式GPIO0接地，正常模式GPIO悬空。</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;** *    测试ESP8266 demo,打印ESP8266模块信息 *    1.打印Arduino Core For ESP8266 版本 *    2.打印Flash的唯一性芯片id *    3.打印Flash实际大小 *    4.打印IDE配置的使用Flash大小 *    5.打印IDE配置的Flash连接通信的频率 *    6.打印Flash连接模式：QIO QOUT DIO DOUT，可以理解为Flash传输速率 *&#x2F;void setup() &#123;  Serial.begin(115200);  &#x2F;&#x2F;使能软件看门狗的触发间隔  &#x2F;&#x2F;规定时间（5S）内不喂狗，系统复位  ESP.wdtEnable(5000);&#125;void loop() &#123;  &#x2F;&#x2F;喂狗  ESP.wdtFeed();  FlashMode_t ideMode &#x3D; ESP.getFlashChipMode();  String coreVersion &#x3D; ESP.getCoreVersion();  Serial.print(F(&quot;Arduino Core For ESP8266 Version: &quot;));  Serial.println(coreVersion);  Serial.printf(&quot;Flash real id（唯一标识符）:   %08X\n&quot;, ESP.getFlashChipId());  Serial.printf(&quot;Flash 实际大小: %u KBytes\n&quot;, ESP.getFlashChipRealSize()&#x2F;1024);  Serial.printf(&quot;IDE配置Flash大小: %u KBytes,往往小于实际大小\n&quot;, ESP.getFlashChipSize()&#x2F;1024);  Serial.printf(&quot;IDE配置Flash频率 : %u MHz\n&quot;, ESP.getFlashChipSpeed()&#x2F;1000000);  Serial.printf(&quot;Flash ide mode:  %s\n\n&quot;, (ideMode &#x3D;&#x3D; FM_QIO ? &quot;QIO&quot; : ideMode &#x3D;&#x3D; FM_QOUT ? &quot;QOUT&quot; : ideMode &#x3D;&#x3D; FM_DIO ? &quot;DIO&quot; : ideMode &#x3D;&#x3D; FM_DOUT ? &quot;DOUT&quot; : &quot;UNKNOWN&quot;));    delay(1000);&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img src="https://z3.ax1x.com/2021/07/26/WhVRqU.md.png" alt="WhVRqU.md.png"></p><h3 id="二、相关功能："><a href="#二、相关功能：" class="headerlink" title="二、相关功能："></a>二、相关功能：</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;***     计时和延时：*     delay(ms);*     delayMicroseconds(us);延时中不能做其他事*     millis(); &#x2F;&#x2F;返回重启后所经过的毫秒数*     micros(); &#x2F;&#x2F;返回重启后所经过的微秒数**&#x2F;long debouncdDelay &#x3D; 60;&#x2F;&#x2F;延时间隔long lastDebounceTime &#x3D; 0; &#x2F;&#x2F;最近记录的一次时间&#x2F;&#x2F; 判断时间间隔是否大于设定的时间间隔。if(millis()-lastDebounceTime&gt;debouncdDelay)&#123;    lastDebounceTime &#x3D; millis();&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="中断：（除了DO-GPIO16，中断可以绑到任意GPIO脚）"><a href="#中断：（除了DO-GPIO16，中断可以绑到任意GPIO脚）" class="headerlink" title="中断：（除了DO/GPIO16，中断可以绑到任意GPIO脚）"></a>中断：（除了DO/GPIO16，中断可以绑到任意GPIO脚）</h4><p>函数：</p><ol><li><code>attachInterrupt(pin,function,mode);</code> 在指定引脚设置为响应中断。pin:要设置的中断号，function:中断时执行的函数，不带任何参数，无返回,Interrupt type/mode:中断触发条件（CHANGE:改变沿；RISING：上升沿；FALLING：下降沿）</li><li><code>detachInterrupt(pin);</code> 禁用指定GPIO引脚上的中断。pin:要禁用的中断的GPIO引脚，无返回值。</li><li><code>digitalPinToInterrupt(pin);</code> 获取指定GPIO引脚的中断号。</li></ol><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;** * 功能描述：ESP8266中断演示 *&#x2F; void setup() &#123; Serial.begin(115200);&#x2F;&#x2F;设置串口波特率 attachInterrupt(digitalPinToInterrupt(D2), InterruptFunc, RISING);&#x2F;&#x2F;设置中断号、响应函数、触发方式&#125;void loop() &#123;&#125;&#x2F;** * 中断响应函数 *&#x2F; ICACHE_RAM_ATTR void InterruptFunc()&#123; Serial.println(&quot;Hello ESP8266&quot;);&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 电子制作 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> esp8266 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Python</title>
+      <link href="/2021/07/25/python/"/>
+      <url>/2021/07/25/python/</url>
+      
+        <content type="html"><![CDATA[<p>突然接手Python是因为要用Python2对esp8266固件清除，并且同时安装了Python2和Python3，相互兼容不冲突，重点就在2021年了，python2已经放弃维护了，他的pip很难装，网上教程都不太好，最后根据dos提示，才找到个网址，下载了还是不太新的pip，虽然有不在提供功能的警告，但好在还能用。<br><a href="https://imgtu.com/i/WRFtrd"><img src="https://z3.ax1x.com/2021/07/25/WRFtrd.md.png" alt="WRFtrd.md.png"></a></p><h1 id="安装参考："><a href="#安装参考：" class="headerlink" title="安装参考："></a>安装参考：</h1><ul><li><a href="https://www.cnblogs.com/yanqingxu/p/10735011.html">Win10下Python3和Python2同时安装并解决pip共存问题</a></li><li><a href="https://zhuanlan.zhihu.com/p/111168324?from_voters_page=true">可能是全网最详细的 Python 安装教程（windows）</a></li><li><a href="https://www.cnblogs.com/-wenli/p/12263014.html">pip下载源</a></li></ul><p>难点：pip2强制更新不行时，会提示下载<a href="https://bootstrap.pypa.io/pip/2.7/">get-pip.py</a>文件地址，但地址也不是最新的，但将就能用(version 20.3.4）<br>将网页内容复制下来，放在Python27的Scripts中，改后缀为.py然后打开Windows的命令提示符，进入到pip安装包所在的目录，如“cd C:\Python27\Scripts”，运行python get-pip.py指令。</p><h1 id="学习参考："><a href="#学习参考：" class="headerlink" title="学习参考："></a>学习参考：</h1><p><a href="https://www.liaoxuefeng.com/wiki/1016959663602400">廖雪峰Python</a><br><a href="https://www.runoob.com/python/python-tutorial.html">菜鸟教程Python</a></p><h1 id="学习："><a href="#学习：" class="headerlink" title="学习："></a>学习：</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>墨水屏</title>
+      <link href="/2021/07/23/mo-shui-ping/"/>
+      <url>/2021/07/23/mo-shui-ping/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://z3.ax1x.com/2021/07/25/WRCeKA.md.jpg" alt="WRCeKA.md.jpg"></p><p>咸鱼淘的，15一套，三色的18一套，兼容微雪驱动，拆机屏幕，质量的确没有微雪的屏幕好，但还够用，要及时清屏，防止有残影。<br><a href="https://www.waveshare.net/">微雪电子官网</a></p><h1 id="2-13寸黑白屏幕常用函数："><a href="#2-13寸黑白屏幕常用函数：" class="headerlink" title="2.13寸黑白屏幕常用函数："></a>2.13寸黑白屏幕常用函数：</h1><p><a href="https://imgtu.com/i/WDvGIx"><img src="https://z3.ax1x.com/2021/07/23/WDvGIx.md.jpg" alt="WDvGIx.md.jpg"></a></p><p>epd1in54.ino：使用Arduino IDE打开即可；<br>epd1in54.cpp(.h):是墨水屏的驱动程序；<br>epdif.cpp(.h):是硬件接口定义，里面封装了读写管脚电平，SPI传输数据，以及管脚初始化；<br>font8.cpp、font12.cpp、font16.cpp、font20.cpp、font24.cpp、fonts.h：为不同大小字符的模；<br>imagedata.cpp(.h)：是图片数据，这个可以通过Img2Lcd(在开发资料中可下载)把2位深度的BMP图片转换成数组。<br>程序分为底层硬件接口、中间层墨水屏驱动、上层应用；</p><h2 id="底层硬件接口："><a href="#底层硬件接口：" class="headerlink" title="底层硬件接口："></a>底层硬件接口：</h2><p>在epdif.cpp(.h)两个文件中定义了硬件接口，并封装好读写管脚电平、延时、SPI传输等函数。</p><p>1、写管脚电平</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">int DigitalWrite(int pin,int value)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>2、读管脚电平</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">int DigitalRead(int pin)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>3、延时</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">DelayMs(unsigned int delaytime)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>4、SPI数据输出</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">SpiTransfer(unsigned char data)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>5、硬件初始化</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">int IfInit(void)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="中间层墨水屏驱动："><a href="#中间层墨水屏驱动：" class="headerlink" title="中间层墨水屏驱动："></a>中间层墨水屏驱动：</h2><p>1、实例化墨水屏</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">Epd epd;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>2、墨水屏初始化，再屏幕开始工作时和退出睡眠模式之后调用<br>1.54inch e-Paper、1.54inch e-Paper V2、2.13inch e-Paper、2.13inch e-Paper V2、2.13inch e-Paper (D)、2.9inch e-Paper、2.9inch e-Paper (D)</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">epd.Init(lut_full_update); &#x2F;&#x2F;全刷初始化epd.Init(lut_partial_update); &#x2F;&#x2F;局刷初始化<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>其他型号</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">epd.Init();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>3、清屏，把墨水屏刷成白色</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">epd.clear();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>可能某些程序里面会被拆分成两句，但是他们最终的效果都是一样的：</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">epd.ClearFrameMemory(0xFF); epd.DisplayFrame();&#x2F;&#x2F;打开显示<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>4、传输一帧的图片数据并显示</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">void Display(const unsigned char* frame_buffer);void DisplayFrame(const unsigned char* frame_buffer_black, const unsigned char* frame_buffer_red); &#x2F;&#x2F;三色屏幕<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>5、睡眠</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">epd.Sleep();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>进入睡眠模式，墨水屏讲进入超低耗电，如果长时间不用需要刷白保存，否则长时间会有残影。</p><h2 id="上层应用："><a href="#上层应用：" class="headerlink" title="上层应用："></a>上层应用：</h2><p>上层应用也就是我们的需要用墨水屏实现的功能，一般就是画图、字符等功能，也就是epdpaint.cpp里面定义的功能<br>首先需要讲解一下缓存的坐标系，为了传输方便通常吧坐上定位原点，往右X轴增加，往下Y轴增加。只需要看public下函数即可。<br>1、初始化图片缓存</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">Paint(unsigned char* image, int width, int height);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>第一个参数是图片缓存，第二个参数是定义图片长度，第三个参数定义图片高度，你可能会在程序中看到如下</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">Paint paint(image, 0, 0);    &#x2F;&#x2F; width should be the multiple of 8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>第二、三个参数这里设置成0，是因为下面还可以设置。<br>2、设置高宽、获取高宽、设置翻转角度、获取翻转角度</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">int  GetWidth(void); &#x2F;&#x2F;得到宽度void SetWidth(int width);&#x2F;&#x2F;设置宽度int  GetHeight(void);&#x2F;&#x2F;得到高度void SetHeight(int height);&#x2F;&#x2F;设置高度int  GetRotate(void);&#x2F;&#x2F;得到翻转角度void SetRotate(int rotate);&#x2F;&#x2F;设置翻转角度···3、获取图像缓存&#96;&#96;&#96;cunsigned char* GetImage(void);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>4、画点</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawPixel(int x, int y, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>在坐标(x,y)<br>5、写字符</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawCharAt(int x, int y, char ascii_char, sFONT* font, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>在（x,y）这一点为左顶点写字符ascii_char，字体大小为font，颜色为colored<br>6、写字符串</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawStringAt(int x, int y, const char* text, sFONT* font, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>在（x,y）这一点为左顶点写字符串text，字体大小为font，颜色为colored<br>7、画线</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawLine(int x0, int y0, int x1, int y1, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>以（x0,y0）为起点，（x1,y1）为终点画一条线，斜率任意；<br>8、画横线</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawHorizontalLine(int x, int y, int width, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>以（x0,y0）为起点，（x1,y1）为终点画一条横线，速度比DrawLine()快<br>9、画竖线</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawVerticalLine(int x, int y, int height, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>以（x0,y0）为起点，（x1,y1）为终点画一条竖线，速度比DrawLine()快<br>10、矩形，画空心框</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawRectangle(int x0, int y0, int x1, int y1, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>以（x0,y0）为起点，（x1,y1）为终点画一个框，边的颜色为colored<br>11、填充矩形，画实心框</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawFilledRectangle(int x0, int y0, int x1, int y1, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>以（x0,y0）为起点，（x1,y1）为终点画一个框，并且内部填充，颜色为colored<br>12、画空心圆</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawCircle(int x, int y, int radius, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>以（x,y）为圆心，radius为半斤画一个空心圆，颜色为colored<br>13、实心圆</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawFilledCircle(int x, int y, int radius, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>以（x,y）为圆心，radius为半斤画一个实心心圆，颜色为colored</p><h1 id="PS制作散点图"><a href="#PS制作散点图" class="headerlink" title="PS制作散点图"></a>PS制作散点图</h1><h1 id="取模"><a href="#取模" class="headerlink" title="取模"></a>取模</h1><h1 id="2-13寸三色墨水屏（不兼容微雪的程序，但可参考）"><a href="#2-13寸三色墨水屏（不兼容微雪的程序，但可参考）" class="headerlink" title="2.13寸三色墨水屏（不兼容微雪的程序，但可参考）"></a>2.13寸三色墨水屏（不兼容微雪的程序，但可参考）</h1><p><a href="https://www.waveshare.net/wiki/2.13inch_e-Paper_HAT_(B)">微雪：2.13inch e-Paper HAT (B)</a></p><p>图片素材制作：首先用PS制作三色散点图，然后用PS将三色（黑白红）分两类，一张黑白，一张红白（使用PS吸管工具颜色替换，先将三色图中红色替换为白色，制成黑白图片；再将三色图中黑色替换为白色）实际上三色墨水屏是通过两张图片叠加而成的。<br>[<img src="https://z3.ax1x.com/2021/07/25/WRpUQs.md.jpg" alt="WRpUQs.md.jpg"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 电子制作 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 墨水屏 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>VScode</title>
+      <link href="/2021/07/21/vscode/"/>
+      <url>/2021/07/21/vscode/</url>
+      
+        <content type="html"><![CDATA[<h1 id="入门配置："><a href="#入门配置：" class="headerlink" title="入门配置："></a>入门配置：</h1><p><a href="https://zhuanlan.zhihu.com/p/113222681">史上最全vscode配置使用教程</a></p><h1 id="VScode之Python"><a href="#VScode之Python" class="headerlink" title="VScode之Python"></a>VScode之Python</h1><p><a href="https://blog.csdn.net/jackailson/article/details/101129057">Vs Code使用 - 搭建python运行调试环境</a><br><a href="https://www.cnblogs.com/xiaojwang/p/11331202.html">用VScode配置Python开发环境</a></p><h1 id="VScode使用Arduino"><a href="#VScode使用Arduino" class="headerlink" title="VScode使用Arduino"></a>VScode使用Arduino</h1><p>直接下载扩展，<a href="https://blog.csdn.net/weixin_42225355/article/details/104906950">乱码问题解决</a>。<br><a href="https://blog.csdn.net/cxgasd/article/details/90597496">在vscode中开发arduino编译巨慢解决办法</a></p><h1 id="VScode写Markdown"><a href="#VScode写Markdown" class="headerlink" title="VScode写Markdown:"></a>VScode写Markdown:</h1><p>插件使用说明：<a href="https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/">Markdown Preview Enhanced</a></p><p><a href="https://zhuanlan.zhihu.com/p/56943330">[Markdown] 使用vscode开始Markdown写作之旅</a></p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>1、</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;&#x2F;代码块#include &quot;reg52.h&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>2、<br>行内代码<code>#include &quot;reg52.h&quot;</code></p><p>3、<br>有序列表</p><ol><li>123</li><li>456</li><li>789<ol><li>123</li><li>456</li><li>789<ol><li>123</li><li>456</li><li>789<ol><li>123</li><li>456</li><li>789<br> 4、<br> 无序列表</li></ol></li></ol></li></ol></li></ol><ul><li>123</li><li>456</li><li>789</li></ul><p>5、<br><em>斜线</em></p><p>6、<br><strong>加粗</strong></p><p>7、<br><em><strong>加粗斜线</strong></em></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> VScode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>3D打印机</title>
+      <link href="/2021/07/07/3d-da-yin-ji/"/>
+      <url>/2021/07/07/3d-da-yin-ji/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://imgtu.com/i/Rq9MdI"><img src="https://z3.ax1x.com/2021/07/07/Rq9MdI.md.jpg" alt="Rq9MdI.md.jpg"></a></p><p>实验室的极光尔沃Z-603打印机</p><p>第一次用，先拆开来看了一下，修了一些小问题，看了官网介绍和教程，总体来说还可以，就是打印效果没有想象中的好。</p><p>ABS：一般喷头240~250摄氏度，底板90-100摄氏度，风扇可以不开</p><p>PLA：一般喷头200-210摄氏度，底板40-60摄氏度，风扇可以开到最大（但是冷却太快容易翘边）</p><p>目前存在的问题：1、材料与底板的粘度不够，模型容易被喷头蹭跑；2、底板调平有待提升；喷头容易被污染，影响打印，杂丝冷却后会影响喷头运动，造成模型脱离。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机械 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 3D打印 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>航模-多旋翼（APM.2.8）</title>
+      <link href="/2021/07/07/hang-mo-duo-xuan-yi-apm2-8/"/>
+      <url>/2021/07/07/hang-mo-duo-xuan-yi-apm2-8/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://imgtu.com/i/RbbUlq"><img src="https://z3.ax1x.com/2021/07/07/RbbUlq.md.jpg" alt="RbbUlq.md.jpg"></a></p><p>1、安装APM的地面站；</p><p>2、飞控连接电脑，GPS与接收机连接飞控；</p><p>3、地面站点击连接，第一步校准加速度计，按照要求一步一步摆放飞控位置；</p><p>4、罗盘校准：点击地面站罗盘校准，移动GPS位置，使之全部校准完毕；</p><p>5、遥控器校准；</p><p>6、飞行模式设置，一般就要自稳，定点，定高..</p><p>7、APM解锁检查，左摇杆右下角3秒解锁，左下角3秒上锁；</p><p>8、装机：四轴电调信号线，右上角机架为1通道，对角为2通道，左上角为3通道，对角为4通道；</p><p>9、APM失控保护设置。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 兴趣 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 航模 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2021.6.3</title>
+      <link href="/2021/06/03/2021-6-3/"/>
+      <url>/2021/06/03/2021-6-3/</url>
+      
+        <content type="html"><![CDATA[<p>](<a href="https://imgtu.com/i/288AA0">https://imgtu.com/i/288AA0</a>)</p><p>通信课设终于做完了（智能温室大棚）<span id="more"></span></p><h4 id="简要记述一下："><a href="#简要记述一下：" class="headerlink" title="简要记述一下："></a>简要记述一下：</h4><p>​    用原子的精英版相关例程组合形成本地端界面，主要包括LCD字符显示，中文字库显示，DHT11传感器的库（其中DHT11的信号重点看了一下，其中有一个传感器检测的信号，判断连接是否正确），还有就是YL69土壤湿度传感器和光敏电阻传感器，这两个使用的是ADC采集，STM32ZET6内部集成了3个ADC：注意一下相关ADC的使能和通道的启用，避免冲突，选择合适的ADC通道（这个地方卡了一段时间）</p><p><a href="https://imgtu.com/i/28JU0A"><img src="https://z3.ax1x.com/2021/06/03/28JU0A.md.png" alt="28JU0A.md.png"></a></p><p>还有注意一下引入硬件库时，记得要在MDK“小魔术棒”的C++里添加相关文件的路径，要不会报错。传感器采集正常后，我的强迫症又犯了，花了一部分时间在设计界面上，接下来就是添加了阈值设置与相关控制器的开启与关闭，充分的利用了精英版上的个实体按键（复位按键不能用），也不用外接按键了。</p><p>​    接下来就是网络部分，采用正点原子的esp8266模块（一开始用的时01s,感觉不太好调，其实也是能用的），参考了中国移动onenet出的一部分MQTT部分程序，挺好用的，精英版的串口1用来调试，串口2用来和8266进行串口通信，发送AT指令。服务器用的emqx(杭州营映云科技)免费的在线MQTT 5服务器，网络调试使用的时电脑端：MQTT.fx,后来因为没有时间做小程序了，改用了APP Store的一个叫MQTTool的手机端网络调试器，也算是手机小程序了吧。。。（小程序接下来要继续做的话准备使用mpvue.com的快速框架，使用VScode进行开发，微信开发者工具作为调试端，下载快速框架是时遇到点问题还没有及时解决）。</p><p>​    连接服务器后，就要订阅和上传数据，上传数据很好解决，订阅，数据下行使用了JSON的格式数据进行传输解析的，速度很快，虽然代码变多了。主要时51假期期间搞了几天，基本上就是这样了，然后为了解决刚开机就连服务器导致本地端数据卡住的问题，使用了最后一个按键—–板子上的触摸按键，作为连接服务器的开关，使得刚开机进入本地模式，要想连接服务器再按一下触摸开关，同时，我把串口调试的输出信息放在了LCD下面的剩余空间处，便于脱机运行时出现问题的及时分析。大概就做成了这样。</p><p>​    接下来主要就是帮同学做了，主要使用的点灯科技开发文档，直接用，复制到他们的项目上，很好用，还能连接小爱同学语音训练，就是有个同学的51单片机串口通信那块没做好，现学得得51串口通信，可是它原有的串口被当作普通IO口用了，重新定义还会和之前它使用的寄存器初值冲突，总之不太好改，最后只做了8266与服务器端的数据上传，无法从51串口实时获取采集的数据。。。我那课设放了一个多月，再拿出来后，数据下发不了了，查了很多原因，一直以为是我程序写的过于臃肿，加上服务器的延时，导致程序进不去，一直在调延时时间，一直不好用，卡了我两天，最后才发现，是我加入触摸连接服务器后形成了先订阅，后连接的错误顺序，总之一个很低级的问题。。。卡了我两天。</p><p>​    在当天快要答辩时，受学姐相关实验课的启发，我想，掏出我的古董树莓派，自己搭一个MQTT的服务器，不用公共或者买的服务器，兴许还能多加点分，调了2个多小时，调出来了，拿去实验室时虽然连接上了，但是显示端口被占用，应该是我之前开了一个端口忘关了，开了其他的端口，后来还是可以用的，但答辩时还是用的公共服务器。。。</p><p>​    就这么多，只有动手去做了，才会发现，原来问题那么多，不过会被解决的，也算是一次经验吧。其他的细节暂时想不起来了。</p><h4 id="PS：上次的RM奖状发了，虽然是三等奖，很次，但也是努力换来的结果（主要是学长的努力）"><a href="#PS：上次的RM奖状发了，虽然是三等奖，很次，但也是努力换来的结果（主要是学长的努力）" class="headerlink" title="PS：上次的RM奖状发了，虽然是三等奖，很次，但也是努力换来的结果（主要是学长的努力）"></a>PS：上次的RM奖状发了，虽然是三等奖，很次，但也是努力换来的结果（主要是学长的努力）</h4><p>学长发的博客：</p><p><a href="https://imgtu.com/i/28a1MT"><img src="https://z3.ax1x.com/2021/06/03/28a1MT.md.png" alt="28a1MT.md.png" style="zoom:150%;" /></a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日志 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2021.5.27</title>
+      <link href="/2021/05/27/2021-5-27/"/>
+      <url>/2021/05/27/2021-5-27/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://z3.ax1x.com/2021/05/27/2iJOBt.md.jpg" alt="2iJOBt.md.jpg"  />](<a href="https://imgtu.com/i/2iJOBt">https://imgtu.com/i/2iJOBt</a>)</p><p>——2021.5.27杂记（太长时间没更新了，来个大杂烩）</p><h2 id="2021-5-1"><a href="#2021-5-1" class="headerlink" title="2021.5.1"></a>2021.5.1</h2><p>五一去了趟松花江（如上图：松花江大桥）</p><h2 id="2021-5-2-5"><a href="#2021-5-2-5" class="headerlink" title="2021.5.2-5"></a>2021.5.2-5</h2><p>将通信课设（智能温室大棚）完善了一下，具体功能已实现，暂时没有做用户端界面（准备用微信小程序做一个）</p><p>采用中国移动onenet-MQTT开源代码+正点原子相关例程，用的是emqx免费的服务器（晚上的时候特别不稳定，调不出来，白天一调就好了，说到底还是免费的）</p><p><a href="https://imgtu.com/i/2iY4rn"><img src="https://z3.ax1x.com/2021/05/27/2iY4rn.md.jpg" alt="2iY4rn.md.jpg"  /></a></p><p>另外帮几个同学也做了4份课设，51，32，arduino, esp01s都有的，主要用到了点灯科技的开发文档，挺好用的，也是免费的。</p><p>也可以连接小爱同学。</p><p>51那块串口通信具体看了一下：</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;&#x2F;此程序主要用于uart发送(proteus终端不能显示汉字，但串口助手可以),输入换行符\n换行#include&lt;reg52.h&gt;&#x2F;&#x2F;stdio.h,string.h用于printf函数原型#include&lt;stdio.h&gt;#define uint unsigned int  void delayms(uint xms);void uart_init(void);&#x2F;&#x2F;串行口初始化 void main(void)&#123;int a&#x3D;99;uart_init();while(1)&#123;printf(&quot;%d\n&quot;,a);delayms(1000);&#125;&#125; void uart_init(void)&#123;TMOD&#x3D;0x20;&#x2F;&#x2F;即0010 0000,定时器&#x2F;计数器1,工作方式2TH1&#x3D;0xfd;&#x2F;&#x2F;设置波特率为9600TL1&#x3D;0xfd;TR1&#x3D;1;&#x2F;&#x2F;启动定时器&#x2F;计数器1SCON&#x3D;0x50; &#x2F;&#x2F;0101 0000.串口工作方式1，允许串行控制PCON&#x3D;0x00;&#x2F;&#x2F;设置SMOD&#x3D;0IE&#x3D;0x90; &#x2F;&#x2F;CPU允许中断，串行允许中断TI&#x3D;1;&#x2F;&#x2F;直接使用printf必须加入此句才能实现发送&#125; void delayms(uint xms)&#123;uint i,j;for(i&#x3D;xms;i&gt;0;i--)for(j&#x3D;110;j&gt;0;j--);&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="2021-5-10-5-21"><a href="#2021-5-10-5-21" class="headerlink" title="2021.5.10-5.21"></a>2021.5.10-5.21</h2><p>校电赛</p><p><a href="https://imgtu.com/i/2itFRe"><img src="https://z3.ax1x.com/2021/05/27/2itFRe.md.jpg" alt="2itFRe.md.jpg" style="zoom: 150%;" /></a></p><p>选的B题，看着简单，做起来是真难啊。。。关键还在电磁场要考试期间，搞得我都迈不开步子去做，只能白天复习，晚上做，</p><p><a href="https://imgtu.com/i/2it8Mj"><img src="https://z3.ax1x.com/2021/05/27/2it8Mj.md.jpg" alt="2it8Mj.md.jpg" style="zoom:150%;" /></a>其实白天脑子里也在想着电赛，让我很难受。</p><p>​    这次电赛的可见光通信是非常值得研究的，我觉得很有意义，看来两篇毕设论文，理论上实现还是比较容易的，但现实做起来不太容易，和元件特性关系很大，小功率LED下可以实现比较稳定一点的信息传输，但是换成自己做的12V大功率驱动板就不太好用了，干扰很大，不光是自然光影响，还和驱动部分的稳定性有关，这一部分卡了四天，最终不得不放弃了，离考试还剩两天了，还没开始复习….</p><p>推荐一下别人做的可见光通信部分，做的挺好：<a href="https://blog.csdn.net/fengge2018/article/details/108301334?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162212383916780271591917%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=162212383916780271591917&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-108301334.first_rank_v2_pc_rank_v29&utm_term=%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1&spm=1018.2226.3001.4187">可见光通信</a></p><p>后续还会继续搞搞的。今天刚出电赛结果，优秀奖（没办法，谁叫我优秀呢。报销泡汤了，得自己还花呗了。。。）</p><p>对了，HELLO,2021 TI.</p><h2 id="2021-5-23"><a href="#2021-5-23" class="headerlink" title="2021.5.23"></a>2021.5.23</h2><p>​    考完电磁场了，题目还是挺难的，但感觉还是复习的不到位，我觉得有些题是可以通过复习做出来的，还是自己没有平衡好电赛和学习之间的关系，捡了芝麻丢了西瓜，到最后芝麻都可能丢了，希望电磁场不要挂….今后要把学习放在首要地位，要平衡好学习与爱好之间的关系，这次算是一个教训吧。其实也想了很多，想到了以后的事，学习还是特别重要的，至少在现阶段是这样的。</p><h2 id="2021-5-23晚"><a href="#2021-5-23晚" class="headerlink" title="2021.5.23晚"></a>2021.5.23晚</h2><p>​    考完电磁场和室友出去吃了一顿，好好放松了一下，喝了两瓶啤酒，感觉还行，回宿舍后，另外两个室友带了六瓶江小白，又是一顿，喝完还不够，一人又来了半瓶牛栏山，我是从来没喝过那么多酒啊，感觉还将就，一般般吧，就是第二天脑袋疼，东北人是真能喝啊，下次注意，不能再这样喝下去了。</p><h2 id="2021-5-25-5-27"><a href="#2021-5-25-5-27" class="headerlink" title="2021.5.25-5.27"></a>2021.5.25-5.27</h2><p>​    主要把入党那些材料弄了一下</p><h2 id="5-28去看一下哆啦A梦-伴我同行2"><a href="#5-28去看一下哆啦A梦-伴我同行2" class="headerlink" title="5.28去看一下哆啦A梦 伴我同行2"></a>5.28去看一下哆啦A梦 伴我同行2</h2><p><a href="https://imgtu.com/i/2iNnX9"><img src="https://z3.ax1x.com/2021/05/27/2iNnX9.md.jpg" alt="2iNnX9.md.jpg" style="zoom:200%;" /></a></p><h2 id="Future"><a href="#Future" class="headerlink" title="Future:"></a>Future:</h2><p>​    接下来主要还是学习，又快要考试了。其次就是一些还没跳的坑：</p><p>​    1、51单片机继续学习（现在到AD部分了）。</p><p>​    2、通信课设继续完善，尽量把小程序做出来，通过一套完整的开发流程增加开发经验（还有就是室友和同学的课设，带着完善。还有就是以后要学会拒绝别人，不能什么事都揽到自己身上）。</p><p>​    3、自己做一个USB集线器，从电路PCB到元件采买，焊接，到制作外壳，学会使用3D打印机，学几项新技能，通过项目充实自己。</p><p>​    4、买了3块墨水屏，有时间研究研究显示部分，然后准备制作WIFI气象站，尽量想B站大佬做出那种带QQ信息显示的部分，做好后尽量也画个外壳，尽量再暑假结束前做出来。</p><p>​    5、想趁着618改改键盘，主要换键帽，改键线分离，可以的话准备再加个白灯或者蓝灯。</p><p>​    6、树莓派，近期还没想好怎么玩，想想吧。</p><p>​    7、做一个简易的小电源，以后用着方便。</p><p>​    8、对了，可见光通信，有机会搞搞。</p><p>​    9、以上都是想做的，但我这个性格估计能做出来一半就不错了，仅供提醒自己一下吧，防止忘记</p><p>近期，就这样，还有的就想不起来了。</p><p>对了，还有就是认真学习，认真生活。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日志 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>51单片机学习4</title>
+      <link href="/2021/04/24/51-dan-pian-ji-xue-xi-4/"/>
+      <url>/2021/04/24/51-dan-pian-ji-xue-xi-4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="A-D-Analog-to-Digital-模-数转换"><a href="#A-D-Analog-to-Digital-模-数转换" class="headerlink" title="A/D(Analog to Digital)模/数转换"></a>A/D(Analog to Digital)模/数转换</h1><h2 id="转换原理及参数指标"><a href="#转换原理及参数指标" class="headerlink" title="转换原理及参数指标"></a>转换原理及参数指标</h2><p>​    采样保持、量化、编码。</p><h3 id="采样定理"><a href="#采样定理" class="headerlink" title="采样定理"></a>采样定理</h3><p>$f_s&gt;=2f_{i max}$</p><p>通常取3<del>5倍（量化需要时间)，$f_s$为采样频率，$f_{i max}$为输入信号的最高频率分量的频率。在满足采样定理的条件下可以使用一个低通滤波器将信号还原出来，该低通滤波器电压传输系数在低于$f_{imax}$的范围内保持不变，在$f_s$</del>$f_{imax}$以前迅速下降为0</p><h3 id="量化和编码"><a href="#量化和编码" class="headerlink" title="量化和编码"></a>量化和编码</h3><p>​    量化：化成一个最小数量单位（量化单位▲）的整数倍。（会产生量化误差，最大为▲，解决：取中点，缩小为▲/2）</p><p>​    编码：把量化的数值用二进制代码表示，即输出信号。</p><p>​    补充：采样保持电路（N沟道MOS管可做采样开关用，高电平T导通）</p><h3 id="直接A-D转换器"><a href="#直接A-D转换器" class="headerlink" title="直接A/D转换器"></a>直接A/D转换器</h3><h4 id="并行比较型"><a href="#并行比较型" class="headerlink" title="并行比较型"></a>并行比较型</h4><p>​    （电压比较器+寄存器+代码转换器）</p><p>​    单片集成并行比较型A/D转换器如：AD9012(8位)、AD9002（8位）、AD9020（10位）等</p><p>​    特点：①并行，转换时间只受比较器、触发器和编码电路延迟时间限制，转换速度快；②随着分辨率提高，元件数目按几何级数增加；③这种含寄存器的并行A/D转换电路，可以不用附加采样-保持电路（比较器和寄存器兼有采样-保持功能）。</p><p>​    缺点：需要很多的电压比较器和触发器。</p><h4 id="反馈比较型"><a href="#反馈比较型" class="headerlink" title="反馈比较型"></a>反馈比较型</h4><p>​    原理：取一个数字量加到D/A转换器上，得到一个对应的输出模拟电压，将这个模拟电压与输入的模拟电压信号比较，如果两者不相等，则调整所取的数字量，直至两个模拟电压相等为止，最后所取的数字量就是转换结果。</p><h5 id="计数型"><a href="#计数型" class="headerlink" title="计数型"></a>计数型</h5><p>​    （ 比较器C+D/A转换器+计数器+脉冲源+控制门G+输出寄存器等）</p><p>​    使用寄存器原因：转换过程计数器中数字不停变化，不宜将计数器状态直接作为输出信号。</p><p>​    缺点：转换速度低。</p><h5 id="逐次比较型"><a href="#逐次比较型" class="headerlink" title="逐次比较型"></a>逐次比较型</h5><p>​    （提高转换速度，在计数型基础上，采用类似天平称重的思路：将输入模拟信号与不同的参考电压做多次比较，使转换所得的数字量在树数值上逐次逼近输入模拟量的对应值）</p><p>​    一次转换时间与其位数和时钟脉冲频率相关。位数越少，时钟频率越高，转换时间越短。</p><p>​    优点：转换速度快，精度高等。</p><p>​    集成逐次比较型A/D转换器如：8位：ADC0804、ADC0808、ADC0809系列；10位：AD575；12位：AD574A等</p><h3 id="间接A-D转换器（主要两种）"><a href="#间接A-D转换器（主要两种）" class="headerlink" title="间接A/D转换器（主要两种）"></a>间接A/D转换器（主要两种）</h3><h4 id="时间-电压变换型（V-T变换型）"><a href="#时间-电压变换型（V-T变换型）" class="headerlink" title="时间-电压变换型（V-T变换型）"></a>时间-电压变换型（V-T变换型）</h4><p>​    首先把输入的模拟电压信号转换成与之成正比的<em><strong>时间宽度</strong></em>信号，然后在这个时间宽度里对固定频率的时钟脉冲计数，计数结果就是正比于输入模拟电压的数字信号。</p><h4 id="电压-频率变换型（V-F变换型）"><a href="#电压-频率变换型（V-F变换型）" class="headerlink" title="电压-频率变换型（V-F变换型）"></a>电压-频率变换型（V-F变换型）</h4><p>​    首先把输入的模拟电压信号转换成与之成正比的<em><strong>频率</strong></em>信号，然后在一个固定的时间间隔里对得到的频率信号计数，所得到的结果就是正比于输入模拟电压的数字量。</p><h3 id="A-D转换器的参数指标"><a href="#A-D转换器的参数指标" class="headerlink" title="A/D转换器的参数指标"></a>A/D转换器的参数指标</h3><h4 id="分辨率"><a href="#分辨率" class="headerlink" title="分辨率"></a>分辨率</h4><p>​    （对输入信号的分辨能力。以输出二进制的位数表示）</p><p>eg:输出8位二进制数，输入信号最大值5V,分辨最小电压：$5V×1/2^8≈19.53mv$</p><h4 id="转换误差"><a href="#转换误差" class="headerlink" title="转换误差"></a>转换误差</h4><p>​    （理论与实际输出数字量之间的差别，一般用最低有效位表示）</p><h4 id="转换精度"><a href="#转换精度" class="headerlink" title="转换精度"></a>转换精度</h4><p>​    （A/D转换器的最大量化误差和模拟部分精度的共同体现）</p><p>​    最大量化误差：应为分辨率数值的一半（实际还要低些）；</p><p>​    模拟处理（如积分器、比较器等）部分的误差：一般与数字转换误差应尽量处于同一数量等级；</p><p>​    总误差：累加和。</p><p>​    eg:10位A/D转换器用其中9位计数，</p><p>最大相对量化误差：2^9×0.5≈0.1％，模拟部分也为0.1％，总精度0.2％</p><h4 id="转换时间"><a href="#转换时间" class="headerlink" title="转换时间"></a>转换时间</h4><p>​    （转换控制信号来，到输出端得到稳定的数字信号所经过的时间）</p><p>​    时间：并行比较A/D转换器（8位单片集成50ns）&lt;逐次比较型A/D转换型（10<del>50us,也有几百纳秒的）&lt;间接A/D转换器（双积分A/D转换器时间几十毫秒</del>几百毫秒）</p><h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><p>​    ①高速：并行；</p><p>​    ②高精度：双积分A/D转换器；</p><p>​    ③逐次比较型A/D转换器兼有，普遍使用；</p><p>​    ④主要技术参数：转换精度、转换速度（决定系统）</p><h2 id="ADC0804工作原理及其实现方法"><a href="#ADC0804工作原理及其实现方法" class="headerlink" title="ADC0804工作原理及其实现方法"></a>ADC0804工作原理及其实现方法</h2><p><a href="https://imgtu.com/i/RiZqCF"><img src="https://z3.ax1x.com/2021/06/20/RiZqCF.md.jpg" alt="RiZqCF.md.jpg" style="zoom:150%;" /></a></p><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;*********************************************************11、TX-IC上ADC0804的数模转换使用(逐次比较型)*********************************************************&#x2F;#include &quot;reg52.h&quot;#include &quot;intrins.h&quot;#define uchar unsigned char#define uint unsigned int sbit dula &#x3D; P2^6;&#x2F;&#x2F;U1锁存端sbit wela &#x3D; P2^7;&#x2F;&#x2F;U2锁存端sbit adwr &#x3D; P3^6;&#x2F;&#x2F;A&#x2F;D的WR端口sbit adrd &#x3D; P3^7;&#x2F;&#x2F;A&#x2F;D的RD端口uchar code table[]&#x3D;&#123;0x3f , 0x06 , 0x5b , 0x4f ,0x66 , 0x6d ,0x7d , 0x07 , 0x7f , 0x6f , 0x77 , 0x7c ,0x39 , 0x5e , 0x79 , 0x71 &#125;;void delayms(uint xms)&#123;uint i,j;for(i&#x3D;xms;i&gt;0;i--)for(j&#x3D;110;j&gt;0;j--);&#125;void display(uchar bai,uchar shi,uchar ge)&#123;dula &#x3D; 1;P0 &#x3D; table[bai];dula &#x3D; 0;P0 &#x3D; 0xff;&#x2F;&#x2F;送位选数据前关闭所有显示，防止打开位选锁存时，原来的段选数据通过位选锁存器造成混乱wela &#x3D; 1;P0 &#x3D; 0x7e;&#x2F;&#x2F;送位选数据   0111 1110 (始终保持最高位为0，是下方CS端一直被选中)wela &#x3D; 0;delayms(5);dula &#x3D; 1;P0 &#x3D; table[shi];dula &#x3D; 0;P0 &#x3D; 0xff;wela &#x3D; 1;P0 &#x3D; 0x7d;&#x2F;&#x2F;0111 1101wela &#x3D; 0;delayms(5);dula &#x3D; 1;P0 &#x3D; table[ge];dula &#x3D; 0;P0 &#x3D; 0xff;wela &#x3D; 1;P0 &#x3D; 0x7b;&#x2F;&#x2F;0111 1011wela &#x3D; 0;delayms(5);&#125;void main()&#123;uchar a,A1,A2,A3,adval;wela &#x3D; 1;P0 &#x3D; 0x7f;&#x2F;&#x2F;CSAD为0，选通ADCS后不再管ADCSwela &#x3D; 0;while(1)&#123;adwr &#x3D; 1;_nop_();&#x2F;&#x2F;延迟一个机器周期adwr &#x3D; 0;&#x2F;&#x2F;AD启动_nop_();adwr &#x3D; 1;for(a&#x3D;10;a&gt;0;a--)&#x2F;&#x2F;此处A&#x2F;D工作频率较低，所以启动后要多留时间用来转换（将显示部分放在这里）&#123;display(A1,A2,A3);&#125;P1 &#x3D; 0xff;&#x2F;&#x2F;读取P1口之前全赋1adrd &#x3D; 1;&#x2F;&#x2F;选通ADCS_nop_();adrd &#x3D; 0;&#x2F;&#x2F;A&#x2F;D读使能_nop_();adval &#x3D; P1;&#x2F;&#x2F;将A&#x2F;D数据赋给P1口adrd &#x3D; 1;A1 &#x3D; adval&#x2F;100;A2 &#x3D; adval%100&#x2F;10;A3 &#x3D; adval%10;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="D-A（Digital-to-Analog-数-模转换"><a href="#D-A（Digital-to-Analog-数-模转换" class="headerlink" title="D/A（Digital to Analog)数/模转换"></a>D/A（Digital to Analog)数/模转换</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 单片机 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 51单片机 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>51单片机学习3</title>
+      <link href="/2021/04/23/51-dan-pian-ji-xue-xi-3/"/>
+      <url>/2021/04/23/51-dan-pian-ji-xue-xi-3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>​    键盘分为编码键盘和非编码键盘（是否有编码器）；非编码键盘分为独立键盘和行列式（矩阵式）键盘。</p><h1 id="独立键盘检测"><a href="#独立键盘检测" class="headerlink" title="独立键盘检测"></a>独立键盘检测</h1><p>​    抖动现象（5~10ms），一般在检测按下时加入去抖延时，检测松手时不需。</p><p><a href="https://imgtu.com/i/cXXarj"><img src="https://z3.ax1x.com/2021/04/23/cXXarj.jpg" alt="cXXarj.jpg"></a></p><p>目标：1、数码管前两位显示一个十进制数，变化范围00~59，开始时显示00，</p><p>​            2、每按下S2键一次，数值加1；每按下S3键一次，数值减1；每按下S4键一次，数值归零；</p><p>​            3、每按下S5键一次，利用定时器功能使数值开始自动每秒加1，再次按下S5键，数值暂停。</p><p>代码分析：(省略版)</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &quot;reg52.h&quot;#define uchar.....sbit....uchar code table[]&#x3D;&#123;&#125;;void display(uchar numdis)&#123;shi&#x3D;numdis&#x2F;10;ge&#x3D;numdis%10;&#125;&#x2F;&#x2F;显示子函数void delayms(uint xms)&#123;&#125;  &#x2F;&#x2F;延时子函数void init()&#123;                      &#x2F;&#x2F;初始化函数&#x2F;&#x2F;定时器初始化TMOD &#x3D; 0x01;&#x2F;&#x2F;设置定时器0为工作方式1（M1M0为01）TH0 &#x3D; (65536-45872)&#x2F;256; &#x2F;&#x2F;装初值11.0592M晶振定时50ms数为45872TL0 &#x3D; (65536-45872)%256;EA &#x3D; 1;        &#x2F;&#x2F;开总中断ET0 &#x3D; 1;    &#x2F;&#x2F;开定时器0中断（通过 TR0 &#x3D; 1;开启）&#125;void keyscan()&#123;&#x2F;&#x2F;按键扫描子函数if(key1&#x3D;&#x3D;0)&#123;delayms(10);&#x2F;&#x2F;消抖if(key1&#x3D;&#x3D;0)&#123;num++;if(num&#x3D;&#x3D;60)num&#x3D;0;while(!key1);&#x2F;&#x2F;等待按键释放&#125;&#125;if(key2&#x3D;&#x3D;0)&#123;&#125;if(key3&#x3D;&#x3D;0)&#123;&#125;if(key4&#x3D;&#x3D;0)&#123;while(!key4); TR0&#x3D;~TR0;&#125;&#125;void main()&#123;init();while(1)&#123;keyscan();display(num);&#125;&#125;void T0_time()interrupt 1&#123;TH0 &#x3D; (65536-45872)&#x2F;256;&#x2F;&#x2F;重装初值TL0 &#x3D; (65536-45872)%256;numt0++;if(numt0&#x3D;&#x3D;20)&#x2F;&#x2F;1秒时间到&#123;numt0&#x3D;0;    &#x2F;&#x2F;时间清零重计num++;&#x2F;&#x2F;每秒加1if(num&#x3D;&#x3D;60)num&#x3D;0;&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="矩阵键盘检测"><a href="#矩阵键盘检测" class="headerlink" title="矩阵键盘检测"></a>矩阵键盘检测</h1><p><a href="https://imgtu.com/i/cjpVPI"><img src="https://z3.ax1x.com/2021/04/23/cjpVPI.md.jpg" alt="cjpVPI.md.jpg" style="zoom:150%;" /></a></p><p>目标：TX-1C：上电，数码管不显示，顺序按下矩阵键盘后，数码管上依次显示0~F，6个数码管同时静态显示即可</p><p>代码分析：（省略版）</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">void main()&#123;    P0&#x3D;0;&#x2F;&#x2F;关闭所有数码管段选    dula&#x3D;1;    dula&#x3D;0;    P0&#x3D;0xc0;&#x2F;&#x2F;位选中所有数码管（以后直接送段选信号）    wela&#x3D;1;    wela&#x3D;0;  while(1)  &#123;      matrixkeyscan();&#x2F;&#x2F;不停调用键盘扫描程序  &#125;&#125;void display(uchar num)&#123;    P0&#x3D;table[num];&#x2F;&#x2F;显示函数只送段选数据    dula&#x3D;1;    dula&#x3D;0;&#125;void matrixkeyscan()&#123;    uchar temp,key;    P3&#x3D;0xfe;&#x2F;&#x2F;1111 1110 第一行线置低电平，其余为高电平    temp&#x3D;P3;&#x2F;&#x2F;P3状态赋给临时变量，用于计算    temp&#x3D;temp&amp;0xf0;&#x2F;&#x2F;1111 0000 若temp高四位有0，则结果不为0xf0;若无，则一直为0xf0    if(temp!&#x3D;0xf0)&#x2F;&#x2F;说明有键按下    &#123;        delayms(10);&#x2F;&#x2F;消抖        temp&#x3D;P3;&#x2F;&#x2F;重读        temp&#x3D;temp&amp;0xf0;&#x2F;&#x2F;重&amp;         if(temp!&#x3D;0xf0)&#x2F;&#x2F;说明确实有键按下         &#123;             temp&#x3D;P3;&#x2F;&#x2F;再读一下P3状态（行列交叉）             switch(temp)             &#123;                 case 0xee:&#x2F;&#x2F;1110 1110                     key&#x3D;0;                     break;                 case 0xde:&#x2F;&#x2F;1101 1110                     key&#x3D;1;                     break;                 case 0xbe:&#x2F;&#x2F;1011 1110                     key&#x3D;2;                     break;                 case 0x7e:&#x2F;&#x2F;0111 1110                     key&#x3D;3;                     break;                             &#125;             while(temp!&#x3D;0xf0)&#x2F;&#x2F;等待按键释放             &#123;                 temp&#x3D;P3;&#x2F;&#x2F;不断读取                 temp&#x3D;temp&amp;0xf0;&#x2F;&#x2F;不断相&amp;，只要结果不为0xf0，就说明按键没有被释放             &#125;             display(key);&#x2F;&#x2F;显示         &#125;                &#125;     P3&#x3D;0xfd;&#x2F;&#x2F;1111 1101第二行置低电平，其余为高电平    。。。。。。。。。。。。。     P3&#x3D;0xfb;    .......................     P3&#x3D;0xf7;    .......................        &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">switch(表达式)&#123;        case 常量表达式1：            语句1；&#x2F;&#x2F;可多条语句            break;        case 常量表达式2：            语句2；            break;        case 常量表达式n：            语句n；            break;    default:&#x2F;&#x2F;可无        语句n+1;        break;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 单片机 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 51单片机 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>树莓派小电脑</title>
+      <link href="/2021/04/23/shu-mei-pai-xiao-dian-nao/"/>
+      <url>/2021/04/23/shu-mei-pai-xiao-dian-nao/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://imgtu.com/i/cXqGPU"><img src="https://z3.ax1x.com/2021/04/23/cXqGPU.md.jpg" alt="cXqGPU.md.jpg" style="zoom: 150%;" /></a></p><p>树莓派4B4GV1.2，7寸ISP<span id="more"></span>无触摸屏幕，树莓派官方桌面版带推荐软件版本。</p><p><a href="https://imgtu.com/i/cXq0Vx"><img src="https://z3.ax1x.com/2021/04/23/cXq0Vx.md.jpg" alt="cXq0Vx.md.jpg" style="zoom:150%;" /></a></p><p><a href="https://imgtu.com/i/cXqDIK"><img src="https://z3.ax1x.com/2021/04/23/cXqDIK.md.jpg" alt="cXqDIK.md.jpg" style="zoom:150%;" /></a></p><p><a href="https://imgtu.com/i/cXqyGD"><img src="https://z3.ax1x.com/2021/04/23/cXqyGD.md.jpg" alt="cXqyGD.md.jpg" style="zoom:150%;" /></a></p><p>PS:一张好看的壁纸</p><p><a href="https://imgtu.com/i/cjGq5d"><img src="https://z3.ax1x.com/2021/04/24/cjGq5d.md.jpg" alt="cjGq5d.md.jpg" style="zoom:150%;" /></a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 电子制作 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 树莓派 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Github上搭建Hexo个人博客</title>
+      <link href="/2021/04/11/github-shang-da-jian-hexo-ge-ren-bo-ke/"/>
+      <url>/2021/04/11/github-shang-da-jian-hexo-ge-ren-bo-ke/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Hexo简介："><a href="#Hexo简介：" class="headerlink" title="Hexo简介："></a>Hexo简介：</h1><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。Hexo基于Node.js，支持多进程，几百篇文章也可以秒生成。 支持GitHub Flavored Markdown和所有Octopress的插件。 Hexo支持EJS、Swig和Stylus。通过插件支持Haml、Jade和Less.</p><h1 id="Hexo安装："><a href="#Hexo安装：" class="headerlink" title="Hexo安装："></a>Hexo安装：</h1><h2 id="前提：-不推荐安装较新版本，踩过坑"><a href="#前提：-不推荐安装较新版本，踩过坑" class="headerlink" title="前提：(不推荐安装较新版本，踩过坑)"></a>前提：(不推荐安装较新版本，踩过坑)</h2><p>（括号内为我所安装的版本，可供参考）</p><p>安装<a href="http://nodejs.org/">node.js</a>（V12.21.0）（不要安装14以上的版本）</p><p>安装<a href="http://git-scm.com/">Git</a></p><p>具体安装步骤可自行百度</p><h2 id="搭建环境："><a href="#搭建环境：" class="headerlink" title="搭建环境："></a>搭建环境：</h2><p>注册<a href="https://github.com/">Github账号</a></p><p>创建新的Github仓库（crete a new repository)</p><p>(注意：仓库名必须为:用户名.github.io)</p><p>选择public</p><p>create repository</p><h2 id="配置ssh-key：首先打开gitbush-执行"><a href="#配置ssh-key：首先打开gitbush-执行" class="headerlink" title="配置ssh-key：首先打开gitbush,执行"></a>配置ssh-key：首先打开gitbush,执行</h2><pre class="line-numbers language-none"><code class="language-none">$ cd ~&#x2F;. ssh #检查本机已存在的ssh密钥<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>如果提示：No such file or directory 说明你是第一次使用git ：</p><pre class="line-numbers language-none"><code class="language-none">ssh-keygen -t rsa -C &quot;邮件地址&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到<code>.ssh\id_rsa.pub</code>文件，记事本打开并复制里面的内容，打开你的github主页，进入setting -&gt; SSH and GPG keys -&gt; New SSH key：</p><p>打开命令行或者git bash，输入</p><pre class="line-numbers language-none"><code class="language-none">$ ssh -T git@github.com # 注意邮箱地址不用改<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>如果提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入yes，然后会看到： Hi xxx …!</li></ul><p>如图，即为配置成功，然后输入</p><pre class="line-numbers language-none"><code class="language-none">$ git config --global user.name &quot;##########&quot;&#x2F;&#x2F; 你的github用户名，非昵称$ git config --global user.email  &quot;xxx@163.com&quot;&#x2F;&#x2F; 填写你的github注册邮箱<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="配置Hexo："><a href="#配置Hexo：" class="headerlink" title="配置Hexo："></a>配置Hexo：</h2><p>推荐完全在git bash 执行命令</p><p>hexo不同版本差别较大，注意区分</p><p>hexo有两种_config.yml文件 ，一个是根目录下的全局的<code>_config.yml</code>，一个是各个<code>theme</code>下的</p><h3 id="安装hexo："><a href="#安装hexo：" class="headerlink" title="安装hexo："></a>安装hexo：</h3><pre class="line-numbers language-none"><code class="language-none">$ npm install -g hexo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>新建hexo文件夹，这个文件夹将作为你存放代码的地方</p><p>切到hexo文件夹打开命令行，运行</p><pre class="line-numbers language-none"><code class="language-none">$ hexo init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>hexo会自动下载一些文件到这个目录，包括node_modules：</p><pre class="line-numbers language-none"><code class="language-none">$ hexo g # 生成$ hexo s # 启动服务<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>执行以上命令之后，hexo就会在public文件夹生成相关html文件，这些文件将来都是要提交到github去</p><p><code>hexo s</code>是开启本地预览服务，打开浏览器访问 <a href="http://localhost:4000/">http://localhost:4000</a> 即可看到内容</p><p>如果端口占用，运行以下：</p><ol><li><p>按下<code>Win+R</code>调出命令行窗口，输入<code>netstat -aon|findstr &quot;4000&quot;</code>，找到指定行最后一列的数字（PID）</p></li><li><p>输入<code>tasklist|findstr &quot;PID&quot;</code>，发现是xxx用了4000端口。</p></li><li><p>再次输入<code>taskkill /f /t /im xxx.exe</code>结束该进程。</p><p> 第一次初始化的时候hexo已经帮我们写了一篇名为 Hello World 的文章</p></li></ol><h1 id="主题安装（可自行安装，这里以next主题为例）："><a href="#主题安装（可自行安装，这里以next主题为例）：" class="headerlink" title="主题安装（可自行安装，这里以next主题为例）："></a>主题安装（可自行安装，这里以next主题为例）：</h1><h2 id="修改主题："><a href="#修改主题：" class="headerlink" title="修改主题："></a>修改主题：</h2><p>hexo默认使用的是landscape主题，下文将采用NexT主题。<br> - NexT主题<br> NexT主题特色：精于心，简于形<br> NexT主题是我接触Hexo的第一款主题，一见钟情的一款Hexo主题。 </p><p>NexT主题简约却并不简单，功能特性多样；响应式设计，电脑手机访问体验好，超级nice，你值得拥有！ </p><h2 id="安装主题-："><a href="#安装主题-：" class="headerlink" title="安装主题 ："></a>安装主题 ：</h2><p> 将next的代码clone到项目中，保存在github仓库中的<code>themes/next</code>目录下:</p><pre class="line-numbers language-none"><code class="language-none">$ git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="修改配置："><a href="#修改配置：" class="headerlink" title="修改配置："></a>修改配置：</h2><p>下载完主题后，修改根目录下的_config.yml配置文件：</p><p>新建的hexo文件中使用的是默认的主题landscape，将其修改为next（next为主题安装的目录名<code>themes/next</code>）</p><h2 id="运行新主题："><a href="#运行新主题：" class="headerlink" title="运行新主题："></a>运行新主题：</h2><p>修改完成后保存，运行代码：</p><pre class="line-numbers language-none"><code class="language-none">$ hexo server -g  #为&#96;hexo generate&#96;及&#96;hexo server&#96;的缩写<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>可以看到，已经成功了!!!!!!!</p><h2 id="主题设置："><a href="#主题设置：" class="headerlink" title="主题设置："></a>主题设置：</h2><p>1、添加blog名称及副标题： 修改根目录下配置文件_config.yml </p><p>2、修改语言：修改根目录下的_config.yml文件</p><p>3、更改主题方案 ：<br> NexT 通过 Scheme 提供主题中的主题。 Mist 是 NexT 的第一款 Scheme。启用 Mist 仅需在 主题配置文件 中将 #scheme: Mist 前面的 # 注释去掉即可。修改<code>themes/next</code>目录下的_config.yml文件</p><p>4、头像设置<br> 通过avatar字段设置，站点外头像设置<code>avatar：图片url</code>，站点内头像设置<code>avatar：目录/图片名.图片格式</code>在根目录下的_config.yml文件中，添加avatar字段。头像图片存储在<code>themes/next/source/images/</code>目录下。。。。。。。。</p><p>下面就可以根据自己的喜好自行设定了。。。。</p><p>当然，还可以添加更多的插件，比如页面评论，阅读统计不蒜子，看板娘等。。。</p><h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><p>首先电脑上下载，git和node（版本不要太高12.几的就可以了），在本地建立一个文件夹，用来放置要部署到github上的内容，新建github仓库，注意命名规范（与用户名一致.github.io),执行hexo命令（hexo new””新建博客，hexo g生成博客，hexo s 本地预览，hexo d部署到github）博客文件存在sourse文件夹的post中，接下来就可以根据自己的喜好，安装相关功能，博客的配置文件为根目录下的config.yml文件，主题的配置文件为根目录下的themes文件夹中的config.yml文件（不要搞混），这里我选用的是next主题方案。</p><p>[<img src="https://z3.ax1x.com/2021/04/11/c0sRAI.md.png" alt="c0sRAI.md.png" style="zoom:150%;" /></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2021.4.9</title>
+      <link href="/2021/04/09/2021-4-9/"/>
+      <url>/2021/04/09/2021-4-9/</url>
+      
+        <content type="html"><![CDATA[<img src="https://z3.ax1x.com/2021/04/09/cUYMjS.md.jpg" alt="cUYMjS.md.jpg" style="zoom: 200%;" /><p>最近状态有点不太好，上课心不在焉，感觉人变懒了，不过现在调整的还可以了，要静下心来，好好学习了，突然发现，我几乎没有把平时时间用在专业课学习上，一直混混沌沌的，最近也没有什么要做的事，所以感觉很“闲”，其实还有很多事没做。得好好复习专业课了，现在有的东西还一头雾水（上课时听一点，下课就扔一边了），不能再像以前等到期末再复习了。还有就是兴趣爱好，近期就是把通信课设好好弄一下（带着队友从头开始，这样也能多学一点），顺带着学51（学长建议看32，后期调整一下）。树莓派也买了，到了之后就先当一个小电脑玩玩吧，以后有需要再进一步学习（我觉得以后一定会用到的）（我总是对自己的直觉异常的自信  &gt;&lt;    。。。）额。。。虽然想的很多，还是得脚踏实地啊。还有就是我感觉哈尔滨的春天（也许是夏天）已经到了，傍晚的夕阳还有喷气式飞机的航迹线真的太美了，吃过饭去散步一定很舒服，虽然没去过。。。（我得看看这个博客怎么发表情，要不体现不了我的心情。。。只能省略号代替了）近期的话，就这样，挺好…</p><p>PS: 一首好听的歌（同学推荐的，意义很多，看怎么理解吧）：<a href="http://music.163.com/song?id=29375057&amp;userid=2045942784">http://music.163.com/song?id=29375057&amp;userid=2045942784</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日志 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>51单片机学习2</title>
+      <link href="/2021/04/07/51-dan-pian-ji-xue-xi-2/"/>
+      <url>/2021/04/07/51-dan-pian-ji-xue-xi-2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="中断概念"><a href="#中断概念" class="headerlink" title="中断概念"></a>中断概念</h1><p>​    </p><p><a href="https://imgtu.com/i/cGZAG6"><img src="https://z3.ax1x.com/2021/04/07/cGZAG6.png" alt="cGZAG6.png"></a></p><h2 id="关键词："><a href="#关键词：" class="headerlink" title="关键词："></a>关键词：</h2><h3 id="中断源：（中断嵌套，中断优先级）"><a href="#中断源：（中断嵌套，中断优先级）" class="headerlink" title="中断源：（中断嵌套，中断优先级）"></a>中断源：（中断嵌套，中断优先级）</h3><p>​    51有5个，51有6个（多一个T2定时器/计数器2）；</p><p>​    默认优先级（由高到低）：<strong>INT0</strong>——外部中断0，P3.2口，低电平或下降沿引起（序号：0；入口地址：0003H）；</p><p>​                                                   <strong>INT1</strong>——外部中断1，P3.3口，低电平或下降沿引起（序号：1；入口地址：000BH）；</p><p>​                                                    <strong>T0</strong>——定时器/计数器0中断，由T0计数器计满回零引起（序号：2；入口地址：0013H）；</p><p>​                                                    <strong>T1</strong>——定时器/计数器1中断，由T1计数器计满回零引起（序号：3；入口地址：001BH）；</p><p>​                                                    <strong>T2</strong>——定时器/计数器2中断，由T2计数器计满回零引起（序号：4；入口地址：0023H）；</p><p>​                                                    <strong>TI/IR</strong>——串行口中断，串行端口完成一帧字符发送/接收后引起（序号：5；入口地址：002BH）；</p><h3 id="中断允许寄存器IE："><a href="#中断允许寄存器IE：" class="headerlink" title="中断允许寄存器IE："></a>中断允许寄存器IE：</h3><p>​    设定各个中断源的打开和关闭，是特殊功能寄存器，字节地址：A8H，位地址：A8H~AFH，可进行位寻址（即可对寄存器的每一位进行单独操作，复位时，IE全被清零。</p><p><a href="https://imgtu.com/i/cGnTS0"><img src="https://z3.ax1x.com/2021/04/07/cGnTS0.md.png" alt="cGnTS0.md.png"></a></p><p><strong>EA</strong>：全局中断允许位；</p><p>**–**：无效位；</p><p><strong>ET2</strong>：定时器/计数器2中断允许位（为1时打开，为0时关闭）；</p><p><strong>ES</strong>:串行口中断允许位；</p><p><strong>ET1</strong>：定时器/计数器1中断允许位；</p><p><strong>EX1</strong>：外部中断1中断允许位；</p><p><strong>ET0</strong>：定时器/计数器0中断允许位；</p><p><strong>EX0</strong>：外部中断0中断允许位。</p><h3 id="中断优先级寄存器IP："><a href="#中断优先级寄存器IP：" class="headerlink" title="中断优先级寄存器IP："></a>中断优先级寄存器IP：</h3><p>特殊功能寄存器，B8H~BFH。可位寻址，复位时，全清零</p><p><a href="https://imgtu.com/i/cGug91"><img src="https://z3.ax1x.com/2021/04/07/cGug91.md.png" alt="cGug91.md.png"></a></p><p>**–**：无效位；</p><p><strong>PS</strong>：串行口中断优先级控制位（为1定义为高优先级中断）；</p><p><strong>PT1</strong>：定时器/计数器1中断优先级控制位；</p><p><strong>PX1</strong>：外部中断1中断优先级控制位；</p><p><strong>PT0</strong>：定时器/计数器0中断优先级控制位；</p><p><strong>PX0</strong>：外部中断0中断优先级控制位；</p><p>按优先级可形成中断嵌套。</p><h1 id="单片机的定时器中断"><a href="#单片机的定时器中断" class="headerlink" title="单片机的定时器中断"></a>单片机的定时器中断</h1><p>定时器/计数器实质是加1计数器（16位），由高8位和低8位两个寄存器组成：TMOD(定时器/计数器工作方式寄存器)</p><p>TCON（控制寄存器，控制T0、T1的启动停止及设置溢出标志）</p><p><a href="https://imgtu.com/i/cGMmsf"><img src="https://z3.ax1x.com/2021/04/07/cGMmsf.md.png" alt="cGMmsf.md.png"></a></p><p>加1计数器输入计数脉冲两个来源；由系统的时钟振荡器输出脉冲经12分频后送来；T0或T1引脚输入的外部脉冲源，每来一个脉冲计数器加1，加到全1时，在输入一个脉冲，计数器回零，且计数器的溢出使TCON寄存器中TF0或TF1置1，向CPU发送中断请求（定时器/计数器中断允许时）</p><h2 id="定时器-计数器工作方式寄存器TMOD"><a href="#定时器-计数器工作方式寄存器TMOD" class="headerlink" title="定时器/计数器工作方式寄存器TMOD"></a>定时器/计数器工作方式寄存器TMOD</h2><p>​    字节地址：89H，不能位寻址，用来确定定时器的工作方式及功能选择，复位时全清零</p><p><a href="https://imgtu.com/i/cUZZHU"><img src="https://z3.ax1x.com/2021/04/09/cUZZHU.md.png" alt="cUZZHU.md.png"></a></p><p>TMOD高四位设置定时器1，低四位用于设置定时器0；</p><p><strong>GATE</strong>:门控制位</p><p>GATE=0,定时器/计数器启动与停止仅受TCON寄存器中的TRX（X=0,1)来控制；</p><p>GATE=1，定时器/计数器启动与停止由TCON寄存器中TRX和外部中断引脚（INT0或INT1）上的电平状态来共同控制。</p><p><strong>C/T</strong>:定时器模式（=0）和计数器模式（=1）选择位；</p><p><strong>M1M0</strong>:工作方式选择位</p><p>（每个定时器/计数器都有4种工作方式）</p><p><a href="https://imgtu.com/i/cUeNLV"><img src="https://z3.ax1x.com/2021/04/09/cUeNLV.md.png" alt="cUeNLV.md.png"></a></p><h2 id="定时器-计数器控制寄存器TCON"><a href="#定时器-计数器控制寄存器TCON" class="headerlink" title="定时器/计数器控制寄存器TCON"></a>定时器/计数器控制寄存器TCON</h2><p>​    字节地址：88H~8FH，可位寻址，TCON寄存器用来控制定时器的启、停，标志定时器溢出和中断情况。复位时全清零。</p><p><a href="https://imgtu.com/i/cUmK61"><img src="https://z3.ax1x.com/2021/04/09/cUmK61.md.png" alt="cUmK61.md.png"></a></p><p>TF1、TR1、TF0和TR0位用于定时器/计数器；IE1、IT1、IE0和IT0位用于外部中断。</p><p><strong>TF1</strong>:定时器1溢出标志（当定时器1溢出时，由硬件使TF1置1，并且申请中断。进入中断服务程序后，由硬件自动清0。）（如果使用定时器的中断，则该位完全不用人为去操作，但是如果用软件查询方式，当查询到该位置1后，就需要用软件清0。）</p><p><strong>TR1</strong>:定时器1运行控制位。（由软件清0关闭定时器1.当GATE=1，且INT1为高电平时，TR1置1启动定时器1；当GATE=0 时，TR1置1启动定时器1。</p><p><strong>TF0</strong>:定时器0溢出标志，功能及操作方法同TF1。</p><p><strong>TR0</strong>：定时器0运行控制位，同TR1。</p><p><strong>IE1</strong>：外部中断1请求标志。</p><p>。。。。。。。。。</p><p>**计算定时器的初值问题 **</p><p>默认<strong>TH0</strong>和<strong>TL0</strong>为0，当用定时器的方式1时，机器周期为<strong>Tcy</strong>（一个机器周期为12个时钟周期），定时器产生一次中断的时间为t，则需计数的个数<strong>N=t/Tcy</strong>，装入THX和TLX中的数分别为;</p><p>​        THX = （65536-N）/256                                TLX = （65536-N）%256</p><h1 id="应用："><a href="#应用：" class="headerlink" title="应用："></a>应用：</h1><p>补充：中断服务程序的写法（C51）</p><pre class="line-numbers language-none"><code class="language-none">形式：void 函数名 () interrupt 中断号 using 工作组&#123;中断服务程序内容&#125;说明：中断号：中断源的序号 using 工作组：指这个中断函数使用单片机内存中4组工作寄存器中的哪一组，一般不写，会自动分配。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>​            </p><p>写单片机的定时器程序时，再开始处需对定时器及中断寄存器做初始化配置：</p><p>1、对TMOD赋值，确定T0和T1的工作方式；</p><p>2、计算初值，并将初值写入TH0、TL0或TH1、TL1;</p><p>3、中断方式时，则对IE赋值，开放中断；</p><p>4、使TR0或TR1置位，启动定时器/计数器定时或计数。</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;************************************************************9、利用定时器0工作方式1，LED 1S闪烁*&#x2F;#include &quot;reg52.h&quot;#define uchar unsigned char#define uint unsigned int sbit led1 &#x3D; P1^0;uchar num;void main()&#123;&#x2F;&#x2F;定时器初始化TMOD &#x3D; 0x01;&#x2F;&#x2F;设置定时器0为工作方式1（M1M0为01）TH0 &#x3D; (65536-45872)&#x2F;256;&#x2F;&#x2F;装初值11.0592M晶振定时50ms数为45872TL0 &#x3D; (65536-45872)%256;EA &#x3D; 1;&#x2F;&#x2F;开总中断ET0 &#x3D; 1;&#x2F;&#x2F;开定时器0中断TR0 &#x3D; 1;&#x2F;&#x2F;启动定时器0while(1);&#x2F;&#x2F;程序停止在这里等待中断发生&#125;void T0_time()interrupt 1&#x2F;&#x2F;中断服务程序&#123;TH0 &#x3D; (65536-45872)&#x2F;256;&#x2F;&#x2F;重装初值TL0 &#x3D; (65536-45872)%256;num++;&#x2F;&#x2F;num每加1次判断一次是否到20次if(num&#x3D;&#x3D;20)&#x2F;&#x2F;如果到了20次，说明1秒时间到&#123;num &#x3D; 0;&#x2F;&#x2F;然后把num清0重新再计20次led1 &#x3D; ~led1;&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>能在主程序中完成的功能就不在中断函数中写，中断函数中要高效简洁：</p><p>优化后：</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;************************************************************9、利用定时器0工作方式1，LED 1S闪烁*&#x2F;#include &quot;reg52.h&quot;#define uchar unsigned char#define uint unsigned int sbit led1 &#x3D; P1^0;uchar num;void main()&#123;&#x2F;&#x2F;定时器初始化TMOD &#x3D; 0x01;&#x2F;&#x2F;设置定时器0为工作方式1（M1M0为01）TH0 &#x3D; (65536-45872)&#x2F;256;&#x2F;&#x2F;装初值11.0592M晶振定时50ms数为45872TL0 &#x3D; (65536-45872)%256;EA &#x3D; 1;&#x2F;&#x2F;开总中断ET0 &#x3D; 1;&#x2F;&#x2F;开定时器0中断TR0 &#x3D; 1;&#x2F;&#x2F;启动定时器0while(1)&#123;if(num&#x3D;&#x3D;20)&#x2F;&#x2F;如果到了20次，说明1秒时间到&#123;num &#x3D; 0;&#x2F;&#x2F;然后把num清0重新再计20次led1 &#x3D; ~led1;&#125;&#125;&#x2F;&#x2F;程序停止在这里等待中断发生&#125;void T0_time()interrupt 1&#x2F;&#x2F;中断服务程序&#123;TH0 &#x3D; (65536-45872)&#x2F;256;&#x2F;&#x2F;重装初值TL0 &#x3D; (65536-45872)%256;num++;&#x2F;&#x2F;num每加1次判断一次是否到20次&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;*********************************************************10、中断（TX-1C）定时器0的方式1实现第一个发光管以200ms间隔闪烁用定时器1的方式1实现数码管前两位59s循环计时*&#x2F;#include &quot;reg52.h&quot;#define uchar unsigned char#define uint unsigned int sbit dula &#x3D; P2^6;sbit wela &#x3D; P2^7;sbit led1 &#x3D; P1^0;uchar code table[]&#x3D;&#123;0x3f , 0x06 , 0x5b , 0x4f ,0x66 , 0x6d ,0x7d , 0x07 , 0x7f , 0x6f , 0x77 , 0x7c ,0x39 , 0x5e , 0x79 , 0x71 &#125;;void delayms(uint);void display(uchar,uchar);uchar num,num1,num2,shi,ge;void main()&#123;TMOD &#x3D; 0x11;&#x2F;&#x2F;设置定时器0和1为工作方式1（0001 0001）TH0 &#x3D; (65535-45872)&#x2F;256;&#x2F;&#x2F;装初值TL0 &#x3D; (65536-45872)%256;TH1 &#x3D; (65536-45872)&#x2F;256;&#x2F;&#x2F;装初值TL1 &#x3D; (65536-45872)%256;EA &#x3D; 1;&#x2F;&#x2F;开总中断ET0 &#x3D; 1;&#x2F;&#x2F;开定时器0中断ET1 &#x3D; 1;&#x2F;&#x2F;开定时器1中断TR0 &#x3D;1;&#x2F;&#x2F;启动定时器0TR1 &#x3D; 1;&#x2F;&#x2F;启动定时器1while(1)&#123;display(shi,ge);&#125;&#125;void display(uchar shi,uchar ge)&#x2F;&#x2F;显示子函数&#123;dula &#x3D; 1;P0 &#x3D; table[shi];&#x2F;&#x2F;送段选数据dula &#x3D; 0;P0 &#x3D; 0xff;&#x2F;&#x2F;送位选数据前关闭所有显示，防止打开位选锁存时原来的段选数据通过位选锁存器造成混乱wela &#x3D; 1;P0 &#x3D; 0xfe;&#x2F;&#x2F;送位选数据wela &#x3D; 0;delayms(5);dula &#x3D; 1;P0 &#x3D; table[ge];dula &#x3D; 0;P0 &#x3D;0xff;wela &#x3D; 1;P0 &#x3D; 0xfd;wela &#x3D; 0;delayms(5);&#125;void delayms(uint xms)&#123;uint i,j;for(i&#x3D;xms;i&gt;0;i--)for(j&#x3D;110;j&gt;0;j--);&#125;void T0_time() interrupt 1&#123;TH0&#x3D;(65536-45872)&#x2F;256;&#x2F;&#x2F;重装初值TL0&#x3D;(65536-45872)%256;num1++;if(num1&#x3D;&#x3D;4)&#x2F;&#x2F;4次中断&#x3D;200ms&#123;num1 &#x3D; 0;&#x2F;&#x2F;清0led1 &#x3D; ~led1;&#125;&#125;void T1_time() interrupt 3&#123;TH1&#x3D;(65536-45872)&#x2F;256;&#x2F;&#x2F;重装初值TL1&#x3D;(65536-45872)%256;num2++;if(num2&#x3D;&#x3D;20)&#x2F;&#x2F;20次中断&#x3D;1秒&#123;num2&#x3D;0;&#x2F;&#x2F;清0num++;if(num&#x3D;&#x3D;60)&#x2F;&#x2F;该数用来送数码管显示，到60后归0num&#x3D;0;shi&#x3D;num&#x2F;10;&#x2F;&#x2F;把一个2位数分离后分别送数码管显示ge&#x3D;num%10;&#x2F;&#x2F;十位和个位&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;*********************************************************10、中断（BST-M51）定时器0的方式1实现第一个发光管以200ms间隔闪烁用定时器1的方式1实现数码管前两位59s循环计时*&#x2F;#include &quot;reg52.h&quot;#define uchar unsigned char#define uint unsigned int sbit wei1 &#x3D; P2^4;&#x2F;&#x2F;定义第一位数码管sbit wei2 &#x3D; P2^5;&#x2F;&#x2F;定义第二位数码管sbit wei3 &#x3D; P2^6;&#x2F;&#x2F;定义第三位数码管sbit wei4 &#x3D; P2^7;&#x2F;&#x2F;定义第四位数码管sbit led1 &#x3D; P1^0;uchar code table[]&#x3D;&#123;0x3f , 0x06 , 0x5b , 0x4f ,0x66 , 0x6d ,0x7d , 0x07 , 0x7f , 0x6f , 0x77 , 0x7c ,0x39 , 0x5e , 0x79 , 0x71 &#125;;void delayms(uint);void display(uchar,uchar);uchar num,num1,num2,shi,ge;void main()&#123;TMOD &#x3D; 0x11;&#x2F;&#x2F;设置定时器0和1为工作方式1（0001 0001）TH0 &#x3D; (65535-45872)&#x2F;256;&#x2F;&#x2F;装初值TL0 &#x3D; (65536-45872)%256;TH1 &#x3D; (65536-45872)&#x2F;256;&#x2F;&#x2F;装初值TL1 &#x3D; (65536-45872)%256;EA &#x3D; 1;&#x2F;&#x2F;开总中断ET0 &#x3D; 1;&#x2F;&#x2F;开定时器0中断ET1 &#x3D; 1;&#x2F;&#x2F;开定时器1中断TR0 &#x3D;1;&#x2F;&#x2F;启动定时器0TR1 &#x3D; 1;&#x2F;&#x2F;启动定时器1while(1)&#123;display(shi,ge);&#125;&#125;void display(uchar shi,uchar ge)&#x2F;&#x2F;显示子函数&#123;P0 &#x3D; table[shi];&#x2F;&#x2F;送段选数据wei1 &#x3D; 1;wei2 &#x3D; 0;wei3 &#x3D; 0;wei4 &#x3D; 0;delayms(5);P0 &#x3D; table[ge];wei1 &#x3D; 0;wei2 &#x3D; 1;wei3 &#x3D; 0;wei4 &#x3D; 0;                                                                                                                                                                                                                  delayms(5);&#125;void delayms(uint xms)&#123;uint i,j;for(i&#x3D;xms;i&gt;0;i--)for(j&#x3D;110;j&gt;0;j--);&#125;void T0_time() interrupt 1&#123;TH0&#x3D;(65536-45872)&#x2F;256;&#x2F;&#x2F;重装初值TL0&#x3D;(65536-45872)%256;num1++;if(num1&#x3D;&#x3D;4)&#x2F;&#x2F;4次中断&#x3D;200ms&#123;num1 &#x3D; 0;&#x2F;&#x2F;清0led1 &#x3D; ~led1;&#125;&#125;void T1_time() interrupt 3&#123;TH1&#x3D;(65536-45872)&#x2F;256;&#x2F;&#x2F;重装初值TL1&#x3D;(65536-45872)%256;num2++;if(num2&#x3D;&#x3D;20)&#x2F;&#x2F;20次中断&#x3D;1秒&#123;num2&#x3D;0;&#x2F;&#x2F;清0num++;if(num&#x3D;&#x3D;60)&#x2F;&#x2F;该数用来送数码管显示，到60后归0num&#x3D;0;shi&#x3D;num&#x2F;10;&#x2F;&#x2F;把一个2位数分离后分别送数码管显示ge&#x3D;num%10;&#x2F;&#x2F;十位和个位&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong>注意</strong>：不能将判断发光二极管亮灭时间是否达到的语句写在主程序中。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 单片机 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 51单片机 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>51单片机学习1</title>
+      <link href="/2021/04/05/51-dan-pian-ji-xue-xi-1/"/>
+      <url>/2021/04/05/51-dan-pian-ji-xue-xi-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="硬件：（BST-M51"><a href="#硬件：（BST-M51" class="headerlink" title="硬件：（BST-M51)"></a>硬件：（BST-M51)</h1><h2 id="51最小系统"><a href="#51最小系统" class="headerlink" title="51最小系统"></a>51最小系统</h2><p>​                                                                                                                    <a href="https://imgtu.com/i/cQwm6A"><img src="https://z3.ax1x.com/2021/04/05/cQwm6A.png" alt="cQwm6A.png"></a></p><h2 id="流水灯"><a href="#流水灯" class="headerlink" title="流水灯"></a>流水灯</h2><p><a href="https://imgtu.com/i/cQwM0P"><img src="https://z3.ax1x.com/2021/04/05/cQwM0P.png" alt="cQwM0P.png"></a></p><h2 id="CH340烧录模块"><a href="#CH340烧录模块" class="headerlink" title="CH340烧录模块"></a>CH340烧录模块</h2><p><a href="https://imgtu.com/i/cQw1k8"><img src="https://z3.ax1x.com/2021/04/05/cQw1k8.png" alt="cQw1k8.png"></a></p><h2 id="USB供电"><a href="#USB供电" class="headerlink" title="USB供电"></a>USB供电</h2><p><a href="https://imgtu.com/i/cQwYlj"><img src="https://z3.ax1x.com/2021/04/05/cQwYlj.png" alt="cQwYlj.png"></a></p><h2 id="数码管、WIFI、红外发送模块"><a href="#数码管、WIFI、红外发送模块" class="headerlink" title="数码管、WIFI、红外发送模块"></a>数码管、WIFI、红外发送模块</h2><p><a href="https://imgtu.com/i/cQwHcd"><img src="https://z3.ax1x.com/2021/04/05/cQwHcd.md.png" alt="cQwHcd.md.png"></a></p><h2 id="红外接收、蜂鸣器、4位按键"><a href="#红外接收、蜂鸣器、4位按键" class="headerlink" title="红外接收、蜂鸣器、4位按键"></a>红外接收、蜂鸣器、4位按键</h2><p><a href="https://imgtu.com/i/cQwz4S"><img src="https://z3.ax1x.com/2021/04/05/cQwz4S.png" alt="cQwz4S.png"></a></p><h2 id="温度传感器"><a href="#温度传感器" class="headerlink" title="温度传感器"></a>温度传感器</h2><p><a href="https://imgtu.com/i/cQ0kBq"><img src="https://z3.ax1x.com/2021/04/05/cQ0kBq.png" alt="cQ0kBq.png"></a></p><h2 id="复位电路"><a href="#复位电路" class="headerlink" title="复位电路"></a>复位电路</h2><p><a href="https://imgtu.com/i/cQ0nCF"><img src="https://z3.ax1x.com/2021/04/05/cQ0nCF.png" alt="cQ0nCF.png"></a></p><h2 id="供电"><a href="#供电" class="headerlink" title="供电"></a>供电</h2><p><a href="https://imgtu.com/i/cQ01D1"><img src="https://z3.ax1x.com/2021/04/05/cQ01D1.png" alt="cQ01D1.png"></a></p><h1 id="软件（不是完整的，只是关键代码）"><a href="#软件（不是完整的，只是关键代码）" class="headerlink" title="软件（不是完整的，只是关键代码）"></a>软件（不是完整的，只是关键代码）</h1><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;***************************1、51单片机点灯(IO口控制）****************************&#x2F;#include &quot;reg52.h&quot;&#x2F;&#x2F;&lt;reg52.h&gt;在当前工程文件夹下搜索；“reg52.h&quot;先在当前工程文件夹下搜索，没有则到软件安装目录找sbit led1 &#x3D; P1^0;&#x2F;&#x2F;P1口最低位；sfr P0 &#x3D; 0X80;(寄存器重命名）；sbit CY &#x3D; PSW^7 （PSW最高位重命名）   void main()&#123;led1 &#x3D; 0;&#x2F;&#x2F;3~20mA&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;***************************2、51单片机点灯(总线操作法）****************************&#x2F;#include &quot;reg52.h&quot;void main()&#123;P1 &#x3D; 0;&#x2F;&#x2F;0xaa &#x3D; 10101010 &#x3D; 170&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;***************************3、延时语句精确计算****************************&#x2F;#include &quot;reg52.h&quot;#define uint unsigned int&#x2F;&#x2F;#define 宏定义（#define 新名称 原内容）只能定义一次sbit led1 &#x3D; P1^0;uint i,j;void main()&#123;while(1)&#123;led1 &#x3D; 0;for(i&#x3D;1000;i&gt;0;i--)for(j&#x3D;110;j&gt;0;j--);led1 &#x3D; 1;for(i&#x3D;1000;i&gt;0;i--)for(j&#x3D;110;j&gt;0;j--);&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;****************************4、带参数函数写法及调用*****************************&#x2F;void delayms(unsigned int xms)&#123;uint i,j;for(i&#x3D;xms;i&gt;0;i--)for(j&#x3D;110;j&gt;0;j--);&#x2F;&#x2F;i&#x3D;xms即延时xms毫秒&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;*****************************5、利用C51库函数实现流水灯（leil\C51\HIP\C51Lib）*******************************&#x2F;#include&lt;intrins.h&gt;_cro_(aa,1);&#x2F;&#x2F;将aa循环左移1位 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;*******************************6、数码管静态显示，BST51第一个数码管显示字符“b”（共阴数码管）********************************&#x2F;#include &quot;reg52.h&quot;#define duan P0sbit wei1 &#x3D; P2^4;&#x2F;&#x2F;定义第一位数码管sbit wei2 &#x3D; P2^5;&#x2F;&#x2F;定义第二位数码管sbit wei3 &#x3D; P2^6;&#x2F;&#x2F;定义第三位数码管sbit wei4 &#x3D; P2^7;&#x2F;&#x2F;定义第四位数码管void main()&#123;wei1 &#x3D; 1;wei2 &#x3D; 0;wei3 &#x3D; 0;wei4 &#x3D; 0;duan &#x3D; 0x7c;    &#x2F;&#x2F;0111 1100 &quot;b&quot;0x3f , 0x06 , 0x5b , 0x4f , 0x66 , 0x6d ,0x7d , 0x07 , 0x7f , 0x6f , 0x77 , 0x7c ,&#x2F;&#x2F;0x39 , 0x5e , 0x79 , 0x71 , 0x00（0，1，2，3，4，5，6，7，8，9，A,B,C,D,E,F,不显示）while(1);&#125;&#x2F;***********补充************************unsigned char code table[]&#x3D;&#123;0x3f , 0x06 , 0x5b , 0x4f ,0x66 , 0x6d ,0x7d , 0x07 , 0x7f , 0x6f , 0x77 , 0x7c ,0x39 , 0x5e , 0x79 , 0x71 , 0x00&#125;*&#x2F;&#x2F;&#x2F;table[0] &#x3D; 0x3f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**************************************7、74HC573锁存器 段选、位选（数码管静态显示）（共阴数码管）第一个数码管显示字符“8”74H573锁存器：20引脚，-OE脚：三态允许控制端（低电平有效）（即输出使能端）  INPUTS   OUTPUT 1D~8D：数据输入端；1Q~8Q;数据输出端-OELED Q     LE：锁存允许端（锁存控制端） L HH H L HL L L L  X    Q0（上一次的数据状态） H   X  X    Z（高阻态） (真值表)***************************************&#x2F;#include &quot;reg52.h&quot;sbit duan &#x3D; P2^6;&#x2F;&#x2F;申明U1锁存器的锁存端sbit wela &#x3D; P2^7;&#x2F;&#x2F;申明U2锁存器的锁存端void main()&#123;wela &#x3D; 1;&#x2F;&#x2F;打开U2锁存器P0 &#x3D; 0xFE;&#x2F;&#x2F;送入位选信号11111110wela &#x3D; 0;&#x2F;&#x2F;关闭U2锁存端（Q0）duan &#x3D; 1;&#x2F;&#x2F;打开U1锁存器P0 &#x3D; 0x7F;&#x2F;&#x2F;送入段选信号01111111duan &#x3D; 0;&#x2F;&#x2F;关闭U1锁存器（Q0）while(1);&#x2F;&#x2F;程序停在这里&#125;&#x2F;*************补充***************************6个数码管同时点亮，依次显示0~F，时间间隔为0.5s，循环下去void main()&#123;wela &#x3D; 1;&#x2F;&#x2F;打开U2锁存器P0 &#x3D; 0xc0;&#x2F;&#x2F;送入位选信号11000000wela &#x3D; 0;&#x2F;&#x2F;关闭U2锁存端（Q0）while(1)&#123;for(num&#x3D;0;num&lt;16;num++)&#123;duan &#x3D; 1;&#x2F;&#x2F;打开U1锁存器P0 &#x3D; table[num];&#x2F;&#x2F;送入段选信号duan &#x3D; 0;&#x2F;&#x2F;关闭U1锁存端delayms(500);&#x2F;&#x2F;延时0.5秒&#125;&#125;&#125;*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;********************************************8、数码管动态显示（逐渐缩短延时时长，则同时显示）（实际上是轮流显示的）*********************************************&#x2F;void main()&#123;while(1)&#123;duan &#x3D; 1;P0 &#x3D; table[1];&#x2F;&#x2F;送段选信号duan &#x3D; 0;P0 &#x3D; 0xff;&#x2F;&#x2F;11111111送位选数据前关闭所有显示，防止打开位选锁存时(消影）&#x2F;&#x2F;原来段选数据通过位选锁存器造成混乱wela &#x3D; 1;&#x2F;&#x2F;11111110送位选数据P0 &#x3D; 0xfe;wela &#x3D; 0;delayms(500);duan &#x3D; 1;P0 &#x3D; table[2];duan &#x3D; 0;P0 &#x3D; 0xff;wela &#x3D; 1;P0 &#x3D; 0xfd;&#x2F;&#x2F;11111101送位选数据wela &#x3D; 0;delayms(500);duan &#x3D; 1;P0 &#x3D; table[3];duan &#x3D; 0;P0 &#x3D; 0xff;wela &#x3D; 1;P0 &#x3D; 0xfb;&#x2F;&#x2F;11111011送位选数据wela &#x3D; 0;delayms(500);duan &#x3D; 1;P0 &#x3D; table[4];duan &#x3D; 0;P0 &#x3D; 0xff;wela &#x3D; 1;P0 &#x3D; 0xff;&#x2F;&#x2F;11110111送位选数据wela &#x3D; 0;delayms(500);duan &#x3D; 1;P0 &#x3D; table[5];duan &#x3D; 0;P0 &#x3D; 0xff;wela &#x3D; 1;P0 &#x3D; 0xef;&#x2F;&#x2F;11101111送位选数据wela &#x3D; 0;delayms(500);duan &#x3D; 1;P0 &#x3D; table[6];duan &#x3D; 0;P0 &#x3D; 0xff;wela &#x3D; 1;P0 &#x3D; 0xdf;&#x2F;&#x2F;11011111送位选数据wela &#x3D; 0;delayms(500);&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;***************************************************实验名：数码管动态显示（逐渐缩短延时时长，则同时显示）（实际上是轮流显示的）***************************************************&#x2F;#include&lt;reg52.h&gt;#define duan P0#define uchar unsigned char sbit wei1 &#x3D; P2^4;&#x2F;&#x2F;定义第一位数码管sbit wei2 &#x3D; P2^5;&#x2F;&#x2F;定义第二位数码管sbit wei3 &#x3D; P2^6;&#x2F;&#x2F;定义第三位数码管sbit wei4 &#x3D; P2^7;&#x2F;&#x2F;定义第四位数码管uchar code sz[]&#x3D;&#123;0x3f , 0x06 , 0x5b ,0x4f , 0x66 , 0x6d ,0x7d ,0x07 , 0x7f , 0x6f ,0x77 , 0x7c , 0x39 , 0x5e , 0x79 , 0x71 , 0x00&#125;;void delay(unsigned int xms)&#123;unsigned int i,j;for(i&#x3D;xms;i&gt;0;i--)      &#x2F;&#x2F;i&#x3D;xms即延时约xms毫秒for(j&#x3D;112;j&gt;0;j--);&#125;void main()&#123;   while(1)   &#123;   duan &#x3D; sz[4];wei1 &#x3D; 0;wei2 &#x3D; 0;wei3 &#x3D; 0;wei4 &#x3D; 1;delay(1000);duan &#x3D; sz[3];wei1 &#x3D; 0;wei2 &#x3D; 0;wei3 &#x3D; 1;wei4 &#x3D; 0;delay(1000);duan &#x3D; sz[2];wei1 &#x3D; 0;wei2 &#x3D; 1;wei3 &#x3D; 0;wei4 &#x3D; 0;delay(1000);duan &#x3D; sz[1];wei1 &#x3D; 1;wei2 &#x3D; 0;wei3 &#x3D; 0;wei4 &#x3D; 0;delay(1000);   &#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 单片机 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 51单片机 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>终于学会魔方了</title>
+      <link href="/2021/04/04/zhong-yu-xue-hui-mo-fang-liao/"/>
+      <url>/2021/04/04/zhong-yu-xue-hui-mo-fang-liao/</url>
+      
+        <content type="html"><![CDATA[<h1 id="起始"><a href="#起始" class="headerlink" title="起始"></a>起始</h1><p>​    小学时我爸就给我买了一个魔方，说明书看着太复杂，就被我随手扔了，自己瞎鼓捣，魔方自从打乱过就再也没有拼好过（除了我拿螺丝刀把中心轴全拆下来重新拼好），最多也就拼好一个面过，我姐也对…，然后就扔一边去了，看别人玩的挺溜的，然后看公式一大堆，就没耐心去看了，高中室友有一段时间买了各种形状的魔方，我就学会了拼金字塔那种简单的异形魔方，其他也就没耐心看下去了，最基础的三阶的一直没去看，就一直没学会，就是很菜…然后，就是近期拼多多给我推了魔方，我就又产生了兴趣，买了两个（一个三阶一个五阶）（额。。。5阶的再鸽一阵子吧），然后看了一晚上的视频教程，还是没有学会（太菜了……），第二天一早，自己回顾了一下，终于能拼好六个面了。</p><p><a href="https://imgtu.com/i/cKtV74"><img src="https://z3.ax1x.com/2021/04/04/cKtV74.md.jpg" alt="cKtV74.md.jpg" style="zoom:150%;" /></a></p><h1 id="三阶教程（层先法"><a href="#三阶教程（层先法" class="headerlink" title="三阶教程（层先法)"></a>三阶教程（层先法)</h1><h2 id="第一步（底面白色十字）"><a href="#第一步（底面白色十字）" class="headerlink" title="第一步（底面白色十字）"></a>第一步（底面白色十字）</h2><p>​    先拼好一个黄白小花（中间黄色一块，四周四个白色块），然后对齐底层棱块，前面一层旋转180°。。。，最后拼成底面一个白色十字。</p><h2 id="第二步（底面白色，底层T形"><a href="#第二步（底面白色，底层T形" class="headerlink" title="第二步（底面白色，底层T形)"></a>第二步（底面白色，底层T形)</h2><p>​    先找除底面白色十字的其余白色块，顶角三面对齐，然后如果白色块在右上角，则使用一次右公式（右上左下），如果在左上角，则使用一次左公式（左上右下），如果在顶上时，则使用两次右公式，顶上的白色块就会跑到右上角，这时就变成了第一种情况，再使用一次右公式就好了（相当于顶上的白色块使用三次右公式就可以了）。</p><h2 id="第三步（中层）"><a href="#第三步（中层）" class="headerlink" title="第三步（中层）"></a>第三步（中层）</h2><p>​    要拼好中层的话就只要调整好四个棱块就好了，上层棱块对齐，看哪些是我们需要的，黄色块是不需要的，如果顶层四个棱块全是黄色块即没有我们所需要的棱块，则使用一次右公式就有了。然后找到我们需要的棱块，它要去左边还是右边，去右就用一次右公式，这时白色块会上来一块，则使用第二步的方法；它要去左的话，则类推，用左公式一下。。。</p><h2 id="第四步-顶层十字，黄色"><a href="#第四步-顶层十字，黄色" class="headerlink" title="第四步(顶层十字，黄色)"></a>第四步(顶层十字，黄色)</h2><p>​    1°、黄色块九点钟形状：前面一层顺时针90°，右公式一次，前面一层逆时针90°就好了；</p><p>​    2°、黄色块三点一线：横着对向自己，前面一层顺时针90°，右公式一次前面一层顺时针90°回来，就变成了情况1；</p><p>​    3°、顶层只有一个黄色点：则前面一层顺时针90°，右公式一次，前面一层逆时针90°就变成了情况2.</p><h2 id="第五步（顶角位置）"><a href="#第五步（顶角位置）" class="headerlink" title="第五步（顶角位置）"></a>第五步（顶角位置）</h2><p>​    顶角一定是有两块对齐了，这时只有两种情况：</p><p>​        1°、相邻两边不对齐：则不对齐的放在右侧，右公式三次，魔方整体顺时针90°，再来三次左公式；</p><p>​        2°、对角不对齐：右公式三次，整体顺时针90°，再来三次左公式。</p><h2 id="第六步（顶角方向）"><a href="#第六步（顶角方向）" class="headerlink" title="第六步（顶角方向）"></a>第六步（顶角方向）</h2><p>​    魔方整体倒过来，白色一面向上，选一色面向自己（选完后不能变），则右下角一块为处理位，处理时（右公式两次，则处理位的顶角方向逆时针转一次），处理完后底层转动，切换要处理的顶角，直至四角全部处理完毕。处理完后再整体倒过来，可以发现原来的魔方并没有被打乱。</p><h2 id="第七步（顶棱位置）"><a href="#第七步（顶棱位置）" class="headerlink" title="第七步（顶棱位置）"></a>第七步（顶棱位置）</h2><p>​    可以发现有一面已经完成好了，则这面对向自己，看对面需要的棱块在左还是在右：</p><p>​        1°、在左：左公式两次，右公式两次，左公式四次，右公式四次，完毕。</p><p>​        2°、在右：右公式两次，左公式两次，右公式四次，左公式四次，完毕。</p><h1 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h1><p>​        因为觉得很难，一直没有去尝试，尝试一点就放一边去了，还有就是要找到合适的方法，是看视频，还是看教程文字，适合自己的才是最好的，但一定要去尝试。接下来就是看看能不能把5阶的魔方给拼好，还有就是把以前学一半或者没有一半的给补上，比如笛子等，还有就是学的不深入的51、32等，PCB绘制等。。。</p><p>​        推荐学习视频;<a href="https://www.bilibili.com/video/BV1zp411o75F?t=1869">https://www.bilibili.com/video/BV1zp411o75F?t=1869</a></p><p>​    </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 魔方 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JAVA环境搭建</title>
+      <link href="/2021/04/01/java-huan-jing-da-jian/"/>
+      <url>/2021/04/01/java-huan-jing-da-jian/</url>
+      
+        <content type="html"><![CDATA[<h1 id="JDK安装"><a href="#JDK安装" class="headerlink" title="JDK安装"></a>JDK安装</h1><p>​    Java程序需运行在JVM上，所以开发java程序必须先安装JDK</p><p>​    在<a href="https://www.oracle.com/java/technologies/javase-downloads.html">Oracle官网</a>下载稳定版的JDK15（下载时需注册），下载后右键“以管理员身份运行”开始安装（傻瓜式安装），点击下一步，选择安装文件夹（尽量使用默认路径），点击下一步，等待安装，安装完成。</p><p>​    接下来是环境变量配置：</p><p>​        右键我的电脑，选择属性，选择【高级系统设置】，</p><p><a href="https://imgtu.com/i/cVj7DK"><img src="https://z3.ax1x.com/2021/04/01/cVj7DK.md.png" alt="cVj7DK.md.png"></a></p><p>选择【环境变量】，</p><p><a href="https://imgtu.com/i/cVvaqK"><img src="https://z3.ax1x.com/2021/04/01/cVvaqK.png" alt="cVvaqK.png"></a></p><p>在【系统变量】中点击【新建】，变量名为：<em><strong>JAVA_HOME</strong></em>   变量值为：<em><strong>C:\Program Files\Java\jdk-15</strong></em>（默认的安装路径，如果上一步路径为自定义则值为当前JDK的安装路径）</p><p><a href="https://imgtu.com/i/cVx8w8"><img src="https://z3.ax1x.com/2021/04/01/cVx8w8.md.png" alt="cVx8w8.md.png"></a></p><p>​        在【系统变量】中找到变量【Path】,选中【Path】，点击【编辑】，点击【新建】，将JAVA_HOME的bin目录附加到环境变量【path】上（即新建变量值中填入：***%JAVA_HOME%\bin***。</p><p>点击【确定】。</p><p><a href="https://imgtu.com/i/cVxHte"><img src="https://z3.ax1x.com/2021/04/01/cVxHte.md.png" alt="cVxHte.md.png"></a></p><p>此时检验JDK是否安装成功：</p><p>​        输入【Win】+【R】打开dos，再输入cmd打开命令提示符，输入命令：java -version，出现如下提示（版本号）则JDK安装成功（或输入javac验证）</p><p><a href="https://imgtu.com/i/cVj2EF"><img src="https://z3.ax1x.com/2021/04/01/cVj2EF.png" alt="cVj2EF.png"></a></p><p>​    </p><h1 id="安装IDE-Eclipse"><a href="#安装IDE-Eclipse" class="headerlink" title="安装IDE(Eclipse)"></a>安装IDE(Eclipse)</h1><p>官网下载Eclipse IDE for Java Developers</p><p>安装完成后，启动Eclipse,进行相关基本设置：</p><p>1、选择菜单“Eclipse/Window”-“Preferences”，打开配置对话框：General &gt; Editors &gt; Text Editors</p><p>钩上“Show line numbers”，让编辑器显示行号；</p><p>2、General &gt; Workspace 钩上“Refresh using native hooks or polling”，让Eclipse自动刷新文件夹的改动； “Text file encoding”项，如果Default不是<code>UTF-8</code>，要改为“Other：UTF-8”，即所有文本文件均使用<code>UTF-8</code>编码；</p><p>“New text file line delimiter”项，建议使用Unix，（换行符使用<code>\n</code>而不是Windows的<code>\r\n</code>）</p><p>3、Java &gt; Compiler  将“Compiler compliance level”设置为<code>15</code>， 删掉“Use default compliance settings”并钩中“Enable preview features for Java 15”，这样就可以使用Java 15的预览功能。</p><p>4、Java &gt; Installed JREs 在Installed JREs中应该可以看到Java SE 15，如果还有其他的JRE，可以删除，确保Java SE 15是默认的JRE。</p><p>至此：JAVA环境安装完成</p><p>更多教程建议参考：<a href="https://www.liaoxuefeng.com/wiki/1252599548343744">https://www.liaoxuefeng.com/wiki/1252599548343744</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JAVA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>个人日志</title>
+      <link href="/2021/03/29/ge-ren-ri-zhi/"/>
+      <url>/2021/03/29/ge-ren-ri-zhi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h1><h2 id="7月："><a href="#7月：" class="headerlink" title="7月："></a>7月：</h2><p>2021.7.26: <a href="https://blog.csdn.net/m0_45040529/article/details/109254507">Arduino文件梳理</a><br>2021.7.25： 研究esp8266驱动墨水屏，手上的8266应该是重复刷固件了，导致出错，参考网上教程使用Python2安装esptool进行固件擦除，正好看一下python知识，接下来准备用8266获取相关网络信息，并进行墨水屏GUI设计，为墨水屏天气站做准备。</p><p>2021.7.22： 飞机飞丢了。正好开始做些正事。树莓派图传做出来了，效果很好，是摄像头的问题。在看微雪的墨水屏资料。<br>2021.7.21： 准备做墨水屏天气站，尝试用VScode。</p><p>~2021.7.20：一直在玩航模，树莓派图传发射端遇到点问题，应是没有识别出摄像头，重新买了一个，还没到，不能在这方面花太多时间了，要开始学习了，有点缺少方向。</p><p>2021.7.5~7: 看了一下实验室的3D打印机，拆开来修了一下，然后打印东西，不太好用。</p><p>2021.7.4: 找点零件凑了一架F330四轴。</p><p>2021.7.3：考试基本都完了，还差一个12号的大跨。一到放假，手又痒了，想玩航模了。看到了OpenHD树莓派图传方案（最远70公里），要入坑了，在学校调好后回去玩远航FPV。还有就是墨水屏天气站，修一下实验室的3D打印机。</p><h2 id="6月："><a href="#6月：" class="headerlink" title="6月："></a>6月：</h2><p>2021.6.26:  复习信号与系统，要加快进度了，还要带着复习信息论，抽空看了一下示波器的FFT运算功能，准备结合信号与系统的复习了解一下正点原子小示波器的这项功能使用。</p><p>2021.6.25：大概了解了一下光耦，没仔细看完。了解了一下实验室那台3D打印机，考完试拆开来看看，打印点东西，感觉不错。</p><p>2021.6.24：了解了一下电荷泵的原理，可以升压，产生负压。</p><p>2021.6.23：复习信号与系统，上课走神，感觉复习的不在状态，实验室原来的桌子搬到了毕业学长的桌子上，感觉还好（我比较容易受外界环境的影响），（大四毕业了，看着他们拖着行李走出校园，不难想到两年后的自己会是什么样的）晚上听了一个信息工程大学的研究生招生宣讲，加上这几天的不在状态，感觉很迷茫，迷茫中又感觉，从现在开始该做些什么了，该做出一些改变了，该思考一下未来的发展规划了。尝试在实验室里静下心来学习</p><p><a href="https://imgtu.com/i/Ru4DsS"><img src="https://z3.ax1x.com/2021/06/23/Ru4DsS.md.jpg" alt="Ru4DsS.md.jpg"></a></p><p>快放暑假了，估计会留校，心里又想留校又想回家，最好的是，先留校，趁着有时间多学点东西，然后电赛后的剩余时间回趟家。</p><p><a href="https://imgtu.com/i/Ru5Cod"><img src="https://z3.ax1x.com/2021/06/23/Ru5Cod.md.jpg" alt="Ru5Cod.md.jpg"></a></p><p>（按照学长的建议，暑假应该找点时间考虑考研考哪所学校了，要有一个目标）</p><p>2021.6.22: NFC卡的元件都到了，焊接了一下，风枪从板子底下加热的，类似于回流焊，配上自己买的锡膏和洗板水，用的很顺手，很成功，第一次焊接这种精密的板子，做了四块，自己留了一块，其余送人了，挺好的。（正点原子的示波器DS100也到了，感觉很好，今后会很方便的）</p><p><a href="https://imgtu.com/i/RuhwB4"><img src="https://z3.ax1x.com/2021/06/23/RuhwB4.md.jpg" alt="RuhwB4.md.jpg"></a></p><p>2021.6.21: 上课，上课，发呆，发呆。。。</p><p>2021.6.20：白天主要帮同学做数电课设了（太浪费时间了。。），今天突发奇想，把很老的（2013年的）TI G2口袋实验板子资料翻了翻，感觉设计的不错，正好也回顾了下寒假学的MSP430，接下来也可以带着学下去，单片机都是通用的，换汤不换药，还是以一个板子为主，学内在的技术。总感觉不能这样下去了，得要有些改变了，对未来又有点小迷茫了。明天一定要开始复习信号与系统了。</p><p>2021.6.19：数电课设完成了，白天主要帮同学解决课设的一些问题，昨天晚上辗转反侧，趁着618买了正点原子的迷你示波器DS100，挺好的，以后用着也方便，就是这个月得吃土了。。。晚上没什么事干，看了一下别人用32制作示波器的开源方案，感觉都不太好，然后收拾了一下各种元件，然后趁着熄灯前把51的AD转换学完了，完善了之前的博客内容。明天得把信号与系统实验完善一下了（明天最后一节课了），然后开始信号与系统的复习了。下下周三期末，还什么都不太懂。。。</p><p>2021.6.18：今天把数电课设做完了（数字频率计），明天去答辩，接下来会学些新知识，顺带着玩一些开源项目（今天618，买了点东西）</p><p><a href="https://imgtu.com/i/R9YVUA"><img src="https://z3.ax1x.com/2021/06/18/R9YVUA.md.png" alt="R9YVUA.md.png"></a></p><p>2021.6.15：看到B站有个做NFC卡片的，挺好看的，改了一下，发到嘉立创打样了，元件也买了点（实际焊盘应该是银色的，不知道好不好看，金色的太贵了）</p><p><a href="https://imgtu.com/i/R9JUne"><img src="https://z3.ax1x.com/2021/06/18/R9JUne.md.png" alt="R9JUne.md.png" style="zoom: 50%;" /></a><a href="https://imgtu.com/i/R9Js9P"><img src="https://z3.ax1x.com/2021/06/18/R9Js9P.md.png" alt="R9Js9P.md.png" style="zoom:50%;" /></a></p><p>2021.6.13：数电复习了一周，考完了，准备复习剩下的几门课。这几天把树莓派搭建服务器看一下。树莓派使用3.5寸TFT屏幕与HDMI交互使用：<a href="https://www.jianshu.com/p/67f593706e15">树莓派安装3.5寸屏幕驱动</a> <a href="https://blog.csdn.net/Link2Points/article/details/113002383">树莓派4b3.5inch显示屏+远程+FTP+建站</a> （屏幕切换之间遇到点小问题，加装屏幕后影响散热1.需要先开启root权限sudo passwd root //设置root密码su root//切到root用户，输入密码2.进入boot ：cd boot（1：cd LCD-show/   2：./LCD-hdmi    ./LCD35-show）</p><p><a href="https://imgtu.com/i/27VTPJ"><img src="https://z3.ax1x.com/2021/06/14/27VTPJ.md.jpg" alt="27VTPJ.md.jpg" /></a></p><p>2021.6.5：板子到了，焊接了一下，锡膏不太好用，芯片忘供电了，最终制作出来一张完整的板子</p><p><a href="https://imgtu.com/i/2I7kTJ"><img src="https://z3.ax1x.com/2021/06/13/2I7kTJ.md.jpg" alt="2I7kTJ.md.jpg" /></a></p><p>2021.6.3：课设弄完了，得好好复习了。</p><h2 id="5月："><a href="#5月：" class="headerlink" title="5月："></a>5月：</h2><p>2021.5.30：画了一个usb2.0集线器PCB，用嘉立创打板了，元件也买了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日志 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日志 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2021RM落幕</title>
+      <link href="/2021/03/28/2021-rm-luo-mu/"/>
+      <url>/2021/03/28/2021-rm-luo-mu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="2021RM高校联盟赛落幕"><a href="#2021RM高校联盟赛落幕" class="headerlink" title="2021RM高校联盟赛落幕"></a>2021RM高校联盟赛落幕</h1><p><a href="https://imgtu.com/i/c9Ex1I"><img src="https://z3.ax1x.com/2021/03/29/c9Ex1I.jpg" alt="c9Ex1I.jpg"></a></p><p><a href="https://imgtu.com/i/c9EXhd"><img src="https://z3.ax1x.com/2021/03/29/c9EXhd.jpg" alt="c9EXhd.jpg"></a></p><p><a href="https://imgtu.com/i/c9Ev9A"><img src="https://z3.ax1x.com/2021/03/29/c9Ev9A.jpg" alt="c9Ev9A.jpg"></a></p><p>​    第一次正式跟着学长参加RM比赛，以前一直是通过视频了解RM的，第一次近距离的接触，确实感到很震撼，但震撼的同时也瞬间感觉到我们的小车和其他学校的小车之间巨大的实力悬殊，别人的车无论是机械、电控、视觉方面都比我们高一大截（我们其实就没有视觉方面的自瞄系统，全靠手动瞄准，还是遥控器操作的），透过比赛，发现了很多的问题，相关代码不够完善（枪管过热、裁判系统回传、键鼠操作指令等问题），据我观察，全场就我一人使用遥控器操作的，确实没有键鼠操作灵活。车的问题一大堆，说实话，拿着这辆拼凑的小车去参赛确实挺丢人的，场上也听到了别人背后的议论与嘲笑，确实不太好受，但这也怪不了谁，只能怪自己技术不到家，也不能一昧的把原因放到学校资金不足上。</p><p>​    随着比赛的推进，逐渐感受到了RM的魅力，看到了每一个参赛队对战车的投入，他们的设计有很多值得学习的地方（已经成为标配的“小陀螺”，视觉自瞄系统，通过5连发间断发射解决枪管过热问题的方法。。。），亲自操作小车比赛，感觉确实不错，就是自己太菜了。。。</p><p>​    其实，这次比赛的意义还是很大的，虽然输的很丢人（其实是在意料之中的，但重大那局我感觉是有机会的，但是没有把握住，上场之前没有较好的优化代码，及时发现云台晃动的问题），其实还是有很多感想的，只不过一时要把它写下来，就不知道如何说了。。。</p><p><a href="https://imgtu.com/i/c9EOtH"><img src="https://z3.ax1x.com/2021/03/29/c9EOtH.jpg" alt="c9EOtH.jpg"></a></p><p>​    <a href="https://imgtu.com/i/c9Eb7D"><img src="https://z3.ax1x.com/2021/03/29/c9Eb7D.jpg" alt="c9Eb7D.jpg"></a></p><p>遗憾的是，在丁毅涵的最后一年比赛中没有给他打出一分的成绩，感觉挺难受的。希望学长考研上岸，继续朝着RM努力。</p><p>​    真不知道学长走后，实验室的我们还能不能继续打RM，确实挺迷茫的。。。不过我觉得比赛结果其实也没那么重要，重要的是在这个过程中能够从零开始，造出一辆“属于”自己的车，提高能力的同时收获快乐。</p><p>​    RM的主题曲确实很有感染力。。。。。。“我一直追寻着你，你好像不远也不近，却总保持着距离。。。。。”</p><p>​                                        你: <a href="https://y.qq.com/n/yqq/mv/v/o0025wv26q0.html">https://y.qq.com/n/yqq/mv/v/o0025wv26q0.html</a></p><p>​    终于写了自己的第一篇博客，记录一下平时的学习经验和生活吧，希望以此能够督促自己，也相当于一个备忘录吧。。。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 比赛 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> RM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>站点日志</title>
+      <link href="/2021/03/25/zhan-dian-ri-zhi/"/>
+      <url>/2021/03/25/zhan-dian-ri-zhi/</url>
+      
+        <content type="html"><![CDATA[<p>2021.4.11:新增并完善看板娘功能（看板娘首次登录为默认，可自行切换不同人物，下次打开即为最后一次切换的人物）。</p><p>2021.5.25：新增鼠标点击特效（额外配置时导致文件未备份，中间出了一点小差错，导致网页打开速度慢了一些）。</p><p>2021.5.27：尝试加快网页访问速度（使用hexo-all-minifier，压缩）。</p><p>2021.5.29：配置Markdown语法公式块与Hexo兼容。<a href="https://www.dazhuanlan.com/2020/06/09/5edf70eb9e803/">https://www.dazhuanlan.com/2020/06/09/5edf70eb9e803/</a></p><p>2021.5.31：根据日期top值设定置顶日志，添加左侧Music博客主题音乐。</p><p>2021.6.3:发布一篇新博客2021.6.3。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日志 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日志 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
