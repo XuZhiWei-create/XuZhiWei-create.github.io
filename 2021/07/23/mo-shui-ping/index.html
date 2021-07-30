@@ -311,7 +311,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://z3.ax1x.com/2021/07/25/WRCeKA.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -444,8 +444,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%94%B5%E5%AD%90%E5%88%B6%E4%BD%9C/" class="post-category">
-                                电子制作
+                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="post-category">
+                                硬件
                             </a>
                         
                     </div>
@@ -464,7 +464,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-07-29
+                    2021-07-30
                 </div>
                 
 
@@ -502,92 +502,92 @@
 <p>epd1in54.ino：使用Arduino IDE打开即可；<br>epd1in54.cpp(.h):是墨水屏的驱动程序；<br>epdif.cpp(.h):是硬件接口定义，里面封装了读写管脚电平，SPI传输数据，以及管脚初始化；<br>font8.cpp、font12.cpp、font16.cpp、font20.cpp、font24.cpp、fonts.h：为不同大小字符的模；<br>imagedata.cpp(.h)：是图片数据，这个可以通过Img2Lcd(在开发资料中可下载)把2位深度的BMP图片转换成数组。<br>程序分为底层硬件接口、中间层墨水屏驱动、上层应用；</p>
 <h2 id="底层硬件接口："><a href="#底层硬件接口：" class="headerlink" title="底层硬件接口："></a>底层硬件接口：</h2><p>在epdif.cpp(.h)两个文件中定义了硬件接口，并封装好读写管脚电平、延时、SPI传输等函数。</p>
 <p>1、写管脚电平</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">int DigitalWrite(int pin,int value)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">DigitalWrite</span><span class="token punctuation">(</span><span class="token keyword">int</span> pin<span class="token punctuation">,</span><span class="token keyword">int</span> value<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>2、读管脚电平</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">int DigitalRead(int pin)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">DigitalRead</span><span class="token punctuation">(</span><span class="token keyword">int</span> pin<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>3、延时</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">DelayMs(unsigned int delaytime)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">DelayMs</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> delaytime<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>4、SPI数据输出</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">SpiTransfer(unsigned char data)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">SpiTransfer</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> data<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>5、硬件初始化</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">int IfInit(void)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">IfInit</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="中间层墨水屏驱动："><a href="#中间层墨水屏驱动：" class="headerlink" title="中间层墨水屏驱动："></a>中间层墨水屏驱动：</h2><p>1、实例化墨水屏</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">Epd epd;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">Epd epd<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>2、墨水屏初始化，再屏幕开始工作时和退出睡眠模式之后调用<br>1.54inch e-Paper、1.54inch e-Paper V2、2.13inch e-Paper、2.13inch e-Paper V2、2.13inch e-Paper (D)、2.9inch e-Paper、2.9inch e-Paper (D)</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">epd.Init(lut_full_update); &#x2F;&#x2F;全刷初始化
-epd.Init(lut_partial_update); &#x2F;&#x2F;局刷初始化<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">epd<span class="token punctuation">.</span><span class="token function">Init</span><span class="token punctuation">(</span>lut_full_update<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//全刷初始化</span>
+epd<span class="token punctuation">.</span><span class="token function">Init</span><span class="token punctuation">(</span>lut_partial_update<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//局刷初始化</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>其他型号</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">epd.Init();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">epd<span class="token punctuation">.</span><span class="token function">Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>3、清屏，把墨水屏刷成白色</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">epd.clear();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">epd<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>可能某些程序里面会被拆分成两句，但是他们最终的效果都是一样的：</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">epd.ClearFrameMemory(0xFF); 
-epd.DisplayFrame();&#x2F;&#x2F;打开显示<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">epd<span class="token punctuation">.</span><span class="token function">ClearFrameMemory</span><span class="token punctuation">(</span><span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+epd<span class="token punctuation">.</span><span class="token function">DisplayFrame</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//打开显示</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>4、传输一帧的图片数据并显示</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void Display(const unsigned char* frame_buffer);
-void DisplayFrame(const unsigned char* frame_buffer_black, const unsigned char* frame_buffer_red); &#x2F;&#x2F;三色屏幕<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">Display</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span><span class="token operator">*</span> frame_buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">DisplayFrame</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span><span class="token operator">*</span> frame_buffer_black<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span><span class="token operator">*</span> frame_buffer_red<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//三色屏幕</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>5、睡眠</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">epd.Sleep();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">epd<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>进入睡眠模式，墨水屏讲进入超低耗电，如果长时间不用需要刷白保存，否则长时间会有残影。</p>
 <h2 id="上层应用："><a href="#上层应用：" class="headerlink" title="上层应用："></a>上层应用：</h2><p>上层应用也就是我们的需要用墨水屏实现的功能，一般就是画图、字符等功能，也就是epdpaint.cpp里面定义的功能<br>首先需要讲解一下缓存的坐标系，为了传输方便通常吧坐上定位原点，往右X轴增加，往下Y轴增加。只需要看public下函数即可。<br>1、初始化图片缓存</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">Paint(unsigned char* image, int width, int height);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">Paint</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span><span class="token operator">*</span> image<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>第一个参数是图片缓存，第二个参数是定义图片长度，第三个参数定义图片高度，你可能会在程序中看到如下</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">Paint paint(image, 0, 0);    &#x2F;&#x2F; width should be the multiple of 8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">Paint <span class="token function">paint</span><span class="token punctuation">(</span>image<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// width should be the multiple of 8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>第二、三个参数这里设置成0，是因为下面还可以设置。<br>2、设置高宽、获取高宽、设置翻转角度、获取翻转角度</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">int  GetWidth(void); &#x2F;&#x2F;得到宽度
-void SetWidth(int width);&#x2F;&#x2F;设置宽度
-int  GetHeight(void);&#x2F;&#x2F;得到高度
-void SetHeight(int height);&#x2F;&#x2F;设置高度
-int  GetRotate(void);&#x2F;&#x2F;得到翻转角度
-void SetRotate(int rotate);&#x2F;&#x2F;设置翻转角度
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span>  <span class="token function">GetWidth</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//得到宽度</span>
+<span class="token keyword">void</span> <span class="token function">SetWidth</span><span class="token punctuation">(</span><span class="token keyword">int</span> width<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//设置宽度</span>
+<span class="token keyword">int</span>  <span class="token function">GetHeight</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//得到高度</span>
+<span class="token keyword">void</span> <span class="token function">SetHeight</span><span class="token punctuation">(</span><span class="token keyword">int</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//设置高度</span>
+<span class="token keyword">int</span>  <span class="token function">GetRotate</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//得到翻转角度</span>
+<span class="token keyword">void</span> <span class="token function">SetRotate</span><span class="token punctuation">(</span><span class="token keyword">int</span> rotate<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//设置翻转角度</span>
 ···
-3、获取图像缓存
-&#96;&#96;&#96;c
-unsigned char* GetImage(void);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token number">3</span>、获取图像缓存
+```c
+<span class="token keyword">unsigned</span> <span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">GetImage</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>4、画点</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawPixel(int x, int y, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">DrawPixel</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> colored<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在坐标(x,y)<br>5、写字符</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawCharAt(int x, int y, char ascii_char, sFONT* font, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">DrawCharAt</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">char</span> ascii_char<span class="token punctuation">,</span> sFONT<span class="token operator">*</span> font<span class="token punctuation">,</span> <span class="token keyword">int</span> colored<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在（x,y）这一点为左顶点写字符ascii_char，字体大小为font，颜色为colored<br>6、写字符串</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawStringAt(int x, int y, const char* text, sFONT* font, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">DrawStringAt</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> text<span class="token punctuation">,</span> sFONT<span class="token operator">*</span> font<span class="token punctuation">,</span> <span class="token keyword">int</span> colored<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在（x,y）这一点为左顶点写字符串text，字体大小为font，颜色为colored<br>7、画线</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawLine(int x0, int y0, int x1, int y1, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">DrawLine</span><span class="token punctuation">(</span><span class="token keyword">int</span> x0<span class="token punctuation">,</span> <span class="token keyword">int</span> y0<span class="token punctuation">,</span> <span class="token keyword">int</span> x1<span class="token punctuation">,</span> <span class="token keyword">int</span> y1<span class="token punctuation">,</span> <span class="token keyword">int</span> colored<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>以（x0,y0）为起点，（x1,y1）为终点画一条线，斜率任意；<br>8、画横线</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawHorizontalLine(int x, int y, int width, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">DrawHorizontalLine</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> colored<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>以（x0,y0）为起点，（x1,y1）为终点画一条横线，速度比DrawLine()快<br>9、画竖线</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawVerticalLine(int x, int y, int height, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">DrawVerticalLine</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">,</span> <span class="token keyword">int</span> colored<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>以（x0,y0）为起点，（x1,y1）为终点画一条竖线，速度比DrawLine()快<br>10、矩形，画空心框</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawRectangle(int x0, int y0, int x1, int y1, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">DrawRectangle</span><span class="token punctuation">(</span><span class="token keyword">int</span> x0<span class="token punctuation">,</span> <span class="token keyword">int</span> y0<span class="token punctuation">,</span> <span class="token keyword">int</span> x1<span class="token punctuation">,</span> <span class="token keyword">int</span> y1<span class="token punctuation">,</span> <span class="token keyword">int</span> colored<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>以（x0,y0）为起点，（x1,y1）为终点画一个框，边的颜色为colored<br>11、填充矩形，画实心框</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawFilledRectangle(int x0, int y0, int x1, int y1, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">DrawFilledRectangle</span><span class="token punctuation">(</span><span class="token keyword">int</span> x0<span class="token punctuation">,</span> <span class="token keyword">int</span> y0<span class="token punctuation">,</span> <span class="token keyword">int</span> x1<span class="token punctuation">,</span> <span class="token keyword">int</span> y1<span class="token punctuation">,</span> <span class="token keyword">int</span> colored<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>以（x0,y0）为起点，（x1,y1）为终点画一个框，并且内部填充，颜色为colored<br>12、画空心圆</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawCircle(int x, int y, int radius, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">DrawCircle</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> radius<span class="token punctuation">,</span> <span class="token keyword">int</span> colored<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>以（x,y）为圆心，radius为半斤画一个空心圆，颜色为colored<br>13、实心圆</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void DrawFilledCircle(int x, int y, int radius, int colored);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">DrawFilledCircle</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> radius<span class="token punctuation">,</span> <span class="token keyword">int</span> colored<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>以（x,y）为圆心，radius为半斤画一个实心心圆，颜色为colored</p>
 <h1 id="PS制作散点图"><a href="#PS制作散点图" class="headerlink" title="PS制作散点图"></a>PS制作散点图</h1><h1 id="取模"><a href="#取模" class="headerlink" title="取模"></a>取模</h1><h1 id="2-13寸三色墨水屏（不兼容微雪的程序，但可参考）"><a href="#2-13寸三色墨水屏（不兼容微雪的程序，但可参考）" class="headerlink" title="2.13寸三色墨水屏（不兼容微雪的程序，但可参考）"></a>2.13寸三色墨水屏（不兼容微雪的程序，但可参考）</h1><p><a target="_blank" rel="noopener" href="https://www.waveshare.net/wiki/2.13inch_e-Paper_HAT_(B)">微雪：2.13inch e-Paper HAT (B)</a></p>
@@ -831,13 +831,13 @@ unsigned char* GetImage(void);<span aria-hidden="true" class="line-numbers-rows"
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/07/25/python/">
+                <a href="/2021/07/25/python-ru-men-an-zhuang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Python">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Python 入门安装">
                         
-                        <span class="card-title">Python</span>
+                        <span class="card-title">Python 入门安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -854,8 +854,8 @@ unsigned char* GetImage(void);<span aria-hidden="true" class="line-numbers-rows"
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category">
-                                    编程
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    计算机知识
                                 </a>
                             
                             
@@ -903,8 +903,8 @@ unsigned char* GetImage(void);<span aria-hidden="true" class="line-numbers-rows"
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6/" class="post-category">
-                                    软件
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    计算机知识
                                 </a>
                             
                             
@@ -1064,7 +1064,7 @@ unsigned char* GetImage(void);<span aria-hidden="true" class="line-numbers-rows"
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">18.5k</span>&nbsp;字
+                class="white-color">17.6k</span>&nbsp;字
             
             
             
@@ -1167,6 +1167,7 @@ unsigned char* GetImage(void);<span aria-hidden="true" class="line-numbers-rows"
 </footer>
 
 <div class="progress-bar"></div>
+
 
 
     <!-- 搜索遮罩框 -->

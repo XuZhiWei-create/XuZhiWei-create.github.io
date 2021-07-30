@@ -444,8 +444,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/" class="post-category">
-                                单片机
+                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="post-category">
+                                硬件
                             </a>
                         
                     </div>
@@ -464,14 +464,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-07-29
+                    2021-07-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    2.7k
                 </div>
                 
 
@@ -568,251 +568,251 @@ void 函数名 () interrupt 中断号 using 工作组
 <p>2、计算初值，并将初值写入TH0、TL0或TH1、TL1;</p>
 <p>3、中断方式时，则对IE赋值，开放中断；</p>
 <p>4、使TR0或TR1置位，启动定时器/计数器定时或计数。</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;************************************************************
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/************************************************************
 	9、利用定时器0工作方式1，LED 1S闪烁
-*&#x2F;
-#include &quot;reg52.h&quot;
-#define uchar unsigned char
-#define uint unsigned int 
-sbit led1 &#x3D; P1^0;
-uchar num;
-void main()
-&#123;
-	&#x2F;&#x2F;定时器初始化
-	TMOD &#x3D; 0x01;			&#x2F;&#x2F;设置定时器0为工作方式1（M1M0为01）
-	TH0 &#x3D; (65536-45872)&#x2F;256;	&#x2F;&#x2F;装初值11.0592M晶振定时50ms数为45872
-	TL0 &#x3D; (65536-45872)%256;
-	EA &#x3D; 1;				&#x2F;&#x2F;开总中断
-	ET0 &#x3D; 1;				&#x2F;&#x2F;开定时器0中断
-	TR0 &#x3D; 1;				&#x2F;&#x2F;启动定时器0
-	while(1);				&#x2F;&#x2F;程序停止在这里等待中断发生
-&#125;
-void T0_time()interrupt 1		&#x2F;&#x2F;中断服务程序
-&#123;
-	TH0 &#x3D; (65536-45872)&#x2F;256;	&#x2F;&#x2F;重装初值
-	TL0 &#x3D; (65536-45872)%256;	
-	num++;				&#x2F;&#x2F;num每加1次判断一次是否到20次
-	if(num&#x3D;&#x3D;20)				&#x2F;&#x2F;如果到了20次，说明1秒时间到
-	&#123;
-		num &#x3D; 0;			&#x2F;&#x2F;然后把num清0重新再计20次
-		led1 &#x3D; ~led1;
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+*/</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"reg52.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">uchar</span> <span class="token expression"><span class="token keyword">unsigned</span> <span class="token keyword">char</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">uint</span> <span class="token expression"><span class="token keyword">unsigned</span> <span class="token keyword">int</span> </span></span>
+sbit led1 <span class="token operator">=</span> P1<span class="token operator">^</span><span class="token number">0</span><span class="token punctuation">;</span>
+uchar num<span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token comment">//定时器初始化</span>
+	TMOD <span class="token operator">=</span> <span class="token number">0x01</span><span class="token punctuation">;</span>			<span class="token comment">//设置定时器0为工作方式1（M1M0为01）</span>
+	TH0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>	<span class="token comment">//装初值11.0592M晶振定时50ms数为45872</span>
+	TL0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>
+	EA <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//开总中断</span>
+	ET0 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//开定时器0中断</span>
+	TR0 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//启动定时器0</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>				<span class="token comment">//程序停止在这里等待中断发生</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">T0_time</span><span class="token punctuation">(</span><span class="token punctuation">)</span>interrupt <span class="token number">1</span>		<span class="token comment">//中断服务程序</span>
+<span class="token punctuation">&#123;</span>
+	TH0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>	<span class="token comment">//重装初值</span>
+	TL0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>	
+	num<span class="token operator">++</span><span class="token punctuation">;</span>				<span class="token comment">//num每加1次判断一次是否到20次</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>num<span class="token operator">==</span><span class="token number">20</span><span class="token punctuation">)</span>				<span class="token comment">//如果到了20次，说明1秒时间到</span>
+	<span class="token punctuation">&#123;</span>
+		num <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>			<span class="token comment">//然后把num清0重新再计20次</span>
+		led1 <span class="token operator">=</span> <span class="token operator">~</span>led1<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>能在主程序中完成的功能就不在中断函数中写，中断函数中要高效简洁：</p>
 <p>优化后：</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;************************************************************
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/************************************************************
 	9、利用定时器0工作方式1，LED 1S闪烁
-*&#x2F;
-#include &quot;reg52.h&quot;
-#define uchar unsigned char
-#define uint unsigned int 
-sbit led1 &#x3D; P1^0;
-uchar num;
-void main()
-&#123;
-	&#x2F;&#x2F;定时器初始化
-	TMOD &#x3D; 0x01;			&#x2F;&#x2F;设置定时器0为工作方式1（M1M0为01）
-	TH0 &#x3D; (65536-45872)&#x2F;256;	&#x2F;&#x2F;装初值11.0592M晶振定时50ms数为45872
-	TL0 &#x3D; (65536-45872)%256;
-	EA &#x3D; 1;				&#x2F;&#x2F;开总中断
-	ET0 &#x3D; 1;				&#x2F;&#x2F;开定时器0中断
-	TR0 &#x3D; 1;				&#x2F;&#x2F;启动定时器0
-	while(1)
-	&#123;
-		if(num&#x3D;&#x3D;20)				&#x2F;&#x2F;如果到了20次，说明1秒时间到
-	&#123;
-		num &#x3D; 0;			&#x2F;&#x2F;然后把num清0重新再计20次
-		led1 &#x3D; ~led1;
-	&#125;
-	&#125;				&#x2F;&#x2F;程序停止在这里等待中断发生
-&#125;
-void T0_time()interrupt 1		&#x2F;&#x2F;中断服务程序
-&#123;
-	TH0 &#x3D; (65536-45872)&#x2F;256;	&#x2F;&#x2F;重装初值
-	TL0 &#x3D; (65536-45872)%256;	
-	num++;				&#x2F;&#x2F;num每加1次判断一次是否到20次
+*/</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"reg52.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">uchar</span> <span class="token expression"><span class="token keyword">unsigned</span> <span class="token keyword">char</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">uint</span> <span class="token expression"><span class="token keyword">unsigned</span> <span class="token keyword">int</span> </span></span>
+sbit led1 <span class="token operator">=</span> P1<span class="token operator">^</span><span class="token number">0</span><span class="token punctuation">;</span>
+uchar num<span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token comment">//定时器初始化</span>
+	TMOD <span class="token operator">=</span> <span class="token number">0x01</span><span class="token punctuation">;</span>			<span class="token comment">//设置定时器0为工作方式1（M1M0为01）</span>
+	TH0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>	<span class="token comment">//装初值11.0592M晶振定时50ms数为45872</span>
+	TL0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>
+	EA <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//开总中断</span>
+	ET0 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//开定时器0中断</span>
+	TR0 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//启动定时器0</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>num<span class="token operator">==</span><span class="token number">20</span><span class="token punctuation">)</span>				<span class="token comment">//如果到了20次，说明1秒时间到</span>
+	<span class="token punctuation">&#123;</span>
+		num <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>			<span class="token comment">//然后把num清0重新再计20次</span>
+		led1 <span class="token operator">=</span> <span class="token operator">~</span>led1<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>				<span class="token comment">//程序停止在这里等待中断发生</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">T0_time</span><span class="token punctuation">(</span><span class="token punctuation">)</span>interrupt <span class="token number">1</span>		<span class="token comment">//中断服务程序</span>
+<span class="token punctuation">&#123;</span>
+	TH0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>	<span class="token comment">//重装初值</span>
+	TL0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>	
+	num<span class="token operator">++</span><span class="token punctuation">;</span>				<span class="token comment">//num每加1次判断一次是否到20次</span>
 	
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;*********************************************************
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*********************************************************
 	10、中断（TX-1C）定时器0的方式1实现第一个发光管以200ms间隔闪烁
 		用定时器1的方式1实现数码管前两位59s循环计时
-*&#x2F;
-#include &quot;reg52.h&quot;
-#define uchar unsigned char
-#define uint unsigned int 
-sbit dula &#x3D; P2^6;
-sbit wela &#x3D; P2^7;
-sbit led1 &#x3D; P1^0;
-uchar code table[]&#x3D;&#123;
-		0x3f , 0x06 , 0x5b , 0x4f ,
-		0x66 , 0x6d ,0x7d , 0x07 , 
-		0x7f , 0x6f , 0x77 , 0x7c ,
-		0x39 , 0x5e , 0x79 , 0x71 &#125;;
-void delayms(uint);
-void display(uchar,uchar);
-uchar num,num1,num2,shi,ge;
-void main()
-&#123;
-	TMOD &#x3D; 0x11;		&#x2F;&#x2F;设置定时器0和1为工作方式1（0001 0001）
-	TH0 &#x3D; (65535-45872)&#x2F;256;	&#x2F;&#x2F;装初值
-	TL0 &#x3D; (65536-45872)%256;	
-	TH1 &#x3D; (65536-45872)&#x2F;256;	&#x2F;&#x2F;装初值
-	TL1 &#x3D; (65536-45872)%256;
-	EA &#x3D; 1;				&#x2F;&#x2F;开总中断
-	ET0 &#x3D; 1;				&#x2F;&#x2F;开定时器0中断
-	ET1 &#x3D; 1;				&#x2F;&#x2F;开定时器1中断
-	TR0 &#x3D;1;				&#x2F;&#x2F;启动定时器0
-	TR1 &#x3D; 1;				&#x2F;&#x2F;启动定时器1
-	while(1)
-	&#123;
-		display(shi,ge);
-	&#125;
-&#125;
-void display(uchar shi,uchar ge)	&#x2F;&#x2F;显示子函数
-&#123;
-	dula &#x3D; 1;
-	P0 &#x3D; table[shi];			&#x2F;&#x2F;送段选数据
-	dula &#x3D; 0;
-	P0 &#x3D; 0xff;				&#x2F;&#x2F;送位选数据前关闭所有显示，防止打开位选锁存时原来的段选数据通过位选锁存器造成混乱
-	wela &#x3D; 1;
-	P0 &#x3D; 0xfe;				&#x2F;&#x2F;送位选数据
-	wela &#x3D; 0;
-	delayms(5);
+*/</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"reg52.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">uchar</span> <span class="token expression"><span class="token keyword">unsigned</span> <span class="token keyword">char</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">uint</span> <span class="token expression"><span class="token keyword">unsigned</span> <span class="token keyword">int</span> </span></span>
+sbit dula <span class="token operator">=</span> P2<span class="token operator">^</span><span class="token number">6</span><span class="token punctuation">;</span>
+sbit wela <span class="token operator">=</span> P2<span class="token operator">^</span><span class="token number">7</span><span class="token punctuation">;</span>
+sbit led1 <span class="token operator">=</span> P1<span class="token operator">^</span><span class="token number">0</span><span class="token punctuation">;</span>
+uchar code table<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span>
+		<span class="token number">0x3f</span> <span class="token punctuation">,</span> <span class="token number">0x06</span> <span class="token punctuation">,</span> <span class="token number">0x5b</span> <span class="token punctuation">,</span> <span class="token number">0x4f</span> <span class="token punctuation">,</span>
+		<span class="token number">0x66</span> <span class="token punctuation">,</span> <span class="token number">0x6d</span> <span class="token punctuation">,</span><span class="token number">0x7d</span> <span class="token punctuation">,</span> <span class="token number">0x07</span> <span class="token punctuation">,</span> 
+		<span class="token number">0x7f</span> <span class="token punctuation">,</span> <span class="token number">0x6f</span> <span class="token punctuation">,</span> <span class="token number">0x77</span> <span class="token punctuation">,</span> <span class="token number">0x7c</span> <span class="token punctuation">,</span>
+		<span class="token number">0x39</span> <span class="token punctuation">,</span> <span class="token number">0x5e</span> <span class="token punctuation">,</span> <span class="token number">0x79</span> <span class="token punctuation">,</span> <span class="token number">0x71</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">delayms</span><span class="token punctuation">(</span>uint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span>uchar<span class="token punctuation">,</span>uchar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+uchar num<span class="token punctuation">,</span>num1<span class="token punctuation">,</span>num2<span class="token punctuation">,</span>shi<span class="token punctuation">,</span>ge<span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	TMOD <span class="token operator">=</span> <span class="token number">0x11</span><span class="token punctuation">;</span>		<span class="token comment">//设置定时器0和1为工作方式1（0001 0001）</span>
+	TH0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65535</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>	<span class="token comment">//装初值</span>
+	TL0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>	
+	TH1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>	<span class="token comment">//装初值</span>
+	TL1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>
+	EA <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//开总中断</span>
+	ET0 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//开定时器0中断</span>
+	ET1 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//开定时器1中断</span>
+	TR0 <span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//启动定时器0</span>
+	TR1 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//启动定时器1</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">display</span><span class="token punctuation">(</span>shi<span class="token punctuation">,</span>ge<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span>uchar shi<span class="token punctuation">,</span>uchar ge<span class="token punctuation">)</span>	<span class="token comment">//显示子函数</span>
+<span class="token punctuation">&#123;</span>
+	dula <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> table<span class="token punctuation">[</span>shi<span class="token punctuation">]</span><span class="token punctuation">;</span>			<span class="token comment">//送段选数据</span>
+	dula <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> <span class="token number">0xff</span><span class="token punctuation">;</span>				<span class="token comment">//送位选数据前关闭所有显示，防止打开位选锁存时原来的段选数据通过位选锁存器造成混乱</span>
+	wela <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> <span class="token number">0xfe</span><span class="token punctuation">;</span>				<span class="token comment">//送位选数据</span>
+	wela <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token function">delayms</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	
-	dula &#x3D; 1;
-	P0 &#x3D; table[ge];
-	dula &#x3D; 0;
-	P0 &#x3D;0xff;
-	wela &#x3D; 1;
-	P0 &#x3D; 0xfd;
-	wela &#x3D; 0;
-	delayms(5);
-&#125;
+	dula <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> table<span class="token punctuation">[</span>ge<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	dula <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span><span class="token number">0xff</span><span class="token punctuation">;</span>
+	wela <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> <span class="token number">0xfd</span><span class="token punctuation">;</span>
+	wela <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token function">delayms</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-void delayms(uint xms)
-&#123;
-	uint i,j;
-	for(i&#x3D;xms;i&gt;0;i--)
-		for(j&#x3D;110;j&gt;0;j--);
-&#125;
-void T0_time() interrupt 1
-&#123;
-	TH0&#x3D;(65536-45872)&#x2F;256;		&#x2F;&#x2F;重装初值
-	TL0&#x3D;(65536-45872)%256;	
-	num1++;
-	if(num1&#x3D;&#x3D;4)				&#x2F;&#x2F;4次中断&#x3D;200ms
-	&#123;
-		num1 &#x3D; 0;			&#x2F;&#x2F;清0
-		led1 &#x3D; ~led1;
-	&#125;
-&#125;
+<span class="token keyword">void</span> <span class="token function">delayms</span><span class="token punctuation">(</span>uint xms<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	uint i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span>xms<span class="token punctuation">;</span>i<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span>
+		<span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span><span class="token number">110</span><span class="token punctuation">;</span>j<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">T0_time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> interrupt <span class="token number">1</span>
+<span class="token punctuation">&#123;</span>
+	TH0<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>		<span class="token comment">//重装初值</span>
+	TL0<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>	
+	num1<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>num1<span class="token operator">==</span><span class="token number">4</span><span class="token punctuation">)</span>				<span class="token comment">//4次中断=200ms</span>
+	<span class="token punctuation">&#123;</span>
+		num1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>			<span class="token comment">//清0</span>
+		led1 <span class="token operator">=</span> <span class="token operator">~</span>led1<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-void T1_time() interrupt 3
-&#123;
-	TH1&#x3D;(65536-45872)&#x2F;256;		&#x2F;&#x2F;重装初值
-	TL1&#x3D;(65536-45872)%256;
-	num2++;
-	if(num2&#x3D;&#x3D;20)			&#x2F;&#x2F;20次中断&#x3D;1秒
-	&#123;
-		num2&#x3D;0;			&#x2F;&#x2F;清0
-		num++;
-		if(num&#x3D;&#x3D;60)			&#x2F;&#x2F;该数用来送数码管显示，到60后归0
-			num&#x3D;0;
-		shi&#x3D;num&#x2F;10;			&#x2F;&#x2F;把一个2位数分离后分别送数码管显示
-		ge&#x3D;num%10;			&#x2F;&#x2F;十位和个位
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">void</span> <span class="token function">T1_time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> interrupt <span class="token number">3</span>
+<span class="token punctuation">&#123;</span>
+	TH1<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>		<span class="token comment">//重装初值</span>
+	TL1<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>
+	num2<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>num2<span class="token operator">==</span><span class="token number">20</span><span class="token punctuation">)</span>			<span class="token comment">//20次中断=1秒</span>
+	<span class="token punctuation">&#123;</span>
+		num2<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>			<span class="token comment">//清0</span>
+		num<span class="token operator">++</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>num<span class="token operator">==</span><span class="token number">60</span><span class="token punctuation">)</span>			<span class="token comment">//该数用来送数码管显示，到60后归0</span>
+			num<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+		shi<span class="token operator">=</span>num<span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>			<span class="token comment">//把一个2位数分离后分别送数码管显示</span>
+		ge<span class="token operator">=</span>num<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span>			<span class="token comment">//十位和个位</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;*********************************************************
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*********************************************************
 	10、中断（BST-M51）定时器0的方式1实现第一个发光管以200ms间隔闪烁
 		用定时器1的方式1实现数码管前两位59s循环计时
-*&#x2F;
-#include &quot;reg52.h&quot;
-#define uchar unsigned char
-#define uint unsigned int 
-sbit wei1 &#x3D; P2^4;&#x2F;&#x2F;定义第一位数码管
-sbit wei2 &#x3D; P2^5;&#x2F;&#x2F;定义第二位数码管
-sbit wei3 &#x3D; P2^6;&#x2F;&#x2F;定义第三位数码管
-sbit wei4 &#x3D; P2^7;&#x2F;&#x2F;定义第四位数码管
-sbit led1 &#x3D; P1^0;
-uchar code table[]&#x3D;&#123;
-		0x3f , 0x06 , 0x5b , 0x4f ,
-		0x66 , 0x6d ,0x7d , 0x07 , 
-		0x7f , 0x6f , 0x77 , 0x7c ,
-		0x39 , 0x5e , 0x79 , 0x71 &#125;;
-void delayms(uint);
-void display(uchar,uchar);
-uchar num,num1,num2,shi,ge;
-void main()
-&#123;
-	TMOD &#x3D; 0x11;		&#x2F;&#x2F;设置定时器0和1为工作方式1（0001 0001）
-	TH0 &#x3D; (65535-45872)&#x2F;256;	&#x2F;&#x2F;装初值
-	TL0 &#x3D; (65536-45872)%256;	
-	TH1 &#x3D; (65536-45872)&#x2F;256;	&#x2F;&#x2F;装初值
-	TL1 &#x3D; (65536-45872)%256;
-	EA &#x3D; 1;				&#x2F;&#x2F;开总中断
-	ET0 &#x3D; 1;				&#x2F;&#x2F;开定时器0中断
-	ET1 &#x3D; 1;				&#x2F;&#x2F;开定时器1中断
-	TR0 &#x3D;1;				&#x2F;&#x2F;启动定时器0
-	TR1 &#x3D; 1;				&#x2F;&#x2F;启动定时器1
-	while(1)
-	&#123;
-		display(shi,ge);
-	&#125;
-&#125;
-void display(uchar shi,uchar ge)	&#x2F;&#x2F;显示子函数
-&#123;
+*/</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"reg52.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">uchar</span> <span class="token expression"><span class="token keyword">unsigned</span> <span class="token keyword">char</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">uint</span> <span class="token expression"><span class="token keyword">unsigned</span> <span class="token keyword">int</span> </span></span>
+sbit wei1 <span class="token operator">=</span> P2<span class="token operator">^</span><span class="token number">4</span><span class="token punctuation">;</span><span class="token comment">//定义第一位数码管</span>
+sbit wei2 <span class="token operator">=</span> P2<span class="token operator">^</span><span class="token number">5</span><span class="token punctuation">;</span><span class="token comment">//定义第二位数码管</span>
+sbit wei3 <span class="token operator">=</span> P2<span class="token operator">^</span><span class="token number">6</span><span class="token punctuation">;</span><span class="token comment">//定义第三位数码管</span>
+sbit wei4 <span class="token operator">=</span> P2<span class="token operator">^</span><span class="token number">7</span><span class="token punctuation">;</span><span class="token comment">//定义第四位数码管</span>
+sbit led1 <span class="token operator">=</span> P1<span class="token operator">^</span><span class="token number">0</span><span class="token punctuation">;</span>
+uchar code table<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span>
+		<span class="token number">0x3f</span> <span class="token punctuation">,</span> <span class="token number">0x06</span> <span class="token punctuation">,</span> <span class="token number">0x5b</span> <span class="token punctuation">,</span> <span class="token number">0x4f</span> <span class="token punctuation">,</span>
+		<span class="token number">0x66</span> <span class="token punctuation">,</span> <span class="token number">0x6d</span> <span class="token punctuation">,</span><span class="token number">0x7d</span> <span class="token punctuation">,</span> <span class="token number">0x07</span> <span class="token punctuation">,</span> 
+		<span class="token number">0x7f</span> <span class="token punctuation">,</span> <span class="token number">0x6f</span> <span class="token punctuation">,</span> <span class="token number">0x77</span> <span class="token punctuation">,</span> <span class="token number">0x7c</span> <span class="token punctuation">,</span>
+		<span class="token number">0x39</span> <span class="token punctuation">,</span> <span class="token number">0x5e</span> <span class="token punctuation">,</span> <span class="token number">0x79</span> <span class="token punctuation">,</span> <span class="token number">0x71</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">delayms</span><span class="token punctuation">(</span>uint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span>uchar<span class="token punctuation">,</span>uchar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+uchar num<span class="token punctuation">,</span>num1<span class="token punctuation">,</span>num2<span class="token punctuation">,</span>shi<span class="token punctuation">,</span>ge<span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	TMOD <span class="token operator">=</span> <span class="token number">0x11</span><span class="token punctuation">;</span>		<span class="token comment">//设置定时器0和1为工作方式1（0001 0001）</span>
+	TH0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65535</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>	<span class="token comment">//装初值</span>
+	TL0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>	
+	TH1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>	<span class="token comment">//装初值</span>
+	TL1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>
+	EA <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//开总中断</span>
+	ET0 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//开定时器0中断</span>
+	ET1 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//开定时器1中断</span>
+	TR0 <span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//启动定时器0</span>
+	TR1 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				<span class="token comment">//启动定时器1</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">display</span><span class="token punctuation">(</span>shi<span class="token punctuation">,</span>ge<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span>uchar shi<span class="token punctuation">,</span>uchar ge<span class="token punctuation">)</span>	<span class="token comment">//显示子函数</span>
+<span class="token punctuation">&#123;</span>
 	
-	P0 &#x3D; table[shi];			&#x2F;&#x2F;送段选数据
-	wei1 &#x3D; 1;
-	wei2 &#x3D; 0;
-	wei3 &#x3D; 0;
-	wei4 &#x3D; 0;
-	delayms(5);
+	P0 <span class="token operator">=</span> table<span class="token punctuation">[</span>shi<span class="token punctuation">]</span><span class="token punctuation">;</span>			<span class="token comment">//送段选数据</span>
+	wei1 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	wei2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	wei3 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	wei4 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token function">delayms</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	
-	P0 &#x3D; table[ge];
-	wei1 &#x3D; 0;
-	wei2 &#x3D; 1;
-	wei3 &#x3D; 0;
-	wei4 &#x3D; 0;                                                                                                                                                                                                                  
-	delayms(5);
-&#125;
+	P0 <span class="token operator">=</span> table<span class="token punctuation">[</span>ge<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	wei1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	wei2 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	wei3 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	wei4 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>                                                                                                                                                                                                                  
+	<span class="token function">delayms</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-void delayms(uint xms)
-&#123;
-	uint i,j;
-	for(i&#x3D;xms;i&gt;0;i--)
-		for(j&#x3D;110;j&gt;0;j--);
-&#125;
-void T0_time() interrupt 1
-&#123;
-	TH0&#x3D;(65536-45872)&#x2F;256;		&#x2F;&#x2F;重装初值
-	TL0&#x3D;(65536-45872)%256;	
-	num1++;
-	if(num1&#x3D;&#x3D;4)				&#x2F;&#x2F;4次中断&#x3D;200ms
-	&#123;
-		num1 &#x3D; 0;			&#x2F;&#x2F;清0
-		led1 &#x3D; ~led1;
-	&#125;
-&#125;
+<span class="token keyword">void</span> <span class="token function">delayms</span><span class="token punctuation">(</span>uint xms<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	uint i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span>xms<span class="token punctuation">;</span>i<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span>
+		<span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span><span class="token number">110</span><span class="token punctuation">;</span>j<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">T0_time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> interrupt <span class="token number">1</span>
+<span class="token punctuation">&#123;</span>
+	TH0<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>		<span class="token comment">//重装初值</span>
+	TL0<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>	
+	num1<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>num1<span class="token operator">==</span><span class="token number">4</span><span class="token punctuation">)</span>				<span class="token comment">//4次中断=200ms</span>
+	<span class="token punctuation">&#123;</span>
+		num1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>			<span class="token comment">//清0</span>
+		led1 <span class="token operator">=</span> <span class="token operator">~</span>led1<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-void T1_time() interrupt 3
-&#123;
-	TH1&#x3D;(65536-45872)&#x2F;256;		&#x2F;&#x2F;重装初值
-	TL1&#x3D;(65536-45872)%256;
-	num2++;
-	if(num2&#x3D;&#x3D;20)			&#x2F;&#x2F;20次中断&#x3D;1秒
-	&#123;
-		num2&#x3D;0;			&#x2F;&#x2F;清0
-		num++;
-		if(num&#x3D;&#x3D;60)			&#x2F;&#x2F;该数用来送数码管显示，到60后归0
-			num&#x3D;0;
-		shi&#x3D;num&#x2F;10;			&#x2F;&#x2F;把一个2位数分离后分别送数码管显示
-		ge&#x3D;num%10;			&#x2F;&#x2F;十位和个位
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">void</span> <span class="token function">T1_time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> interrupt <span class="token number">3</span>
+<span class="token punctuation">&#123;</span>
+	TH1<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>		<span class="token comment">//重装初值</span>
+	TL1<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>
+	num2<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>num2<span class="token operator">==</span><span class="token number">20</span><span class="token punctuation">)</span>			<span class="token comment">//20次中断=1秒</span>
+	<span class="token punctuation">&#123;</span>
+		num2<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>			<span class="token comment">//清0</span>
+		num<span class="token operator">++</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>num<span class="token operator">==</span><span class="token number">60</span><span class="token punctuation">)</span>			<span class="token comment">//该数用来送数码管显示，到60后归0</span>
+			num<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+		shi<span class="token operator">=</span>num<span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>			<span class="token comment">//把一个2位数分离后分别送数码管显示</span>
+		ge<span class="token operator">=</span>num<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span>			<span class="token comment">//十位和个位</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>注意</strong>：不能将判断发光二极管亮灭时间是否达到的语句写在主程序中。</p>
 
@@ -1057,8 +1057,7 @@ void T1_time() interrupt 3
                 <a href="/2021/04/09/2021-4-9/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="2021.4.9">
+                        <img src="https://z3.ax1x.com/2021/04/09/cUYMjS.jpg" class="responsive-img" alt="2021.4.9">
                         
                         <span class="card-title">2021.4.9</span>
                     </div>
@@ -1066,7 +1065,7 @@ void T1_time() interrupt 3
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            小记
+                            2021年4月9日小记
                         
                     </div>
                     <div class="publish-info">
@@ -1077,8 +1076,8 @@ void T1_time() interrupt 3
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                    随笔
                                 </a>
                             
                             
@@ -1088,8 +1087,8 @@ void T1_time() interrupt 3
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%97%A5%E5%BF%97/">
-                        <span class="chip bg-color">日志</span>
+                    <a href="/tags/%E5%B0%8F%E8%AE%B0/">
+                        <span class="chip bg-color">小记</span>
                     </a>
                     
                 </div>
@@ -1115,7 +1114,7 @@ void T1_time() interrupt 3
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            （C语言）（基础及IO控制）
+                            C51（基础及IO控制）
                         
                     </div>
                     <div class="publish-info">
@@ -1126,8 +1125,8 @@ void T1_time() interrupt 3
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/" class="post-category">
-                                    单片机
+                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="post-category">
+                                    硬件
                                 </a>
                             
                             
@@ -1287,7 +1286,7 @@ void T1_time() interrupt 3
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">18.5k</span>&nbsp;字
+                class="white-color">17.6k</span>&nbsp;字
             
             
             
@@ -1390,6 +1389,7 @@ void T1_time() interrupt 3
 </footer>
 
 <div class="progress-bar"></div>
+
 
 
     <!-- 搜索遮罩框 -->

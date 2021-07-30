@@ -444,8 +444,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/" class="post-category">
-                                单片机
+                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="post-category">
+                                硬件
                             </a>
                         
                     </div>
@@ -464,14 +464,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-07-29
+                    2021-07-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    952
+                    811
                 </div>
                 
 
@@ -503,152 +503,152 @@
 <p>​            2、每按下S2键一次，数值加1；每按下S3键一次，数值减1；每按下S4键一次，数值归零；</p>
 <p>​            3、每按下S5键一次，利用定时器功能使数值开始自动每秒加1，再次按下S5键，数值暂停。</p>
 <p>代码分析：(省略版)</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &quot;reg52.h&quot;
-#define uchar.....
-sbit....
-uchar code table[]&#x3D;&#123;&#125;;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"reg52.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">uchar</span><span class="token expression"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></span></span>
+sbit<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+uchar code table<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
-void display(uchar numdis)&#123;
-shi&#x3D;numdis&#x2F;10;
-ge&#x3D;numdis%10;
-&#125;								&#x2F;&#x2F;显示子函数
-void delayms(uint xms)&#123;&#125;		  &#x2F;&#x2F;延时子函数
-void init()&#123;                      &#x2F;&#x2F;初始化函数		
-	&#x2F;&#x2F;定时器初始化
-	TMOD &#x3D; 0x01;				&#x2F;&#x2F;设置定时器0为工作方式1（M1M0为01）
-	TH0 &#x3D; (65536-45872)&#x2F;256;	 &#x2F;&#x2F;装初值11.0592M晶振定时50ms数为45872
-	TL0 &#x3D; (65536-45872)%256;
-	EA &#x3D; 1;				        &#x2F;&#x2F;开总中断
-	ET0 &#x3D; 1;				    &#x2F;&#x2F;开定时器0中断（通过 TR0 &#x3D; 1;开启）
-&#125;	
-void keyscan()&#123;					&#x2F;&#x2F;按键扫描子函数
-	if(key1&#x3D;&#x3D;0)
-	&#123;
-		delayms(10);			&#x2F;&#x2F;消抖
-		if(key1&#x3D;&#x3D;0)
-		&#123;
-			num++;
-			if(num&#x3D;&#x3D;60)
-				num&#x3D;0;
-			while(!key1);		&#x2F;&#x2F;等待按键释放
-		&#125;
-	&#125;
-	if(key2&#x3D;&#x3D;0)&#123;&#125;
-	if(key3&#x3D;&#x3D;0)&#123;&#125;
-	if(key4&#x3D;&#x3D;0)&#123;	while(!key4); TR0&#x3D;~TR0;&#125;
-&#125;
-void main()
-&#123;
-	init();
-	while(1)
-	&#123;
-		keyscan();
-		display(num);
-	&#125;
-&#125;
-void T0_time()interrupt 1
-&#123;
-	TH0 &#x3D; (65536-45872)&#x2F;256;	&#x2F;&#x2F;重装初值
-	TL0 &#x3D; (65536-45872)%256;	
-	numt0++;				
-	if(numt0&#x3D;&#x3D;20)				&#x2F;&#x2F;1秒时间到
-	&#123;
-		numt0&#x3D;0;			    &#x2F;&#x2F;时间清零重计
-		num++;					&#x2F;&#x2F;每秒加1
-		if(num&#x3D;&#x3D;60)
-			num&#x3D;0;
-	&#125;
-&#125;
+<span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span>uchar numdis<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+shi<span class="token operator">=</span>numdis<span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
+ge<span class="token operator">=</span>numdis<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>								<span class="token comment">//显示子函数</span>
+<span class="token keyword">void</span> <span class="token function">delayms</span><span class="token punctuation">(</span>uint xms<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>		  <span class="token comment">//延时子函数</span>
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>                      <span class="token comment">//初始化函数		</span>
+	<span class="token comment">//定时器初始化</span>
+	TMOD <span class="token operator">=</span> <span class="token number">0x01</span><span class="token punctuation">;</span>				<span class="token comment">//设置定时器0为工作方式1（M1M0为01）</span>
+	TH0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>	 <span class="token comment">//装初值11.0592M晶振定时50ms数为45872</span>
+	TL0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>
+	EA <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				        <span class="token comment">//开总中断</span>
+	ET0 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>				    <span class="token comment">//开定时器0中断（通过 TR0 = 1;开启）</span>
+<span class="token punctuation">&#125;</span>	
+<span class="token keyword">void</span> <span class="token function">keyscan</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>					<span class="token comment">//按键扫描子函数</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>key1<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">delayms</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>			<span class="token comment">//消抖</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>key1<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			num<span class="token operator">++</span><span class="token punctuation">;</span>
+			<span class="token keyword">if</span><span class="token punctuation">(</span>num<span class="token operator">==</span><span class="token number">60</span><span class="token punctuation">)</span>
+				num<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+			<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>key1<span class="token punctuation">)</span><span class="token punctuation">;</span>		<span class="token comment">//等待按键释放</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>key2<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>key3<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>key4<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>key4<span class="token punctuation">)</span><span class="token punctuation">;</span> TR0<span class="token operator">=</span><span class="token operator">~</span>TR0<span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">keyscan</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">display</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">T0_time</span><span class="token punctuation">(</span><span class="token punctuation">)</span>interrupt <span class="token number">1</span>
+<span class="token punctuation">&#123;</span>
+	TH0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">256</span><span class="token punctuation">;</span>	<span class="token comment">//重装初值</span>
+	TL0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">65536</span><span class="token operator">-</span><span class="token number">45872</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">256</span><span class="token punctuation">;</span>	
+	numt0<span class="token operator">++</span><span class="token punctuation">;</span>				
+	<span class="token keyword">if</span><span class="token punctuation">(</span>numt0<span class="token operator">==</span><span class="token number">20</span><span class="token punctuation">)</span>				<span class="token comment">//1秒时间到</span>
+	<span class="token punctuation">&#123;</span>
+		numt0<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>			    <span class="token comment">//时间清零重计</span>
+		num<span class="token operator">++</span><span class="token punctuation">;</span>					<span class="token comment">//每秒加1</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>num<span class="token operator">==</span><span class="token number">60</span><span class="token punctuation">)</span>
+			num<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="矩阵键盘检测"><a href="#矩阵键盘检测" class="headerlink" title="矩阵键盘检测"></a>矩阵键盘检测</h1><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cjpVPI"><img src="https://z3.ax1x.com/2021/04/23/cjpVPI.md.jpg" alt="cjpVPI.md.jpg" style="zoom:150%;" /></a></p>
 <p>目标：TX-1C：上电，数码管不显示，顺序按下矩阵键盘后，数码管上依次显示0~F，6个数码管同时静态显示即可</p>
 <p>代码分析：（省略版）</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void main()
-&#123;
-    P0&#x3D;0;			&#x2F;&#x2F;关闭所有数码管段选
-    dula&#x3D;1;
-    dula&#x3D;0;
-    P0&#x3D;0xc0;		&#x2F;&#x2F;位选中所有数码管（以后直接送段选信号）
-    wela&#x3D;1;
-    wela&#x3D;0;
-  while(1)
-  &#123;
-      matrixkeyscan();		&#x2F;&#x2F;不停调用键盘扫描程序
-  &#125;
-&#125;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    P0<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>			<span class="token comment">//关闭所有数码管段选</span>
+    dula<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    dula<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    P0<span class="token operator">=</span><span class="token number">0xc0</span><span class="token punctuation">;</span>		<span class="token comment">//位选中所有数码管（以后直接送段选信号）</span>
+    wela<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    wela<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+      <span class="token function">matrixkeyscan</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		<span class="token comment">//不停调用键盘扫描程序</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-void display(uchar num)
-&#123;
-    P0&#x3D;table[num];			&#x2F;&#x2F;显示函数只送段选数据
-    dula&#x3D;1;
-    dula&#x3D;0;
-&#125;
-void matrixkeyscan()
-&#123;
-    uchar temp,key;
-    P3&#x3D;0xfe;				&#x2F;&#x2F;1111 1110 第一行线置低电平，其余为高电平
-    temp&#x3D;P3;				&#x2F;&#x2F;P3状态赋给临时变量，用于计算
-    temp&#x3D;temp&amp;0xf0;			&#x2F;&#x2F;1111 0000 若temp高四位有0，则结果不为0xf0;	若无，则一直为0xf0
-    if(temp!&#x3D;0xf0)			&#x2F;&#x2F;说明有键按下
-    &#123;
-        delayms(10);		&#x2F;&#x2F;消抖
-        	temp&#x3D;P3;		&#x2F;&#x2F;重读
-        	temp&#x3D;temp&amp;0xf0;	&#x2F;&#x2F;重&amp;
-         if(temp!&#x3D;0xf0)			&#x2F;&#x2F;说明确实有键按下
-         &#123;
-             temp&#x3D;P3;		&#x2F;&#x2F;再读一下P3状态（行列交叉）
-             switch(temp)
-             &#123;
-                 case 0xee:		&#x2F;&#x2F;1110 1110
-                     key&#x3D;0;
-                     break;
-                 case 0xde:		&#x2F;&#x2F;1101 1110
-                     key&#x3D;1;
-                     break;
-                 case 0xbe:		&#x2F;&#x2F;1011 1110
-                     key&#x3D;2;
-                     break;
-                 case 0x7e:		&#x2F;&#x2F;0111 1110
-                     key&#x3D;3;
-                     break;                
-             &#125;
-             while(temp!&#x3D;0xf0)		&#x2F;&#x2F;等待按键释放
-             &#123;
-                 temp&#x3D;P3;			&#x2F;&#x2F;不断读取
-                 temp&#x3D;temp&amp;0xf0;	&#x2F;&#x2F;不断相&amp;，只要结果不为0xf0，就说明按键没有被释放
-             &#125;
-             display(key);			&#x2F;&#x2F;显示
-         &#125;
+<span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span>uchar num<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    P0<span class="token operator">=</span>table<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>			<span class="token comment">//显示函数只送段选数据</span>
+    dula<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    dula<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">matrixkeyscan</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    uchar temp<span class="token punctuation">,</span>key<span class="token punctuation">;</span>
+    P3<span class="token operator">=</span><span class="token number">0xfe</span><span class="token punctuation">;</span>				<span class="token comment">//1111 1110 第一行线置低电平，其余为高电平</span>
+    temp<span class="token operator">=</span>P3<span class="token punctuation">;</span>				<span class="token comment">//P3状态赋给临时变量，用于计算</span>
+    temp<span class="token operator">=</span>temp<span class="token operator">&amp;</span><span class="token number">0xf0</span><span class="token punctuation">;</span>			<span class="token comment">//1111 0000 若temp高四位有0，则结果不为0xf0;	若无，则一直为0xf0</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>temp<span class="token operator">!=</span><span class="token number">0xf0</span><span class="token punctuation">)</span>			<span class="token comment">//说明有键按下</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token function">delayms</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		<span class="token comment">//消抖</span>
+        	temp<span class="token operator">=</span>P3<span class="token punctuation">;</span>		<span class="token comment">//重读</span>
+        	temp<span class="token operator">=</span>temp<span class="token operator">&amp;</span><span class="token number">0xf0</span><span class="token punctuation">;</span>	<span class="token comment">//重&amp;</span>
+         <span class="token keyword">if</span><span class="token punctuation">(</span>temp<span class="token operator">!=</span><span class="token number">0xf0</span><span class="token punctuation">)</span>			<span class="token comment">//说明确实有键按下</span>
+         <span class="token punctuation">&#123;</span>
+             temp<span class="token operator">=</span>P3<span class="token punctuation">;</span>		<span class="token comment">//再读一下P3状态（行列交叉）</span>
+             <span class="token keyword">switch</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span>
+             <span class="token punctuation">&#123;</span>
+                 <span class="token keyword">case</span> <span class="token number">0xee</span><span class="token operator">:</span>		<span class="token comment">//1110 1110</span>
+                     key<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+                     <span class="token keyword">break</span><span class="token punctuation">;</span>
+                 <span class="token keyword">case</span> <span class="token number">0xde</span><span class="token operator">:</span>		<span class="token comment">//1101 1110</span>
+                     key<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+                     <span class="token keyword">break</span><span class="token punctuation">;</span>
+                 <span class="token keyword">case</span> <span class="token number">0xbe</span><span class="token operator">:</span>		<span class="token comment">//1011 1110</span>
+                     key<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>
+                     <span class="token keyword">break</span><span class="token punctuation">;</span>
+                 <span class="token keyword">case</span> <span class="token number">0x7e</span><span class="token operator">:</span>		<span class="token comment">//0111 1110</span>
+                     key<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
+                     <span class="token keyword">break</span><span class="token punctuation">;</span>                
+             <span class="token punctuation">&#125;</span>
+             <span class="token keyword">while</span><span class="token punctuation">(</span>temp<span class="token operator">!=</span><span class="token number">0xf0</span><span class="token punctuation">)</span>		<span class="token comment">//等待按键释放</span>
+             <span class="token punctuation">&#123;</span>
+                 temp<span class="token operator">=</span>P3<span class="token punctuation">;</span>			<span class="token comment">//不断读取</span>
+                 temp<span class="token operator">=</span>temp<span class="token operator">&amp;</span><span class="token number">0xf0</span><span class="token punctuation">;</span>	<span class="token comment">//不断相&amp;，只要结果不为0xf0，就说明按键没有被释放</span>
+             <span class="token punctuation">&#125;</span>
+             <span class="token function">display</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>			<span class="token comment">//显示</span>
+         <span class="token punctuation">&#125;</span>
             
-    &#125;
-     P3&#x3D;0xfd;		&#x2F;&#x2F;1111 1101第二行置低电平，其余为高电平
+    <span class="token punctuation">&#125;</span>
+     P3<span class="token operator">=</span><span class="token number">0xfd</span><span class="token punctuation">;</span>		<span class="token comment">//1111 1101第二行置低电平，其余为高电平</span>
     。。。。。。。。。。。。。
-     P3&#x3D;0xfb;
-    .......................
-     P3&#x3D;0xf7;
-    .......................
+     P3<span class="token operator">=</span><span class="token number">0xfb</span><span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+     P3<span class="token operator">=</span><span class="token number">0xf7</span><span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
         
-&#125;
+<span class="token punctuation">&#125;</span>
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">switch(表达式)
-&#123;
-        case 常量表达式1：
-            语句1；			&#x2F;&#x2F;可多条语句
-            break;
-        case 常量表达式2：
-            语句2；
-            break;
-        case 常量表达式n：
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">switch</span><span class="token punctuation">(</span>表达式<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+        <span class="token keyword">case</span> 常量表达式<span class="token number">1</span>：
+            语句<span class="token number">1</span>；			<span class="token comment">//可多条语句</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> 常量表达式<span class="token number">2</span>：
+            语句<span class="token number">2</span>；
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> 常量表达式n：
             语句n；
-            break;
-    default:				&#x2F;&#x2F;可无
-        语句n+1;
-        break;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">default</span><span class="token operator">:</span>				<span class="token comment">//可无</span>
+        语句n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -912,8 +912,8 @@ void matrixkeyscan()
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/" class="post-category">
-                                    单片机
+                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="post-category">
+                                    硬件
                                 </a>
                             
                             
@@ -941,8 +941,7 @@ void matrixkeyscan()
                 <a href="/2021/04/23/shu-mei-pai-xiao-dian-nao/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="树莓派小电脑">
+                        <img src="https://z3.ax1x.com/2021/04/23/cXqGPU.jpg" class="responsive-img" alt="树莓派小电脑">
                         
                         <span class="card-title">树莓派小电脑</span>
                     </div>
@@ -961,8 +960,8 @@ void matrixkeyscan()
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%B5%E5%AD%90%E5%88%B6%E4%BD%9C/" class="post-category">
-                                    电子制作
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    计算机知识
                                 </a>
                             
                             
@@ -1122,7 +1121,7 @@ void matrixkeyscan()
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">18.5k</span>&nbsp;字
+                class="white-color">17.6k</span>&nbsp;字
             
             
             
@@ -1225,6 +1224,7 @@ void matrixkeyscan()
 </footer>
 
 <div class="progress-bar"></div>
+
 
 
     <!-- 搜索遮罩框 -->

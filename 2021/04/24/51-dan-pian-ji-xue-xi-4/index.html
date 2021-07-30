@@ -444,8 +444,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/" class="post-category">
-                                单片机
+                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="post-category">
+                                硬件
                             </a>
                         
                     </div>
@@ -464,14 +464,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-07-29
+                    2021-07-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.6k
                 </div>
                 
 
@@ -526,94 +526,94 @@
 <p>​    eg:10位A/D转换器用其中9位计数，</p>
 <p>最大相对量化误差：2^9×0.5≈0.1％，模拟部分也为0.1％，总精度0.2％</p>
 <h4 id="转换时间"><a href="#转换时间" class="headerlink" title="转换时间"></a>转换时间</h4><p>​    （转换控制信号来，到输出端得到稳定的数字信号所经过的时间）</p>
-<p>​    时间：并行比较A/D转换器（8位单片集成50ns）&lt;逐次比较型A/D转换型（10<del>50us,也有几百纳秒的）&lt;间接A/D转换器（双积分A/D转换器时间几十毫秒</del>几百毫秒）</p>
+<p>​    时间：并行比较A/D转换器（8位单片集成50ns）&lt;逐次比较型A/D转换型（10-50us,也有几百纳秒的）&lt;间接A/D转换器（双积分A/D转换器时间几十毫秒~几百毫秒）</p>
 <h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><p>​    ①高速：并行；</p>
 <p>​    ②高精度：双积分A/D转换器；</p>
 <p>​    ③逐次比较型A/D转换器兼有，普遍使用；</p>
 <p>​    ④主要技术参数：转换精度、转换速度（决定系统）</p>
 <h2 id="ADC0804工作原理及其实现方法"><a href="#ADC0804工作原理及其实现方法" class="headerlink" title="ADC0804工作原理及其实现方法"></a>ADC0804工作原理及其实现方法</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/RiZqCF"><img src="https://z3.ax1x.com/2021/06/20/RiZqCF.md.jpg" alt="RiZqCF.md.jpg" style="zoom:150%;" /></a></p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;*********************************************************
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*********************************************************
 	11、TX-IC上ADC0804的数模转换使用(逐次比较型)
-*********************************************************&#x2F;
-#include &quot;reg52.h&quot;
-#include &quot;intrins.h&quot;
-#define uchar unsigned char
-#define uint unsigned int 
-sbit dula &#x3D; P2^6;			&#x2F;&#x2F;U1锁存端
-sbit wela &#x3D; P2^7;			&#x2F;&#x2F;U2锁存端
-sbit adwr &#x3D; P3^6;			&#x2F;&#x2F;A&#x2F;D的WR端口
-sbit adrd &#x3D; P3^7;			&#x2F;&#x2F;A&#x2F;D的RD端口
+*********************************************************/</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"reg52.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"intrins.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">uchar</span> <span class="token expression"><span class="token keyword">unsigned</span> <span class="token keyword">char</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">uint</span> <span class="token expression"><span class="token keyword">unsigned</span> <span class="token keyword">int</span> </span></span>
+sbit dula <span class="token operator">=</span> P2<span class="token operator">^</span><span class="token number">6</span><span class="token punctuation">;</span>			<span class="token comment">//U1锁存端</span>
+sbit wela <span class="token operator">=</span> P2<span class="token operator">^</span><span class="token number">7</span><span class="token punctuation">;</span>			<span class="token comment">//U2锁存端</span>
+sbit adwr <span class="token operator">=</span> P3<span class="token operator">^</span><span class="token number">6</span><span class="token punctuation">;</span>			<span class="token comment">//A/D的WR端口</span>
+sbit adrd <span class="token operator">=</span> P3<span class="token operator">^</span><span class="token number">7</span><span class="token punctuation">;</span>			<span class="token comment">//A/D的RD端口</span>
 
-uchar code table[]&#x3D;&#123;
-		0x3f , 0x06 , 0x5b , 0x4f ,
-		0x66 , 0x6d ,0x7d , 0x07 , 
-		0x7f , 0x6f , 0x77 , 0x7c ,
-		0x39 , 0x5e , 0x79 , 0x71 &#125;;
-void delayms(uint xms)
-&#123;
-	uint i,j;
-	for(i&#x3D;xms;i&gt;0;i--)
-		for(j&#x3D;110;j&gt;0;j--);
-&#125;
-void display(uchar bai,uchar shi,uchar ge)
-&#123;
-	dula &#x3D; 1;
-	P0 &#x3D; table[bai];
-	dula &#x3D; 0;
-	P0 &#x3D; 0xff;			&#x2F;&#x2F;送位选数据前关闭所有显示，防止打开位选锁存时，原来的段选数据通过位选锁存器造成混乱
-	wela &#x3D; 1;
-	P0 &#x3D; 0x7e;			&#x2F;&#x2F;送位选数据   0111 1110 (始终保持最高位为0，是下方CS端一直被选中)
-	wela &#x3D; 0;
-	delayms(5);
+uchar code table<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span>
+		<span class="token number">0x3f</span> <span class="token punctuation">,</span> <span class="token number">0x06</span> <span class="token punctuation">,</span> <span class="token number">0x5b</span> <span class="token punctuation">,</span> <span class="token number">0x4f</span> <span class="token punctuation">,</span>
+		<span class="token number">0x66</span> <span class="token punctuation">,</span> <span class="token number">0x6d</span> <span class="token punctuation">,</span><span class="token number">0x7d</span> <span class="token punctuation">,</span> <span class="token number">0x07</span> <span class="token punctuation">,</span> 
+		<span class="token number">0x7f</span> <span class="token punctuation">,</span> <span class="token number">0x6f</span> <span class="token punctuation">,</span> <span class="token number">0x77</span> <span class="token punctuation">,</span> <span class="token number">0x7c</span> <span class="token punctuation">,</span>
+		<span class="token number">0x39</span> <span class="token punctuation">,</span> <span class="token number">0x5e</span> <span class="token punctuation">,</span> <span class="token number">0x79</span> <span class="token punctuation">,</span> <span class="token number">0x71</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">delayms</span><span class="token punctuation">(</span>uint xms<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	uint i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span>xms<span class="token punctuation">;</span>i<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span>
+		<span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span><span class="token number">110</span><span class="token punctuation">;</span>j<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span>uchar bai<span class="token punctuation">,</span>uchar shi<span class="token punctuation">,</span>uchar ge<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	dula <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> table<span class="token punctuation">[</span>bai<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	dula <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> <span class="token number">0xff</span><span class="token punctuation">;</span>			<span class="token comment">//送位选数据前关闭所有显示，防止打开位选锁存时，原来的段选数据通过位选锁存器造成混乱</span>
+	wela <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> <span class="token number">0x7e</span><span class="token punctuation">;</span>			<span class="token comment">//送位选数据   0111 1110 (始终保持最高位为0，是下方CS端一直被选中)</span>
+	wela <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token function">delayms</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	
-	dula &#x3D; 1;
-	P0 &#x3D; table[shi];
-	dula &#x3D; 0;
-	P0 &#x3D; 0xff;
-	wela &#x3D; 1;
-	P0 &#x3D; 0x7d;			&#x2F;&#x2F;0111 1101
-	wela &#x3D; 0;
-	delayms(5);
+	dula <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> table<span class="token punctuation">[</span>shi<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	dula <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> <span class="token number">0xff</span><span class="token punctuation">;</span>
+	wela <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> <span class="token number">0x7d</span><span class="token punctuation">;</span>			<span class="token comment">//0111 1101</span>
+	wela <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token function">delayms</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	
-	dula &#x3D; 1;
-	P0 &#x3D; table[ge];
-	dula &#x3D; 0;
-	P0 &#x3D; 0xff;
-	wela &#x3D; 1;
-	P0 &#x3D; 0x7b;			&#x2F;&#x2F;0111 1011
-	wela &#x3D; 0;
-	delayms(5);
-&#125;
-void main()
-&#123;
-	uchar a,A1,A2,A3,adval;
-	wela &#x3D; 1;
-	P0 &#x3D; 0x7f;		&#x2F;&#x2F;CSAD为0，选通ADCS后不再管ADCS
-	wela &#x3D; 0;
-	while(1)
-	&#123;
-		adwr &#x3D; 1;
-		_nop_();	&#x2F;&#x2F;延迟一个机器周期
-		adwr &#x3D; 0;	&#x2F;&#x2F;AD启动
-		_nop_();
-		adwr &#x3D; 1;
-		for(a&#x3D;10;a&gt;0;a--)	&#x2F;&#x2F;此处A&#x2F;D工作频率较低，所以启动后要多留时间用来转换（将显示部分放在这里）
-		&#123;
-			display(A1,A2,A3);
-		&#125;
+	dula <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> table<span class="token punctuation">[</span>ge<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	dula <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> <span class="token number">0xff</span><span class="token punctuation">;</span>
+	wela <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> <span class="token number">0x7b</span><span class="token punctuation">;</span>			<span class="token comment">//0111 1011</span>
+	wela <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token function">delayms</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	uchar a<span class="token punctuation">,</span>A1<span class="token punctuation">,</span>A2<span class="token punctuation">,</span>A3<span class="token punctuation">,</span>adval<span class="token punctuation">;</span>
+	wela <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	P0 <span class="token operator">=</span> <span class="token number">0x7f</span><span class="token punctuation">;</span>		<span class="token comment">//CSAD为0，选通ADCS后不再管ADCS</span>
+	wela <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		adwr <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+		<span class="token function">_nop_</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">//延迟一个机器周期</span>
+		adwr <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>	<span class="token comment">//AD启动</span>
+		<span class="token function">_nop_</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		adwr <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+		<span class="token keyword">for</span><span class="token punctuation">(</span>a<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span>a<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span>a<span class="token operator">--</span><span class="token punctuation">)</span>	<span class="token comment">//此处A/D工作频率较低，所以启动后要多留时间用来转换（将显示部分放在这里）</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">display</span><span class="token punctuation">(</span>A1<span class="token punctuation">,</span>A2<span class="token punctuation">,</span>A3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
 		
-		P1 &#x3D; 0xff;		&#x2F;&#x2F;读取P1口之前全赋1
-		adrd &#x3D; 1;		&#x2F;&#x2F;选通ADCS
-		_nop_();
-		adrd &#x3D; 0;		&#x2F;&#x2F;A&#x2F;D读使能
-		_nop_();
-		adval &#x3D; P1;		&#x2F;&#x2F;将A&#x2F;D数据赋给P1口
-		adrd &#x3D; 1;
+		P1 <span class="token operator">=</span> <span class="token number">0xff</span><span class="token punctuation">;</span>		<span class="token comment">//读取P1口之前全赋1</span>
+		adrd <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>		<span class="token comment">//选通ADCS</span>
+		<span class="token function">_nop_</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		adrd <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>		<span class="token comment">//A/D读使能</span>
+		<span class="token function">_nop_</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		adval <span class="token operator">=</span> P1<span class="token punctuation">;</span>		<span class="token comment">//将A/D数据赋给P1口</span>
+		adrd <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 		
-		A1 &#x3D; adval&#x2F;100;
-		A2 &#x3D; adval%100&#x2F;10;
-		A3 &#x3D; adval%10;
-	&#125;
+		A1 <span class="token operator">=</span> adval<span class="token operator">/</span><span class="token number">100</span><span class="token punctuation">;</span>
+		A2 <span class="token operator">=</span> adval<span class="token operator">%</span><span class="token number">100</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
+		A3 <span class="token operator">=</span> adval<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="D-A（Digital-to-Analog-数-模转换"><a href="#D-A（Digital-to-Analog-数-模转换" class="headerlink" title="D/A（Digital to Analog)数/模转换"></a>D/A（Digital to Analog)数/模转换</h1>
@@ -858,8 +858,7 @@ void main()
                 <a href="/2021/05/27/2021-5-27/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="2021.5.27">
+                        <img src="https://z3.ax1x.com/2021/05/27/2iJOBt.jpg" class="responsive-img" alt="2021.5.27">
                         
                         <span class="card-title">2021.5.27</span>
                     </div>
@@ -867,7 +866,7 @@ void main()
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            5月小记
+                            2021年5月小记
                         
                     </div>
                     <div class="publish-info">
@@ -878,8 +877,8 @@ void main()
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                    随笔
                                 </a>
                             
                             
@@ -889,8 +888,8 @@ void main()
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%97%A5%E5%BF%97/">
-                        <span class="chip bg-color">日志</span>
+                    <a href="/tags/%E5%B0%8F%E8%AE%B0/">
+                        <span class="chip bg-color">小记</span>
                     </a>
                     
                 </div>
@@ -927,8 +926,8 @@ void main()
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/" class="post-category">
-                                    单片机
+                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="post-category">
+                                    硬件
                                 </a>
                             
                             
@@ -1088,7 +1087,7 @@ void main()
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">18.5k</span>&nbsp;字
+                class="white-color">17.6k</span>&nbsp;字
             
             
             
@@ -1191,6 +1190,7 @@ void main()
 </footer>
 
 <div class="progress-bar"></div>
+
 
 
     <!-- 搜索遮罩框 -->

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="日志">
+    <meta name="keywords" content="日志 小记">
     <meta name="description" content="通信工程 | 学生">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -311,7 +311,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://z3.ax1x.com/2021/05/27/2iJOBt.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -432,8 +432,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%97%A5%E5%BF%97/">
-                                <span class="chip bg-color">日志</span>
+                            <a href="/tags/%E5%B0%8F%E8%AE%B0/">
+                                <span class="chip bg-color">小记</span>
                             </a>
                         
                     </div>
@@ -444,8 +444,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                生活
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                随笔
                             </a>
                         
                     </div>
@@ -464,14 +464,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-07-29
+                    2021-07-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.4k
                 </div>
                 
 
@@ -505,45 +505,45 @@
 <p>另外帮几个同学也做了4份课设，51，32，arduino, esp01s都有的，主要用到了点灯科技的开发文档，挺好用的，也是免费的。</p>
 <p>也可以连接小爱同学。</p>
 <p>51那块串口通信具体看了一下：</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;&#x2F;此程序主要用于uart发送(proteus终端不能显示汉字，但串口助手可以),输入换行符\n换行
-#include&lt;reg52.h&gt;
-&#x2F;&#x2F;stdio.h,string.h用于printf函数原型
-#include&lt;stdio.h&gt;
-#define uint unsigned int  
-void delayms(uint xms);
-void uart_init(void);&#x2F;&#x2F;串行口初始化
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//此程序主要用于uart发送(proteus终端不能显示汉字，但串口助手可以),输入换行符\n换行</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;reg52.h></span></span>
+<span class="token comment">//stdio.h,string.h用于printf函数原型</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">uint</span> <span class="token expression"><span class="token keyword">unsigned</span> <span class="token keyword">int</span>  </span></span>
+<span class="token keyword">void</span> <span class="token function">delayms</span><span class="token punctuation">(</span>uint xms<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">uart_init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//串行口初始化</span>
  
-void main(void)
-&#123;
-	int a&#x3D;99;
-	uart_init();
-	while(1)
-	&#123;
-		printf(&quot;%d\n&quot;,a);
-		delayms(1000);
-	&#125;
-&#125;
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">99</span><span class="token punctuation">;</span>
+	<span class="token function">uart_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">delayms</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
  
-void uart_init(void)
-&#123;
-	TMOD&#x3D;0x20;&#x2F;&#x2F;即0010 0000,定时器&#x2F;计数器1,工作方式2
-	TH1&#x3D;0xfd;&#x2F;&#x2F;设置波特率为9600
-	TL1&#x3D;0xfd;
-	TR1&#x3D;1;&#x2F;&#x2F;启动定时器&#x2F;计数器1
+<span class="token keyword">void</span> <span class="token function">uart_init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	TMOD<span class="token operator">=</span><span class="token number">0x20</span><span class="token punctuation">;</span><span class="token comment">//即0010 0000,定时器/计数器1,工作方式2</span>
+	TH1<span class="token operator">=</span><span class="token number">0xfd</span><span class="token punctuation">;</span><span class="token comment">//设置波特率为9600</span>
+	TL1<span class="token operator">=</span><span class="token number">0xfd</span><span class="token punctuation">;</span>
+	TR1<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token comment">//启动定时器/计数器1</span>
 	
-	SCON&#x3D;0x50; &#x2F;&#x2F;0101 0000.串口工作方式1，允许串行控制
-	PCON&#x3D;0x00;&#x2F;&#x2F;设置SMOD&#x3D;0
-	IE&#x3D;0x90; &#x2F;&#x2F;CPU允许中断，串行允许中断
+	SCON<span class="token operator">=</span><span class="token number">0x50</span><span class="token punctuation">;</span> <span class="token comment">//0101 0000.串口工作方式1，允许串行控制</span>
+	PCON<span class="token operator">=</span><span class="token number">0x00</span><span class="token punctuation">;</span><span class="token comment">//设置SMOD=0</span>
+	IE<span class="token operator">=</span><span class="token number">0x90</span><span class="token punctuation">;</span> <span class="token comment">//CPU允许中断，串行允许中断</span>
 	
-	TI&#x3D;1;&#x2F;&#x2F;直接使用printf必须加入此句才能实现发送
-&#125;
+	TI<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token comment">//直接使用printf必须加入此句才能实现发送</span>
+<span class="token punctuation">&#125;</span>
  
-void delayms(uint xms)
-&#123;
-	uint i,j;
-	for(i&#x3D;xms;i&gt;0;i--)
-		for(j&#x3D;110;j&gt;0;j--);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">void</span> <span class="token function">delayms</span><span class="token punctuation">(</span>uint xms<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	uint i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span>xms<span class="token punctuation">;</span>i<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span>
+		<span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span><span class="token number">110</span><span class="token punctuation">;</span>j<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -635,8 +635,8 @@ void delayms(uint xms)
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%97%A5%E5%BF%97/">
-                                    <span class="chip bg-color">日志</span>
+                                <a href="/tags/%E5%B0%8F%E8%AE%B0/">
+                                    <span class="chip bg-color">小记</span>
                                 </a>
                             
                         </div>
@@ -810,19 +810,18 @@ void delayms(uint xms)
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/06/03/2021-6-3/">
+                <a href="/2021/06/03/xue-xi-xiao-ji-tong-xin-ke-she/">
                     <div class="card-image">
                         
+                        <img src="https://z3.ax1x.com/2021/06/03/288AA0.png" class="responsive-img" alt="学习小记(通信课设)">
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="2021.6.3">
-                        
-                        <span class="card-title">2021.6.3</span>
+                        <span class="card-title">学习小记(通信课设)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            学习小记
+                            智能温室大棚
                         
                     </div>
                     <div class="publish-info">
@@ -833,8 +832,8 @@ void delayms(uint xms)
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/" class="post-category">
+                                    项目实践
                                 </a>
                             
                             
@@ -844,8 +843,8 @@ void delayms(uint xms)
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%97%A5%E5%BF%97/">
-                        <span class="chip bg-color">日志</span>
+                    <a href="/tags/%E8%AF%BE%E8%AE%BE/">
+                        <span class="chip bg-color">课设</span>
                     </a>
                     
                 </div>
@@ -882,8 +881,8 @@ void delayms(uint xms)
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/" class="post-category">
-                                    单片机
+                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="post-category">
+                                    硬件
                                 </a>
                             
                             
@@ -1043,7 +1042,7 @@ void delayms(uint xms)
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">18.5k</span>&nbsp;字
+                class="white-color">17.6k</span>&nbsp;字
             
             
             
@@ -1146,6 +1145,7 @@ void delayms(uint xms)
 </footer>
 
 <div class="progress-bar"></div>
+
 
 
     <!-- 搜索遮罩框 -->
