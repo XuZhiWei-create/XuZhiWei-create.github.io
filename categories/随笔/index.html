@@ -372,20 +372,20 @@
                 </a>
                 
                 
-                <a href="/categories/%E7%A1%AC%E4%BB%B6/" title="硬件: 7">
+                <a href="/categories/%E6%9C%BA%E6%A2%B0/" title="机械: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">硬件
-                        <span class="tag-length">7</span>
+                            style="background-color: #F5EEF8;">机械
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/%E6%9C%BA%E6%A2%B0/" title="机械: 1">
+                <a href="/categories/%E7%A1%AC%E4%BB%B6/" title="硬件: 7">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">机械
-                        <span class="tag-length">1</span>
+                            style="background-color: #D5F5E3;">硬件
+                        <span class="tag-length">7</span>
                     </span>
                 </a>
                 
@@ -637,13 +637,13 @@
             
             
             
-            <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_container_site_pv"  style='display:none'>
                 |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
                     class="white-color"></span>&nbsp;次
             </span>
             
             
-            <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_container_site_uv"  style='display:none'>
                 |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
                     class="white-color"></span>&nbsp;人
             </span>
@@ -733,7 +733,25 @@
 </footer>
 
 <div class="progress-bar"></div>
+<script>
+    $(document).ready(function () {
 
+        var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+        var pvcountOffset = 56;  // 初始化首次数据
+        var uvcountOffset = 1521;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int); // 停止检测
+            }
+        }
+    });
+</script>
 
 
     <!-- 搜索遮罩框 -->
