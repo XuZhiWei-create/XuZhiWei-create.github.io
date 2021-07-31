@@ -30,7 +30,7 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
     <!--一言-->
-    <script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
+    <!--<script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>-->
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Souther's Blog" type="application/atom+xml">
 </head>
 
@@ -362,8 +362,12 @@
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
         <div class="brand">
             <div class="title center-align">
-                
+            <!-- 
                 旧时南风
+                 -->
+                <!--每页显示不同标题-->
+                
+                    旧时南风
                 
             </div>
 
@@ -517,8 +521,7 @@
             <div class="card">
                 <div class="card-content">
                     
-                        
-                            <!-- <div class="dream">
+                        <div class="dream">
     
     <div class="row">
         <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
@@ -526,18 +529,7 @@
         </div>
     </div>
 </div>
- -->
-                            <i class="fa fa-volume-up fa-lg fa-fw text-color"></i> <span id="hitokoto">一言API请求超时。请稍后重试。</span> （来源：一言API）
-                                                    
-                        <!-- <div class="dream">
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            最好是娴静地招呼那熹微的晨光，不必忙乱地奔向前去，也不要对落日忘记感谢那曾为晨光之垂死的光明。
-        </div>
-    </div>
-</div>
-  -->
+
                     
 
                     
@@ -1535,6 +1527,34 @@ $(function () {
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
     
 
+    
+        <script src="//code.tidio.co/jgc1h0mwyyditfiyswpsl9m6cskabdbh.js"></script>
+        <script>
+            $(document).ready(function () {
+                setInterval(change_Tidio, 50);
+                function change_Tidio() {
+                    var tidio=$("#tidio-chat iframe");
+                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"85px":"20px";
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";
+                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                    }
+                }
+            });
+        </script>
     
 
     

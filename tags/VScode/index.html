@@ -30,7 +30,7 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
     <!--一言-->
-    <script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
+    <!--<script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>-->
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Souther's Blog" type="application/atom+xml">
 </head>
 
@@ -315,8 +315,12 @@
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
         <div class="brand">
             <div class="title center-align">
-                
+            <!-- 
                 旧时南风
+                 -->
+                <!--每页显示不同标题-->
+                
+                    标签
                 
             </div>
 
@@ -348,7 +352,8 @@
 </script>
 
 
-    </div>
+    <!--每页显示不同标题-->
+   </div>   
 </div>
 
 <main class="content">
@@ -364,20 +369,20 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/RM/" title="RM: 1">
+                <a href="/tags/%E5%B0%8F%E8%AE%B0/" title="小记: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="RM" style="background-color: #F9EBEA;">RM
-                        <span class="tag-length">1</span>
+                            data-tagname="小记" style="background-color: #F9EBEA;">小记
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E5%B0%8F%E8%AE%B0/" title="小记: 2">
+                <a href="/tags/RM/" title="RM: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="小记" style="background-color: #F5EEF8;">小记
-                        <span class="tag-length">2</span>
+                            data-tagname="RM" style="background-color: #F5EEF8;">RM
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -400,19 +405,19 @@
                 </a>
                 
                 
-                <a href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客: 1">
+                <a href="/tags/JAVA/" title="JAVA: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="博客" style="background-color: #FEF9E7;">博客
+                            data-tagname="JAVA" style="background-color: #FEF9E7;">JAVA
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/JAVA/" title="JAVA: 1">
+                <a href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="JAVA" style="background-color: #F8F9F9;">JAVA
+                            data-tagname="博客" style="background-color: #F8F9F9;">博客
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -817,6 +822,34 @@ $(function () {
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
     
 
+    
+        <script src="//code.tidio.co/jgc1h0mwyyditfiyswpsl9m6cskabdbh.js"></script>
+        <script>
+            $(document).ready(function () {
+                setInterval(change_Tidio, 50);
+                function change_Tidio() {
+                    var tidio=$("#tidio-chat iframe");
+                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"85px":"20px";
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";
+                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                    }
+                }
+            });
+        </script>
     
 
     
