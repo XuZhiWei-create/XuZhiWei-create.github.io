@@ -400,28 +400,19 @@
                 </a>
                 
                 
-                <a href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="博客" style="background-color: #FEF9E7;">博客
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/JAVA/" title="JAVA: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="JAVA" style="background-color: #F8F9F9;">JAVA
+                            data-tagname="JAVA" style="background-color: #FEF9E7;">JAVA
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/Python/" title="Python: 1">
+                <a href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Python" style="background-color: #82E0AA;">Python
+                            data-tagname="博客" style="background-color: #F8F9F9;">博客
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -430,7 +421,25 @@
                 <a href="/tags/VScode/" title="VScode: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="VScode" style="background-color: #D7BDE2;">VScode
+                            data-tagname="VScode" style="background-color: #82E0AA;">VScode
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/Python/" title="Python: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Python" style="background-color: #D7BDE2;">Python
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/esp8266/" title="esp8266: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="esp8266" style="background-color: #A3E4D7;">esp8266
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -439,35 +448,8 @@
                 <a href="/tags/%E6%97%A5%E5%BF%97/" title="日志: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="日志" style="background-color: #A3E4D7;">日志
+                            data-tagname="日志" style="background-color: #85C1E9;">日志
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/esp8266/" title="esp8266: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="esp8266" style="background-color: #85C1E9;">esp8266
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%AF%BE%E8%AE%BE/" title="课设: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="课设" style="background-color: #F8C471;">课设
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" title="树莓派: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="树莓派" style="background-color: #F9E79F;">树莓派
-                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -476,6 +458,24 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
                             data-tagname="墨水屏" style="background-color: #F8C471;">墨水屏
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E8%AF%BE%E8%AE%BE/" title="课设: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="课设" style="background-color: #F9E79F;">课设
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" title="树莓派: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="树莓派" style="background-color: #FFF;">树莓派
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -673,7 +673,7 @@
 <script>
     $(document).ready(function () {
         var int = setInterval(fixCount, 50);
-        var pvcountOffset = 0;
+        var pvcountOffset = -420;
         var uvcountOffset = 0;
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
