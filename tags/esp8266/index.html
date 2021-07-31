@@ -26,9 +26,11 @@
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css">
     <script src="/libs/jquery/jquery.min.js"></script>
 
+    <!--一言-->
+    <script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Souther's Blog" type="application/atom+xml">
 </head>
 
@@ -325,10 +327,10 @@
                 <script>
                     var typed = new Typed("#subtitle", {
                         strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
-                        startDelay: 300,
-                        typeSpeed: 200,
+                        startDelay: 500,
+                        typeSpeed: 70,
                         loop: true,
-                        backSpeed: 50,
+                        backSpeed: 40,
                         showCursor: true
                     });
                 </script>
@@ -407,10 +409,19 @@
                 </a>
                 
                 
+                <a href="/tags/JAVA/" title="JAVA: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="JAVA" style="background-color: #F8F9F9;">JAVA
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/Python/" title="Python: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Python" style="background-color: #F8F9F9;">Python
+                            data-tagname="Python" style="background-color: #82E0AA;">Python
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -419,16 +430,7 @@
                 <a href="/tags/VScode/" title="VScode: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="VScode" style="background-color: #82E0AA;">VScode
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/JAVA/" title="JAVA: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="JAVA" style="background-color: #D7BDE2;">JAVA
+                            data-tagname="VScode" style="background-color: #D7BDE2;">VScode
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -452,19 +454,19 @@
                 </a>
                 
                 
-                <a href="/tags/%E8%AF%BE%E8%AE%BE/" title="课设: 1">
+                <a href="/tags/%E5%A2%A8%E6%B0%B4%E5%B1%8F/" title="墨水屏: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="课设" style="background-color: #F8C471;">课设
+                            data-tagname="墨水屏" style="background-color: #F8C471;">墨水屏
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E5%A2%A8%E6%B0%B4%E5%B1%8F/" title="墨水屏: 1">
+                <a href="/tags/%E8%AF%BE%E8%AE%BE/" title="课设: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="墨水屏" style="background-color: #F9E79F;">墨水屏
+                            data-tagname="课设" style="background-color: #F9E79F;">课设
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -554,26 +556,30 @@
                 <span id="year">2021</span>
             
             <span id="year">2021</span>
-            <a href="/about" target="_blank">旧时南风</a>
+            <!--驱动
+                <a href="/about" target="_blank">旧时南风</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
+            -->
+            <i id="heartbeat" class="fa fas fa-heartbeat"></i>&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
                 class="white-color">17.6k</span>&nbsp;字
             
+            <br>
             
             
             
             
             
-            <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_container_site_pv" style='display:none'>
                 |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
                     class="white-color"></span>&nbsp;次
             </span>
             
             
-            <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_container_site_uv" style='display:none'>
                 |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
                     class="white-color"></span>&nbsp;人
             </span>
@@ -613,11 +619,11 @@
                         diffMinutes * minutes) / seconds);
                     if (startYear == todayYear) {
                         document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                        document.getElementById("sitetime").innerHTML = "小破站已安全运行 " + diffDays + " 天 " + diffHours +
                             " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
                     } else {
                         document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                        document.getElementById("sitetime").innerHTML = "小破站已安全运行 " + diffYears + " 年 " + diffDays +
                             " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
                     }
                 }
@@ -664,7 +670,24 @@
 
 <div class="progress-bar"></div>
 
-
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+        var int = setInterval(fixCount, 50);
+        var pvcountOffset = 80000;
+        var uvcountOffset = 20000;
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
 
     <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
@@ -784,6 +807,9 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
+    <!--动态标签栏-->
+    <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！", clearTimeout(st)) : (document.title = "φ(゜▽゜*)♪咦，又好了！", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) })
+    </script>
 
     <!-- Baidu Analytics -->
 
