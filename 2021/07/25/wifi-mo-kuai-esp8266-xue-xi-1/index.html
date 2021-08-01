@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>WIFI模块(esp8266) | Souther&#39;s Blog</title>
+    <title>WIFI模块(esp8266)学习1 | Souther&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">WIFI模块(esp8266)</h1>
+                    <h1 class="description center-align post-title">WIFI模块(esp8266)学习1</h1>
                 </div>
             </div>
         </div>
@@ -466,14 +466,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-07-31
+                    2021-08-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    637
+                    1.3k
                 </div>
                 
 
@@ -498,9 +498,35 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="固件下载错误进行擦除："><a href="#固件下载错误进行擦除：" class="headerlink" title="固件下载错误进行擦除："></a>固件下载错误进行擦除：</h1><p>资料：<a target="_blank" rel="noopener" href="http://bbs.eeworld.com.cn/thread-497588-1-1.html">【一起玩esp8266】flash的擦除方法——专治疑难杂症</a></p>
-<h1 id="硬件："><a href="#硬件：" class="headerlink" title="硬件："></a>硬件：</h1><p>ESP8266-12F：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/Whud4e"><img src="https://z3.ax1x.com/2021/07/26/Whud4e.md.png" alt="Whud4e.md.png"></a><br>SMD-22封装，GPIO0-GPIO16共17个通用IO口，一个单通道ADC，GPIO6-GPIO11用于连接外部flash，不可用，支持SPI总线通信：GPIO12-GPIO15，支持I2C总线：GPIO4-GPIO5,串口通信：GPIO1-GPIO3。<br>NodeMcu:<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WhKk5D"><img src="https://z3.ax1x.com/2021/07/26/WhKk5D.md.png" alt="WhKk5D.md.png"></a><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WhKla8"><img src="https://z3.ax1x.com/2021/07/26/WhKla8.md.png" alt="WhKla8.md.png"></a><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WRk40A"><img src="https://z3.ax1x.com/2021/07/25/WRk40A.md.png" alt="WRk40A.md.png"></a></p>
-<h1 id="ESP8266开发之旅（博哥教程）："><a href="#ESP8266开发之旅（博哥教程）：" class="headerlink" title="ESP8266开发之旅（博哥教程）："></a>ESP8266开发之旅（博哥教程）：</h1><p><a target="_blank" rel="noopener" href="https://www.arduino.cn/thread-44963-1-1.html">AT指令开发</a></p>
+                <h1 id="一、固件下载错误进行擦除："><a href="#一、固件下载错误进行擦除：" class="headerlink" title="一、固件下载错误进行擦除："></a>一、固件下载错误进行擦除：</h1><p>参考：<a target="_blank" rel="noopener" href="http://bbs.eeworld.com.cn/thread-497588-1-1.html">【一起玩esp8266】flash的擦除方法——专治疑难杂症</a></p>
+<p> <a target="_blank" rel="noopener" href="http://bbs.eeworld.com.cn/forum.php?mod=viewthread&tid=497495&highlight=8266">【ESP8266】安装esptool.py - MicroPython开源版块 - 电子工程世界-论坛 (eeworld.com.cn)</a></p>
+<p>​    8266烧录固件的ESP FLASH DOWNLOAD TOOL，但是这个工具只能向8266写入固件程序，无法对flash进行擦除操作，因而可能会由于某些原因造成烧录的固件运行不正常。使用esptool.py(一个Python程序，需在Python2环境下运行)。</p>
+<p>​    ESPtool.py是一个python开发的针对ESP8266的小工具，可以实现底层的操作，弥补ESP8266官方工具的不足。flash的小工具，可以弥补ESP8266官方工具的不足。它也是一个开源项目，项目在github上进行托管：<a target="_blank" rel="noopener" href="https://github.com/themadinventor/esptool">https://github.com/themadinventor/esptool</a></p>
+<p>​    虽然可以直接从github上下载使用，但是更好的方法是通过网络的方式进行安装，这样不会缺少依赖模块，减少运行中的故障。下面就介绍它的安装方法。</p>
+<ol>
+<li><p>因为esptool.py需要使用python2，所以我们先需要安装python2，并将python加入系统路径（path）。</p>
+</li>
+<li><p>安装python的包管理器pip，通常是使用get-pip.py进行安装。在 <a target="_blank" rel="noopener" href="https://pip.pypa.io/en/latest/installing/">https://pip.pypa.io/en/latest/installing/</a> 可以找到安装的说明和需要下载的文件，按照说明可以很容易安装pip。（如果同时安装了python2和python3，pip可能默认是pip3，需要用pip2来代替下面的pip，在Linux上需要用sudo权限安装）。</p>
+</li>
+<li><p>用pip安装esptool<br>  <code>pip install esptool</code></p>
+</li>
+<li><p>因为esptool需要使用串口，所以还需要安装pyserial。</p>
+</li>
+</ol>
+<p><code>pip install pyserial</code></p>
+<ol start="5">
+<li>安装后，在Linux下，通常就可以直接运行esptool.py，在Windwos下，esptool一般安装在python2\Scripts\目录下，需要输入完整目录才能运行，如：</li>
+</ol>
+<p><code>c:\Python27\Scripts\esptool.py</code></p>
+<p>​    如果不清楚esptool.py的用法，可以输入-h查看帮助，如</p>
+<p> <code>esptool.py -h</code></p>
+<p>​    甚至可以查看某个用法的帮助：</p>
+<p> <code>esptool.py read_flash -h</code></p>
+<ol start="6">
+<li>擦除flash。<br> 首先要确认一下8266所连接的串口号，要以串口号作为指令的参数，如我的设备是在COM4，我运行的指令就是esptool.py –port COM4 erase_flash<br> <img src="http://bbs.eeworld.com.cn/data/attachment/forum/201608/14/002734julv7tylu4hae44a.png.thumb.jpg" alt="img"><br> 此处需要注意，执行擦除的指令前，需要像烧录固件一样，让8266进入升级模式，即按住板上的flash键不放，按下rst键，等待两秒，松开rst键，再松开flash键。否则会出现如下的错误提示：<br> <img src="http://bbs.eeworld.com.cn/forum.php?mod=image&aid=253737&size=300x300&key=d2d7d3e3ef4b0dda&nocache=yes&type=fixnone" alt="img"><br> 这样flash的擦除工作就完成了，重新再烧录固件之后即可解决固件运行异常的问题。</li>
+</ol>
+<h1 id="二、esp8266系列模块基础知识："><a href="#二、esp8266系列模块基础知识：" class="headerlink" title="二、esp8266系列模块基础知识："></a>二、esp8266系列模块基础知识：</h1><p>ESP8266-12F：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/Whud4e"><img src="https://z3.ax1x.com/2021/07/26/Whud4e.md.png" alt="Whud4e.md.png"></a><br>SMD-22封装，GPIO0-GPIO16共17个通用IO口，一个单通道ADC，GPIO6-GPIO11用于连接外部flash，不可用，支持SPI总线通信：GPIO12-GPIO15，支持I2C总线：GPIO4-GPIO5,串口通信：GPIO1-GPIO3。<br>NodeMcu:<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WhKk5D"><img src="https://z3.ax1x.com/2021/07/26/WhKk5D.md.png" alt="WhKk5D.md.png"></a><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WhKla8"><img src="https://z3.ax1x.com/2021/07/26/WhKla8.md.png" alt="WhKla8.md.png"></a><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WRk40A"><img src="https://z3.ax1x.com/2021/07/25/WRk40A.md.png" alt="WRk40A.md.png"></a></p>
+<h1 id="三、ESP8266开发之旅（博哥教程）："><a href="#三、ESP8266开发之旅（博哥教程）：" class="headerlink" title="三、ESP8266开发之旅（博哥教程）："></a>三、ESP8266开发之旅（博哥教程）：</h1><p><a target="_blank" rel="noopener" href="https://www.arduino.cn/thread-44963-1-1.html">AT指令开发</a></p>
 <h2 id="入门："><a href="#入门：" class="headerlink" title="入门："></a>入门：</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/WfbcTg"><img src="https://z3.ax1x.com/2021/07/26/WfbcTg.md.png" alt="WfbcTg.md.png"></a></p>
 <h3 id="一、IDE安装及硬件程序检测："><a href="#一、IDE安装及硬件程序检测：" class="headerlink" title="一、IDE安装及硬件程序检测："></a>一、IDE安装及硬件程序检测：</h3><p>esp01:<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WfbcTg"><img src="https://z3.ax1x.com/2021/07/26/WfbcTg.md.png" alt="WfbcTg.md.png"></a><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WhEJnU"><img src="https://z3.ax1x.com/2021/07/26/WhEJnU.md.png" alt="WhEJnU.md.png"></a></p>
 <p>esp8266-12系列：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WhEdhR"><img src="https://z3.ax1x.com/2021/07/26/WhEdhR.md.png" alt="WhEdhR.md.png"></a></p>
@@ -632,7 +658,7 @@ ICACHE_RAM_ATTR <span class="token keyword">void</span> <span class="token funct
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuzhiwei-create.github.io/2021/07/25/wifi-mo-kuai/">https://xuzhiwei-create.github.io/2021/07/25/wifi-mo-kuai/</a>
+                    <a href="https://xuzhiwei-create.github.io/2021/07/25/wifi-mo-kuai-esp8266-xue-xi-1/">https://xuzhiwei-create.github.io/2021/07/25/wifi-mo-kuai-esp8266-xue-xi-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -793,7 +819,7 @@ ICACHE_RAM_ATTR <span class="token keyword">void</span> <span class="token funct
     <div id="rewardModal" class="modal">
         <div class="modal-content">
             <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">万水千山总是情，给我一块行不行</h4>
+            <h4 class="reward-title">万水千山总是情，赏我一块行不行</h4>
             <div class="reward-content">
                 <div class="reward-tabs">
                     <ul class="tabs row">
@@ -1178,19 +1204,19 @@ ICACHE_RAM_ATTR <span class="token keyword">void</span> <span class="token funct
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2021/07/25/wifi-mo-kuai/">
+                <a href="/2021/07/25/wifi-mo-kuai-esp8266-xue-xi-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="WIFI模块(esp8266)">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="WIFI模块(esp8266)学习1">
                         
-                        <span class="card-title">WIFI模块(esp8266)</span>
+                        <span class="card-title">WIFI模块(esp8266)学习1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            WIFI模块学习与应用
+                            esp8266WIFI模块基础学习
                         
                     </div>
                     <div class="publish-info">
@@ -1358,8 +1384,8 @@ ICACHE_RAM_ATTR <span class="token keyword">void</span> <span class="token funct
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('5'),
+            headingSelector: 'h1, h2, h3, h4'
         });
 
         // modify the toc link href to support Chinese.
@@ -1371,7 +1397,7 @@ ICACHE_RAM_ATTR <span class="token keyword">void</span> <span class="token funct
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1449,10 +1475,10 @@ ICACHE_RAM_ATTR <span class="token keyword">void</span> <span class="token funct
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
             -->
-            <i id="heartbeat" class="fa fas fa-heartbeat"></i>&nbsp;
+            
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.6k</span>&nbsp;字
+                class="white-color">18.2k</span>&nbsp;字
             
             <br>
             
@@ -1472,6 +1498,7 @@ ICACHE_RAM_ATTR <span class="token keyword">void</span> <span class="token funct
             </span>
             
             <br>
+            <i id="heartbeat" class="fa fas fa-heartbeat"></i>&nbsp;
             
             <span id="sitetime">载入运行时间...</span>
             <script>
@@ -1681,6 +1708,16 @@ $(function () {
 
     <!-- Baidu Analytics -->
 
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?3e03acfa80c27eb1bd3f994b4abae723";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
     <!-- Baidu Push -->
 
 <script>
@@ -1705,37 +1742,13 @@ $(function () {
     
 
     
-        <script src="//code.tidio.co/jgc1h0mwyyditfiyswpsl9m6cskabdbh.js"></script>
-        <script>
-            $(document).ready(function () {
-                setInterval(change_Tidio, 50);
-                function change_Tidio() {
-                    var tidio=$("#tidio-chat iframe");
-                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
-                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"85px":"20px";
-                        document.getElementById("tidio-chat-iframe").style.right="-15px";
-                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
-                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
-                    }
-                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
-                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;
-                        document.getElementById("tidio-chat-iframe").style.right="-15px";
-                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
-                    }
-                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
-                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;
-                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
-                    }
-                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
-                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
-                    }
-                }
-            });
-        </script>
-    
 
     
 
+	
+	    <div style="position:fixed;bottom:125px;right:9px;cursor: pointer;">
+	        <a title="兔小巢" target="_blank" rel="noopener" href="https://support.qq.com/products/342225"><img src="/medias/contact.png"></a>
+	    </div>
 	
     
 
