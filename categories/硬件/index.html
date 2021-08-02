@@ -36,6 +36,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://z3.ax1x.com/2021/08/02/f9kqaT.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -67,11 +77,11 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/tags" class="waves-effect waves-light">
+    <a href="/archives" class="waves-effect waves-light">
       
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
       
-      <span>标签</span>
+      <span>归档</span>
     </a>
     
   </li>
@@ -89,11 +99,11 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/archives" class="waves-effect waves-light">
+    <a href="/tags" class="waves-effect waves-light">
       
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
-      <span>归档</span>
+      <span>标签</span>
     </a>
     
   </li>
@@ -170,11 +180,11 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/tags" class="waves-effect waves-light">
+		<a href="/archives" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-tags"></i>
+			    <i class="fa-fw fas fa-archive"></i>
 			
-			标签
+			归档
 		</a>
           
         </li>
@@ -192,11 +202,11 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/archives" class="waves-effect waves-light">
+		<a href="/tags" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-archive"></i>
+			    <i class="fa-fw fas fa-tags"></i>
 			
-			归档
+			标签
 		</a>
           
         </li>
@@ -346,9 +356,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -379,20 +387,20 @@
                 </a>
                 
                 
-                <a href="/categories/%E6%9C%BA%E6%A2%B0/" title="机械: 1">
+                <a href="/categories/%E7%A1%AC%E4%BB%B6/" title="硬件: 7">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">机械
-                        <span class="tag-length">1</span>
+                             chip-active "
+                            style="background-color: #F5EEF8;">硬件
+                        <span class="tag-length">7</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/%E7%A1%AC%E4%BB%B6/" title="硬件: 7">
+                <a href="/categories/%E6%9C%BA%E6%A2%B0/" title="机械: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #D5F5E3;">硬件
-                        <span class="tag-length">7</span>
+                             chip-default "
+                            style="background-color: #D5F5E3;">机械
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -441,7 +449,7 @@
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="WIFI模块(esp8266)学习1">
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="WIFI模块(esp8266)学习1">
                             
                             <span class="card-title">WIFI模块(esp8266)学习1</span>
                         </div>
@@ -577,7 +585,7 @@
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="51单片机学习4">
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="51单片机学习4">
                             
                             <span class="card-title">51单片机学习4</span>
                         </div>
@@ -623,7 +631,7 @@
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="51单片机学习3">
+                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="51单片机学习3">
                             
                             <span class="card-title">51单片机学习3</span>
                         </div>
@@ -669,7 +677,7 @@
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="51单片机学习2">
+                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="51单片机学习2">
                             
                             <span class="card-title">51单片机学习2</span>
                         </div>
@@ -715,7 +723,7 @@
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="51单片机学习1">
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="51单片机学习1">
                             
                             <span class="card-title">51单片机学习1</span>
                         </div>
@@ -1047,10 +1055,6 @@ $(function () {
 
     
 
-	
-	    <div style="position:fixed;bottom:125px;right:9px;cursor: pointer;">
-	        <a title="兔小巢" target="_blank" rel="noopener" href="https://support.qq.com/products/342225"><img src="/medias/contact.png"></a>
-	    </div>
 	
     
 
