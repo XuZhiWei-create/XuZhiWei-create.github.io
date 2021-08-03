@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="3D打印 打印机">
+    <meta name="keywords" content="WIFI esp8266">
     <meta name="description" content="本科 | 通信工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>3D打印机 | Souther&#39;s Blog</title>
+    <title>WIFI模块（esp8266）学习2 | Souther&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://z3.ax1x.com/2021/07/07/Rq9MdI.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">3D打印机</h1>
+                    <h1 class="description center-align post-title">WIFI模块（esp8266）学习2</h1>
                 </div>
             </div>
         </div>
@@ -434,8 +434,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/3D%E6%89%93%E5%8D%B0/">
-                                <span class="chip bg-color">3D打印</span>
+                            <a href="/tags/esp8266/">
+                                <span class="chip bg-color">esp8266</span>
                             </a>
                         
                     </div>
@@ -446,8 +446,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%9C%BA%E6%A2%B0/" class="post-category">
-                                机械
+                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="post-category">
+                                硬件
                             </a>
                         
                     </div>
@@ -459,21 +459,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-07-07
+                    2021-08-03
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-07-31
+                    2021-08-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    184
+                    982
                 </div>
                 
 
@@ -498,12 +498,213 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Rq9MdI"><img src="https://z3.ax1x.com/2021/07/07/Rq9MdI.md.jpg" alt="Rq9MdI.md.jpg"></a></p>
-<p>实验室的极光尔沃Z-603打印机</p>
-<p>第一次用，先拆开来看了一下，修了一些小问题，看了官网介绍和教程，总体来说还可以，就是打印效果没有想象中的好。</p>
-<p>ABS：一般喷头240~250摄氏度，底板90-100摄氏度，风扇可以不开</p>
-<p>PLA：一般喷头200-210摄氏度，底板40-60摄氏度，风扇可以开到最大（但是冷却太快容易翘边）</p>
-<p>目前存在的问题：1、材料与底板的粘度不够，模型容易被喷头蹭跑；2、底板调平有待提升；喷头容易被污染，影响打印，杂丝冷却后会影响喷头运动，造成模型脱离。</p>
+                <h1 id="一、ESP8266与EEPROM"><a href="#一、ESP8266与EEPROM" class="headerlink" title="一、ESP8266与EEPROM"></a>一、ESP8266与EEPROM</h1><h2 id="1、写数据："><a href="#1、写数据：" class="headerlink" title="1、写数据："></a>1、写数据：</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*
+ * 功能描述：该代码向EEPROM写入100字节数据
+ */</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;EEPROM.h></span></span>
+<span class="token keyword">int</span> addr <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//EEPROM数据地址</span>
+<span class="token keyword">void</span> <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token punctuation">&#123;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token number">9600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Start write"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  EEPROM<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//申请size大小的内存大小</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span>addr <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> addr<span class="token operator">&lt;</span><span class="token number">100</span><span class="token punctuation">;</span> addr<span class="token operator">++</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> data <span class="token operator">=</span> addr<span class="token punctuation">;</span>
+    EEPROM<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>addr<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//写数据</span>
+  <span class="token punctuation">&#125;</span>
+  EEPROM<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//写入flash并释放内存空间  保存更改的数据</span>
+
+  Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"End write"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token punctuation">&#123;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="2、读数据："><a href="#2、读数据：" class="headerlink" title="2、读数据："></a>2、读数据：</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*
+ * 功能描述：该代码从EEPROM读取100字节数据
+ */</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;EEPROM.h></span></span>
+
+<span class="token keyword">int</span> addr <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token punctuation">&#123;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token number">9600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Start read"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  EEPROM<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+  <span class="token keyword">for</span><span class="token punctuation">(</span>addr <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> addr<span class="token operator">&lt;</span><span class="token number">100</span><span class="token punctuation">;</span> addr<span class="token operator">++</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> data <span class="token operator">=</span> EEPROM<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>addr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//读数据</span>
+    Serial<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Serial<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">//释放内存</span>
+  EEPROM<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"End read"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token punctuation">&#123;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3、清除数据："><a href="#3、清除数据：" class="headerlink" title="3、清除数据："></a>3、清除数据：</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*
+   EEPROM Clear
+   Sets all of the bytes of the EEPROM to 0.
+   This example code is in the public domain.
+*/</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;EEPROM.h></span></span>
+<span class="token keyword">void</span> <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  EEPROM<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// write a 0 to all 100 bytes of the EEPROM</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    EEPROM<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">//释放内存</span>
+  EEPROM<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="4、结构体操作："><a href="#4、结构体操作：" class="headerlink" title="4、结构体操作："></a>4、结构体操作：</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/*
+ * 功能描述：eeprom结构体操作
+ */</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;EEPROM.h></span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">DEFAULT_STASSID</span> <span class="token string">"danpianjicainiao"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">DEFAULT_STAPSW</span>  <span class="token string">"boge"</span></span>
+
+<span class="token keyword">struct</span> <span class="token class-name">config_type</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token keyword">char</span> stassid<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">char</span> stapsw<span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+config_type config<span class="token punctuation">;</span>
+
+<span class="token comment">/*
+ * 保存参数到EEPROM
+*/</span>
+<span class="token keyword">void</span> <span class="token function">saveConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Save config!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"stassid:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>stassid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"stapsw:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>stapsw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  EEPROM<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token class-name">uint8_t</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">uint8_t</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+    EEPROM<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>p <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  EEPROM<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/*
+ * 从EEPROM加载参数
+*/</span>
+<span class="token keyword">void</span> <span class="token function">loadConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  EEPROM<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token class-name">uint8_t</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">uint8_t</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token operator">*</span><span class="token punctuation">(</span>p <span class="token operator">+</span> i<span class="token punctuation">)</span> <span class="token operator">=</span> EEPROM<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  EEPROM<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"-----Read config-----"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"stassid:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>stassid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"stapsw:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>stapsw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/*
+*初始化
+*/</span>
+<span class="token keyword">void</span> <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  ESP<span class="token punctuation">.</span><span class="token function">wdtEnable</span><span class="token punctuation">(</span><span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">strcpy</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>stassid<span class="token punctuation">,</span> DEFAULT_STASSID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">strcpy</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>stapsw<span class="token punctuation">,</span> DEFAULT_STAPSW<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">saveConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">/*
+*主循环
+*/</span>
+<span class="token keyword">void</span> <span class="token function">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  ESP<span class="token punctuation">.</span><span class="token function">wdtFeed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">loadConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="二、SPI通信："><a href="#二、SPI通信：" class="headerlink" title="二、SPI通信："></a>二、SPI通信：</h1><h2 id="1、概述："><a href="#1、概述：" class="headerlink" title="1、概述："></a>1、概述：</h2><p>​    串行外设接口（Serial Peripheral Interface），高速、全双工、同步通信总线（同一时刻只有一主一从进行通信），四线（MISO:主入从出；MOSI：主出从入；SCK：同步时钟信号；SS或CS：片选使能）。（Quad SPI=2Dual SPI=4标准SPI）。</p>
+<h2 id="2、ESP8266-SPI类库成员函数："><a href="#2、ESP8266-SPI类库成员函数：" class="headerlink" title="2、ESP8266 SPI类库成员函数："></a>2、ESP8266 SPI类库成员函数：</h2><p>SPI.h头文件中，该类库只提供主设备API</p>
+<ol>
+<li><code>SPI.begin()</code>  初始化SPI通信；无参，无返回值；</li>
+<li><code>SPI.end()</code>关闭SPI通信；无参，无返回值；</li>
+<li><code>SPI.setBitOrder(order)</code>设置数据传输顺序；<ul>
+<li>参数（order）：<ul>
+<li>~ LSBFIRST，低位在前；</li>
+<li>~ MSBFIRST，高位在前；</li>
+</ul>
+</li>
+<li>无返回值；</li>
+</ul>
+</li>
+<li><code>SPI.setClockDivider(divider)</code>设置通信时钟（由系统时钟分频）<ul>
+<li>参数（divider）:<ul>
+<li>~ SPI_CLOCK_DIV2, 2分频；</li>
+<li>~ SPI_CLOCK_DIV4, 4分频；</li>
+<li>~ SPI_CLOCK_DIV8, 8分频；</li>
+<li>~ SPI_CLOCK_DIV16, 16分频；</li>
+<li>~ SPI_CLOCK_DIV32, 32分频；</li>
+<li>~ SPI_CLOCK_DIV64, 64分频；</li>
+<li>~ SPI_CLOCK_DIV128, 128分频；</li>
+</ul>
+</li>
+<li>无返回值；</li>
+</ul>
+</li>
+<li><code>SPI.setDataMode(mode)</code>设置数据模式<ul>
+<li>参数（mode）:<ul>
+<li>~ SPI_MODE0;                即：CPOL=0,CPHA=0</li>
+<li>~ SPI_MODE1;                即：CPOL=0,CPHA=1</li>
+<li>~ SPI_MODE2;                即：CPOL=1,CPHA=0</li>
+<li>~ SPI_MODE3;                即：CPOL=1,CPHA=1</li>
+</ul>
+</li>
+<li>无返回值</li>
+<li>补充：四种模式，即SPI相位（CPHA）和极性（CPOL）分别为0或1;<ul>
+<li>CPOL：即SPI空闲时，SCLK的电平（1高，0低）；</li>
+<li>CPHA：即SPI在SCLK的第几个边沿开始采样（0第一个，1第二个）；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>SPI.transfer(val)</code>传输1B的数据。全双工，发1B收1B数据</li>
+<li><code>SPI.transfer16(val)</code>传输2B数据，从机返回2B作为返回值；</li>
+<li><code>SPI.transferBuf(buf,count)</code>传输一个缓冲区数据，参数为发送的缓冲区buf（<code>uint8_t*</code>数据），count位缓冲区大小，无返回值（但从机传输来的数据会替换掉buf缓冲区的数据）</li>
+<li><code>SPI.pins(sck,miso,mosi,ss)</code>切换SPI引脚映射，需在<code>SPI.begin()</code>前调用</li>
+</ol>
+<h2 id="3、SPI寄存器："><a href="#3、SPI寄存器：" class="headerlink" title="3、SPI寄存器："></a>3、SPI寄存器：</h2><p>所有SPI设置都是由Arduino SPI控制寄存器（SPCR）决定。该寄存器就是MCU内存的一个字节，可读写。寄存器提供服务：控制、数据、状态。</p>
+<ol>
+<li><p>控制寄存器（SPCR）：</p>
+<p> 8位，（如单片机的中断允许控制寄存器IE、中断优先级控制寄存器IP、定时器/计数器控制寄存器）</p>
+<p> <a target="_blank" rel="noopener" href="https://imgtu.com/i/fFaWEn"><img src="https://z3.ax1x.com/2021/08/03/fFaWEn.png" alt="fFaWEn.png"></a></p>
+</li>
+<li><p>数据寄存器（SPDR）：</p>
+<p> （如串行口锁存器SBUF，仅hold住一个字节）</p>
+</li>
+<li><p>状态寄存器（SPSR）:</p>
+<p> ​    根据多种微控制器的条件改变其状态</p>
+</li>
+</ol>
 
                 
             </div>
@@ -530,7 +731,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuzhiwei-create.github.io/2021/07/07/3d-da-yin-ji/">https://xuzhiwei-create.github.io/2021/07/07/3d-da-yin-ji/</a>
+                    <a href="https://xuzhiwei-create.github.io/2021/08/03/wifi-mo-kuai-esp8266-xue-xi-2/">https://xuzhiwei-create.github.io/2021/08/03/wifi-mo-kuai-esp8266-xue-xi-2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -568,8 +769,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/3D%E6%89%93%E5%8D%B0/">
-                                    <span class="chip bg-color">3D打印</span>
+                                <a href="/tags/esp8266/">
+                                    <span class="chip bg-color">esp8266</span>
                                 </a>
                             
                         </div>
@@ -1075,31 +1276,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/07/21/vscode/">
+                <a href="/2021/08/03/bian-cheng-zhi-shi-ji-lei/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="VScode">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="编程知识积累">
                         
-                        <span class="card-title">VScode</span>
+                        <span class="card-title">编程知识积累</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            VScode使用
+                            平常遇到的一些编程相关知识
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-21
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-03
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    计算机知识
+                            <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category">
+                                    编程
                                 </a>
                             
                             
@@ -1109,8 +1310,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/VScode/">
-                        <span class="chip bg-color">VScode</span>
+                    <a href="/tags/%E7%A8%8B%E5%BA%8F/">
+                        <span class="chip bg-color">程序</span>
                     </a>
                     
                 </div>
@@ -1124,23 +1325,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/07/07/hang-mo-duo-xuan-yi-apm2-8/">
+                <a href="/2021/07/25/wifi-mo-kuai-esp8266-xue-xi-1/">
                     <div class="card-image">
                         
-                        <img src="https://z3.ax1x.com/2021/07/07/RbbUlq.jpg" class="responsive-img" alt="航模-多旋翼（APM.2.8）">
                         
-                        <span class="card-title">航模-多旋翼（APM.2.8）</span>
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="WIFI模块（esp8266）学习1">
+                        
+                        <span class="card-title">WIFI模块（esp8266）学习1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            组装四轴F450
+                            esp8266WIFI模块基础学习：固件擦除；环境准备；基本外设使用
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-25
                             </span>
                         <span class="publish-author">
                             
@@ -1157,8 +1359,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%88%AA%E6%A8%A1/">
-                        <span class="chip bg-color">航模</span>
+                    <a href="/tags/esp8266/">
+                        <span class="chip bg-color">esp8266</span>
                     </a>
                     
                 </div>

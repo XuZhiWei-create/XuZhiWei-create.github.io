@@ -499,7 +499,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="补充前言、固件下载错误进行擦除："><a href="#补充前言、固件下载错误进行擦除：" class="headerlink" title="补充前言、固件下载错误进行擦除："></a>补充前言、固件下载错误进行擦除：</h1><p>参考：<a target="_blank" rel="noopener" href="http://bbs.eeworld.com.cn/thread-497588-1-1.html">【一起玩esp8266】flash的擦除方法——专治疑难杂症</a></p>
-<p> <a target="_blank" rel="noopener" href="http://bbs.eeworld.com.cn/forum.php?mod=viewthread&tid=497495&highlight=8266">【ESP8266】安装esptool.py - MicroPython开源版块 - 电子工程世界-论坛 (eeworld.com.cn)</a></p>
+<p> <a target="_blank" rel="noopener" href="http://bbs.eeworld.com.cn/forum.php?mod=viewthread&tid=497495&highlight=8266">【ESP8266】安装esptool.py - MicroPython开源版块 - 电子工程世界-论坛</a></p>
 <p>​    8266烧录固件的ESP FLASH DOWNLOAD TOOL，但是这个工具只能向8266写入固件程序，无法对flash进行擦除操作，因而可能会由于某些原因造成烧录的固件运行不正常。使用esptool.py（一个Python程序，需在Python2环境下运行）。</p>
 <p>​    ESPtool.py是一个python开发的针对ESP8266的小工具，可以实现底层的操作，弥补ESP8266官方工具的不足。flash的小工具，可以弥补ESP8266官方工具的不足。它也是一个开源项目，项目在github上进行托管：<a target="_blank" rel="noopener" href="https://github.com/themadinventor/esptool">https://github.com/themadinventor/esptool</a></p>
 <p>​    虽然可以直接从github上下载使用，但是更好的方法是通过网络的方式进行安装，这样不会缺少依赖模块，减少运行中的故障。下面就介绍它的安装方法。</p>
@@ -651,7 +651,7 @@ ICACHE_RAM_ATTR <span class="token keyword">void</span> <span class="token funct
 
 <h2 id="4、模拟输入（ADC）："><a href="#4、模拟输入（ADC）：" class="headerlink" title="4、模拟输入（ADC）："></a>4、模拟输入（ADC）：</h2><p>esp8266只用一个10位ADC通道（和芯片供电电压复用：即可设置为测量系统电压或者外部电压）</p>
 <h3 id="①、测量外部电压："><a href="#①、测量外部电压：" class="headerlink" title="①、测量外部电压："></a>①、测量外部电压：</h3><ul>
-<li>方法：analogRead(A0);</li>
+<li>方法：<code>analogRead(A0);</code></li>
 <li>0-1.0V</li>
 <li>测量精度：10位ADC：0~$2^{10}$​​​</li>
 <li>注意：开发板上做了电阻分压器，使其能够测量0 ~ 3.3V（220K与100K电阻分压）</li>
@@ -673,7 +673,9 @@ ICACHE_RAM_ATTR <span class="token keyword">void</span> <span class="token funct
 <h3 id="②、测量系统外部电压："><a href="#②、测量系统外部电压：" class="headerlink" title="②、测量系统外部电压："></a>②、测量系统外部电压：</h3><ul>
 <li><p>方法： ESP.getVcc()      </p>
 </li>
-<li><p>单位： mvADC引脚要悬空。读取前要更改ADC模式（在#include行后面）<code>ADC_TOUT</code> (对外部电压），<code>ADC_VCC</code>（对系统电压），默认读取外部</p>
+<li><p>单位： mv</p>
+</li>
+<li><p>ADC引脚要悬空。读取前要更改ADC模式（在#include行后面）<code>ADC_TOUT</code> (对外部电压），<code>ADC_VCC</code>（对系统电压），默认读取外部</p>
   <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/**
  * 功能描述：ESP8266 ADC 读取系统电压
  * 在串口调试器查看效果
@@ -1415,30 +1417,29 @@ ICACHE_RAM_ATTR <span class="token keyword">void</span> <span class="token funct
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/07/25/wifi-mo-kuai-esp8266-xue-xi-1/">
+                <a href="/2021/08/03/wifi-mo-kuai-esp8266-xue-xi-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="WIFI模块（esp8266）学习1">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="WIFI模块（esp8266）学习2">
                         
-                        <span class="card-title">WIFI模块（esp8266）学习1</span>
+                        <span class="card-title">WIFI模块（esp8266）学习2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            esp8266WIFI模块基础学习：固件擦除；环境准备；基本外设使用
+                            esp8266的EEPROM、SPI
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-25
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-03
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1451,7 +1452,6 @@ ICACHE_RAM_ATTR <span class="token keyword">void</span> <span class="token funct
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1701,7 +1701,7 @@ ICACHE_RAM_ATTR <span class="token keyword">void</span> <span class="token funct
             
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">20.1k</span>&nbsp;字
+                class="white-color">21.5k</span>&nbsp;字
             
             <br>
             

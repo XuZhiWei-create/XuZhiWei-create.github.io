@@ -6,7 +6,7 @@
   <link href="https://xuzhiwei-create.github.io/atom.xml" rel="self"/>
   
   <link href="https://xuzhiwei-create.github.io/"/>
-  <updated>2021-08-03T06:11:27.673Z</updated>
+  <updated>2021-08-03T14:13:51.802Z</updated>
   <id>https://xuzhiwei-create.github.io/</id>
   
   <author>
@@ -17,11 +17,62 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>编程知识积累</title>
+    <link href="https://xuzhiwei-create.github.io/2021/08/03/bian-cheng-zhi-shi-ji-lei/"/>
+    <id>https://xuzhiwei-create.github.io/2021/08/03/bian-cheng-zhi-shi-ji-lei/</id>
+    <published>2021-08-03T13:16:46.000Z</published>
+    <updated>2021-08-03T14:13:51.802Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;size = (size+3) &amp;amp; (~3)&lt;/code&gt; </summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://xuzhiwei-create.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="程序" scheme="https://xuzhiwei-create.github.io/tags/%E7%A8%8B%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WIFI模块（esp8266）学习2</title>
+    <link href="https://xuzhiwei-create.github.io/2021/08/03/wifi-mo-kuai-esp8266-xue-xi-2/"/>
+    <id>https://xuzhiwei-create.github.io/2021/08/03/wifi-mo-kuai-esp8266-xue-xi-2/</id>
+    <published>2021-08-03T12:55:24.000Z</published>
+    <updated>2021-08-03T15:15:44.882Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、ESP8266与EEPROM&quot;&gt;&lt;a href=&quot;#一、ESP8266与EEPROM&quot; class=&quot;headerlink&quot; title=&quot;一、ESP8266与EEPROM&quot;&gt;&lt;/a&gt;一、ESP8266与EEPROM&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="硬件" scheme="https://xuzhiwei-create.github.io/categories/%E7%A1%AC%E4%BB%B6/"/>
+    
+    
+    <category term="esp8266" scheme="https://xuzhiwei-create.github.io/tags/esp8266/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WIFI模块（esp8266）学习1</title>
     <link href="https://xuzhiwei-create.github.io/2021/07/25/wifi-mo-kuai-esp8266-xue-xi-1/"/>
     <id>https://xuzhiwei-create.github.io/2021/07/25/wifi-mo-kuai-esp8266-xue-xi-1/</id>
     <published>2021-07-25T14:36:48.000Z</published>
-    <updated>2021-08-03T06:11:27.673Z</updated>
+    <updated>2021-08-03T06:38:05.508Z</updated>
     
     
       
@@ -455,58 +506,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;2021&quot;&gt;&lt;a href=&quot;#2021&quot; class=&quot;headerlink&quot; title=&quot;2021&quot;&gt;&lt;/a&gt;2021&lt;/h1&gt;&lt;h2 id=&quot;7月：&quot;&gt;&lt;a href=&quot;#7月：&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="日志" scheme="https://xuzhiwei-create.github.io/categories/%E6%97%A5%E5%BF%97/"/>
-    
-    
-    <category term="日志" scheme="https://xuzhiwei-create.github.io/tags/%E6%97%A5%E5%BF%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2021RM落幕</title>
-    <link href="https://xuzhiwei-create.github.io/2021/03/28/2021-rm-luo-mu/"/>
-    <id>https://xuzhiwei-create.github.io/2021/03/28/2021-rm-luo-mu/</id>
-    <published>2021-03-28T14:35:11.000Z</published>
-    <updated>2021-07-31T07:20:07.484Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;2021RM高校联盟赛落幕&quot;&gt;&lt;a href=&quot;#2021RM高校联盟赛落幕&quot; class=&quot;headerlink&quot; title=&quot;2021RM高校联盟赛落幕&quot;&gt;&lt;/a&gt;2021RM高校联盟赛落幕&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="随笔" scheme="https://xuzhiwei-create.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-    <category term="RM" scheme="https://xuzhiwei-create.github.io/tags/RM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>站点日志</title>
-    <link href="https://xuzhiwei-create.github.io/2021/03/25/zhan-dian-ri-zhi/"/>
-    <id>https://xuzhiwei-create.github.io/2021/03/25/zhan-dian-ri-zhi/</id>
-    <published>2021-03-25T12:55:44.000Z</published>
-    <updated>2021-07-31T07:24:42.715Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;2021.4.11:新增并完善看板娘功能（看板娘首次登录为默认，可自行切换不同人物，下次打开即为最后一次切换的人物）。&lt;/p&gt;
-&lt;p&gt;2021.5.25：新增鼠标点击特效（额外配置时导致文件未备份，中间出了一点小差错，导致网页打开速度慢了一些）。&lt;/p&gt;
-&lt;p&gt;2021.5</summary>
         
       
     
