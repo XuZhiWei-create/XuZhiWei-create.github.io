@@ -6,7 +6,7 @@
   <link href="https://xuzhiwei-create.github.io/atom.xml" rel="self"/>
   
   <link href="https://xuzhiwei-create.github.io/"/>
-  <updated>2021-08-03T14:13:51.802Z</updated>
+  <updated>2021-08-07T16:11:22.675Z</updated>
   <id>https://xuzhiwei-create.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WIFI模块（ESP8266）学习3</title>
+    <link href="https://xuzhiwei-create.github.io/2021/08/04/wifi-mo-kuai-esp8266-xue-xi-3/"/>
+    <id>https://xuzhiwei-create.github.io/2021/08/04/wifi-mo-kuai-esp8266-xue-xi-3/</id>
+    <published>2021-08-04T08:57:52.000Z</published>
+    <updated>2021-08-07T16:11:22.675Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、Arduino-Core-For-ESP8266&quot;&gt;&lt;a href=&quot;#一、Arduino-Core-For-ESP8266&quot; class=&quot;headerlink&quot; title=&quot;一、Arduino Core For</summary>
+        
+      
+    
+    
+    
+    <category term="硬件" scheme="https://xuzhiwei-create.github.io/categories/%E7%A1%AC%E4%BB%B6/"/>
+    
+    
+    <category term="ESP8266" scheme="https://xuzhiwei-create.github.io/tags/ESP8266/"/>
+    
+  </entry>
   
   <entry>
     <title>编程知识积累</title>
@@ -43,11 +68,11 @@
   </entry>
   
   <entry>
-    <title>WIFI模块（esp8266）学习2</title>
+    <title>WIFI模块（ESP8266）学习2</title>
     <link href="https://xuzhiwei-create.github.io/2021/08/03/wifi-mo-kuai-esp8266-xue-xi-2/"/>
     <id>https://xuzhiwei-create.github.io/2021/08/03/wifi-mo-kuai-esp8266-xue-xi-2/</id>
     <published>2021-08-03T12:55:24.000Z</published>
-    <updated>2021-08-03T15:15:44.882Z</updated>
+    <updated>2021-08-04T09:01:37.736Z</updated>
     
     
       
@@ -63,16 +88,16 @@
     <category term="硬件" scheme="https://xuzhiwei-create.github.io/categories/%E7%A1%AC%E4%BB%B6/"/>
     
     
-    <category term="esp8266" scheme="https://xuzhiwei-create.github.io/tags/esp8266/"/>
+    <category term="ESP8266" scheme="https://xuzhiwei-create.github.io/tags/ESP8266/"/>
     
   </entry>
   
   <entry>
-    <title>WIFI模块（esp8266）学习1</title>
+    <title>WIFI模块（ESP8266）学习1</title>
     <link href="https://xuzhiwei-create.github.io/2021/07/25/wifi-mo-kuai-esp8266-xue-xi-1/"/>
     <id>https://xuzhiwei-create.github.io/2021/07/25/wifi-mo-kuai-esp8266-xue-xi-1/</id>
     <published>2021-07-25T14:36:48.000Z</published>
-    <updated>2021-08-03T06:38:05.508Z</updated>
+    <updated>2021-08-04T09:01:40.026Z</updated>
     
     
       
@@ -88,7 +113,7 @@
     <category term="硬件" scheme="https://xuzhiwei-create.github.io/categories/%E7%A1%AC%E4%BB%B6/"/>
     
     
-    <category term="esp8266" scheme="https://xuzhiwei-create.github.io/tags/esp8266/"/>
+    <category term="ESP8266" scheme="https://xuzhiwei-create.github.io/tags/ESP8266/"/>
     
   </entry>
   
@@ -490,31 +515,6 @@
     
     
     <category term="JAVA" scheme="https://xuzhiwei-create.github.io/tags/JAVA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>个人日志</title>
-    <link href="https://xuzhiwei-create.github.io/2021/03/29/ge-ren-ri-zhi/"/>
-    <id>https://xuzhiwei-create.github.io/2021/03/29/ge-ren-ri-zhi/</id>
-    <published>2021-03-28T19:55:44.000Z</published>
-    <updated>2021-07-31T07:23:31.185Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;2021&quot;&gt;&lt;a href=&quot;#2021&quot; class=&quot;headerlink&quot; title=&quot;2021&quot;&gt;&lt;/a&gt;2021&lt;/h1&gt;&lt;h2 id=&quot;7月：&quot;&gt;&lt;a href=&quot;#7月：&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="日志" scheme="https://xuzhiwei-create.github.io/categories/%E6%97%A5%E5%BF%97/"/>
-    
-    
-    <category term="日志" scheme="https://xuzhiwei-create.github.io/tags/%E6%97%A5%E5%BF%97/"/>
     
   </entry>
   
