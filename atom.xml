@@ -6,7 +6,7 @@
   <link href="https://xuzhiwei-create.github.io/atom.xml" rel="self"/>
   
   <link href="https://xuzhiwei-create.github.io/"/>
-  <updated>2021-08-07T16:11:22.675Z</updated>
+  <updated>2021-08-12T12:53:58.904Z</updated>
   <id>https://xuzhiwei-create.github.io/</id>
   
   <author>
@@ -17,11 +17,86 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>STM32学习1</title>
+    <link href="https://xuzhiwei-create.github.io/2021/08/12/stm32-xue-xi-1/"/>
+    <id>https://xuzhiwei-create.github.io/2021/08/12/stm32-xue-xi-1/</id>
+    <published>2021-08-12T12:43:46.000Z</published>
+    <updated>2021-08-12T12:53:58.904Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;芯片选型：&quot;&gt;&lt;a href=&quot;#芯片选型：&quot; class=&quot;headerlink&quot; title=&quot;芯片选型：&quot;&gt;&lt;/a&gt;芯片选型：&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://imgtu.com/i/f0LXkj&quot;&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="硬件" scheme="https://xuzhiwei-create.github.io/categories/%E7%A1%AC%E4%BB%B6/"/>
+    
+    
+    <category term="STM32" scheme="https://xuzhiwei-create.github.io/tags/STM32/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Webstorm使用</title>
+    <link href="https://xuzhiwei-create.github.io/2021/08/10/webstorm-shi-yong/"/>
+    <id>https://xuzhiwei-create.github.io/2021/08/10/webstorm-shi-yong/</id>
+    <published>2021-08-10T06:27:53.000Z</published>
+    <updated>2021-08-10T06:34:20.408Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、安装破解（2020-3）&quot;&gt;&lt;a href=&quot;#一、安装破解（2020-3）&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="计算机知识" scheme="https://xuzhiwei-create.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="Webstorm 前端" scheme="https://xuzhiwei-create.github.io/tags/Webstorm-%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WIFI模块（ESP8266）学习4</title>
+    <link href="https://xuzhiwei-create.github.io/2021/08/09/wifi-mo-kuai-esp8266-xue-xi-4/"/>
+    <id>https://xuzhiwei-create.github.io/2021/08/09/wifi-mo-kuai-esp8266-xue-xi-4/</id>
+    <published>2021-08-09T03:31:34.000Z</published>
+    <updated>2021-08-11T04:59:40.956Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、HttpClient—–ESP8266HTTPClient库的使用&quot;&gt;&lt;a href=&quot;#一、HttpClient—–ESP8266HTTPClient库的使用&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="硬件" scheme="https://xuzhiwei-create.github.io/categories/%E7%A1%AC%E4%BB%B6/"/>
+    
+    
+    <category term="ESP8266" scheme="https://xuzhiwei-create.github.io/tags/ESP8266/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WIFI模块（ESP8266）学习3</title>
     <link href="https://xuzhiwei-create.github.io/2021/08/04/wifi-mo-kuai-esp8266-xue-xi-3/"/>
     <id>https://xuzhiwei-create.github.io/2021/08/04/wifi-mo-kuai-esp8266-xue-xi-3/</id>
     <published>2021-08-04T08:57:52.000Z</published>
-    <updated>2021-08-07T16:11:22.675Z</updated>
+    <updated>2021-08-09T03:30:12.325Z</updated>
     
     
       
@@ -439,82 +514,6 @@
     
     
     <category term="51单片机" scheme="https://xuzhiwei-create.github.io/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>51单片机学习1</title>
-    <link href="https://xuzhiwei-create.github.io/2021/04/05/51-dan-pian-ji-xue-xi-1/"/>
-    <id>https://xuzhiwei-create.github.io/2021/04/05/51-dan-pian-ji-xue-xi-1/</id>
-    <published>2021-04-05T12:04:43.000Z</published>
-    <updated>2021-07-31T07:19:12.322Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;硬件：（BST-M51&quot;&gt;&lt;a href=&quot;#硬件：（BST-M51&quot; class=&quot;headerlink&quot; title=&quot;硬件：（BST-M51)&quot;&gt;&lt;/a&gt;硬件：（BST-M51)&lt;/h1&gt;&lt;h2 id=&quot;51最小系统&quot;&gt;&lt;a href=&quot;#51最小系统&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="硬件" scheme="https://xuzhiwei-create.github.io/categories/%E7%A1%AC%E4%BB%B6/"/>
-    
-    
-    <category term="51单片机" scheme="https://xuzhiwei-create.github.io/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>终于学会魔方了</title>
-    <link href="https://xuzhiwei-create.github.io/2021/04/04/zhong-yu-xue-hui-mo-fang-liao/"/>
-    <id>https://xuzhiwei-create.github.io/2021/04/04/zhong-yu-xue-hui-mo-fang-liao/</id>
-    <published>2021-04-04T08:14:03.000Z</published>
-    <updated>2021-07-31T07:24:54.933Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;起始&quot;&gt;&lt;a href=&quot;#起始&quot; class=&quot;headerlink&quot; title=&quot;起始&quot;&gt;&lt;/a&gt;起始&lt;/h1&gt;&lt;p&gt;​   </summary>
-        
-      
-    
-    
-    
-    <category term="随笔" scheme="https://xuzhiwei-create.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-    <category term="魔方" scheme="https://xuzhiwei-create.github.io/tags/%E9%AD%94%E6%96%B9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JAVA环境搭建</title>
-    <link href="https://xuzhiwei-create.github.io/2021/04/01/java-huan-jing-da-jian/"/>
-    <id>https://xuzhiwei-create.github.io/2021/04/01/java-huan-jing-da-jian/</id>
-    <published>2021-04-01T12:57:21.000Z</published>
-    <updated>2021-07-31T07:22:43.730Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;JDK安装&quot;&gt;&lt;a href=&quot;#JDK安装&quot; class=&quot;headerlink&quot; title=&quot;JDK安装&quot;&gt;&lt;/a&gt;JDK安装&lt;/h1&gt;&lt;p&gt;​    Java程序需运行在JVM上，所以开发java程序必须先安装JDK&lt;/p&gt;
-&lt;p&gt;​    在&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="计算机知识" scheme="https://xuzhiwei-create.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"/>
-    
-    
-    <category term="JAVA" scheme="https://xuzhiwei-create.github.io/tags/JAVA/"/>
     
   </entry>
   
