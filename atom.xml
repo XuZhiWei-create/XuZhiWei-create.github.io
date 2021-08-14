@@ -6,7 +6,7 @@
   <link href="https://xuzhiwei-create.github.io/atom.xml" rel="self"/>
   
   <link href="https://xuzhiwei-create.github.io/"/>
-  <updated>2021-08-12T12:53:58.904Z</updated>
+  <updated>2021-08-14T13:32:01.791Z</updated>
   <id>https://xuzhiwei-create.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>再做萝莉控</title>
+    <link href="https://xuzhiwei-create.github.io/2021/08/14/zai-zuo-luo-li-kong/"/>
+    <id>https://xuzhiwei-create.github.io/2021/08/14/zai-zuo-luo-li-kong/</id>
+    <published>2021-08-14T13:06:48.000Z</published>
+    <updated>2021-08-14T13:32:01.791Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这是之前的（纯手工切割打磨的亚克力，也还不错）&lt;a href=&quot;https://imgtu.com/i/f66RN6&quot;&gt;&lt;img src=&quot;https://z3.ax1x.com/2021/08/14/f66RN6.jpg&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="航模" scheme="https://xuzhiwei-create.github.io/categories/%E8%88%AA%E6%A8%A1/"/>
+    
+    
+    <category term="航模" scheme="https://xuzhiwei-create.github.io/tags/%E8%88%AA%E6%A8%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>STM32学习1</title>
@@ -488,32 +513,6 @@
     
     
     <category term="小记" scheme="https://xuzhiwei-create.github.io/tags/%E5%B0%8F%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>51单片机学习2</title>
-    <link href="https://xuzhiwei-create.github.io/2021/04/07/51-dan-pian-ji-xue-xi-2/"/>
-    <id>https://xuzhiwei-create.github.io/2021/04/07/51-dan-pian-ji-xue-xi-2/</id>
-    <published>2021-04-07T11:20:15.000Z</published>
-    <updated>2021-07-31T07:19:26.443Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;中断概念&quot;&gt;&lt;a href=&quot;#中断概念&quot; class=&quot;headerlink&quot; title=&quot;中断概念&quot;&gt;&lt;/a&gt;中断概念&lt;/h1&gt;&lt;p&gt;​    &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://imgtu.com/i/cGZAG6&quot;&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="硬件" scheme="https://xuzhiwei-create.github.io/categories/%E7%A1%AC%E4%BB%B6/"/>
-    
-    
-    <category term="51单片机" scheme="https://xuzhiwei-create.github.io/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
   </entry>
   
