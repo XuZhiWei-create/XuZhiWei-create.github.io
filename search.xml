@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>硬件知识积累</title>
+      <link href="/2021/08/25/ying-jian-zhi-shi-ji-lei/"/>
+      <url>/2021/08/25/ying-jian-zhi-shi-ji-lei/</url>
+      
+        <content type="html"><![CDATA[<h1 id="LTC4054"><a href="#LTC4054" class="headerlink" title="LTC4054"></a>LTC4054</h1><p>性质：完整的单节锂电池恒流恒压线性充电IC</p><p>封装：SOT-23-5L</p><p>特点：充电电流可编程，最大800ma，有充电指示灯</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 硬件 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 硬件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>再做萝莉控</title>
       <link href="/2021/08/14/zai-zuo-luo-li-kong/"/>
       <url>/2021/08/14/zai-zuo-luo-li-kong/</url>
       
-        <content type="html"><![CDATA[<p>这是之前的（纯手工切割打磨的亚克力，也还不错）<a href="https://imgtu.com/i/f66RN6"><img src="https://z3.ax1x.com/2021/08/14/f66RN6.jpg" alt="f66RN6.jpg"></a></p><p>下面三张图是今天画的（受板子限制，挤的很紧凑，再说也没必要再花40多块钱打几张玩的板子，另外JLC真良心，点赞！）</p><p>立创EDA画的，接下来准备用AD画（也不知道我怎么想的。。。），已经下载了AD19</p><p><img src="C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20210814211826171.png" alt="image-20210814211826171"></p><p><a href="https://imgtu.com/i/f66HHI"><img src="https://z3.ax1x.com/2021/08/14/f66HHI.png" alt="f66HHI.png"></a></p><p><a href="https://imgtu.com/i/f6cur9"><img src="https://z3.ax1x.com/2021/08/14/f6cur9.png" alt="f6cur9.png"></a></p><p>通过按照产品设计的追求去做一件东西，虽然感觉很好，但确实有点浪费时间，因为现在自己的能力差的太多了，不能追求于表面，要专心的研究本质的技术，这几天看到别人的装备有多么厉害，自己也想买的，但那么多，是买不完的，再说也没钱…（就像看书的和收集一书橱的书而不看一样，当前不应该想那么多的，这几天思想有点问题。。。）</p><p><a href="http://www.moz8.com/forum.php?mod=viewthread&tid=142710">PS:原版萝莉教程：（感谢开源大神）</a></p>]]></content>
+        <content type="html"><![CDATA[<p>这是之前的（纯手工切割打磨的亚克力，也还不错）<a href="https://imgtu.com/i/f66RN6"><img src="https://z3.ax1x.com/2021/08/14/f66RN6.jpg" alt="f66RN6.jpg"></a></p><p>下面三张图是今天画的（受板子限制，挤的很紧凑，再说也没必要再花40多块钱打几张玩的板子，另外JLC真良心，点赞！）</p><p>立创EDA画的，接下来准备用AD画（也不知道我怎么想的。。。），已经下载了AD19</p><p><img src="C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20210814211826171.png" alt="image-20210814211826171"></p><p><a href="https://imgtu.com/i/f66HHI"><img src="https://z3.ax1x.com/2021/08/14/f66HHI.png" alt="f66HHI.png"></a></p><p><a href="https://imgtu.com/i/f6cur9"><img src="https://z3.ax1x.com/2021/08/14/f6cur9.png" alt="f6cur9.png"></a></p><p>通过按照产品设计的追求去做一件东西，虽然感觉很好，但确实有点浪费时间，因为现在自己的能力差的太多了，不能追求于表面，要专心的研究本质的技术。</p><p><a href="http://www.moz8.com/forum.php?mod=viewthread&tid=142710">PS:原版萝莉教程：（感谢开源大神）</a></p><p>成品：</p><p><a href="https://imgtu.com/i/heulX6"><img src="https://z3.ax1x.com/2021/08/25/heulX6.jpg" alt="heulX6.jpg"></a></p><p><a href="https://imgtu.com/i/heKKUg"><img src="https://z3.ax1x.com/2021/08/25/heKKUg.jpg" alt="heKKUg.jpg"></a></p>]]></content>
       
       
       <categories>
@@ -658,7 +683,7 @@
       <link href="/2021/03/25/zhan-dian-ri-zhi/"/>
       <url>/2021/03/25/zhan-dian-ri-zhi/</url>
       
-        <content type="html"><![CDATA[<p>2021.8.3：博客整体弄完了，接下来就是优化速度和专注学习写博客了。折腾了几天发现我对博客这东西有了更深入的认识，自己还不太好说，来自黑石博客的一位博友说：“Wordpress,hexo都是很不错的博客系统，我觉得虽然现在短视频非常流行，但是要想把学到的知识和技能形成自己真正的能力，减少碎片化信息对大脑的刺激，就必须在一个相对安静的环境中学习。而博客这样的平台可以很好的记录自己的所思所想，也能够形成系统的知识体系。同时，写博客也是不断加深自己对知识理解的程度，有句话说的好：“如果你在学习一项新知识或新技能的同时考虑如何将其教给他人，你吸收内化知识的速度将比你仅仅作为一个学习者要快得多。快速掌握新知识、新技能的方法之一就是学完以后立刻与他人分享。”从这个意义讲，学习——&gt;分享——&gt;反馈——&gt;再学习——&gt;再分享——&gt;再反馈这样一种学习模式，在博客这里就可以很好的体现，我觉得这也是博客的价值所在。许多有价值的问题和回答都是通过博客进行了详细而清楚的说明，所以获取问题答案最快最有效的办法就是看博客。<br>看了网站主人的博客，感触颇深，结合自己也在自学这方面的知识，发表下对博客的一些看法。相互学习，共同进步！”我觉得就是这个意思，接下来更深入的投入学习吧。</p><p> 2021.7.29：整体翻新博客，采用matery主题。</p><p>2021.4.11:新增并完善看板娘功能（看板娘首次登录为默认，可自行切换不同人物，下次打开即为最后一次切换的人物）。</p><p>2021.5.25：新增鼠标点击特效（额外配置时导致文件未备份，中间出了一点小差错，导致网页打开速度慢了一些）。</p><p>2021.5.27：尝试加快网页访问速度（使用hexo-all-minifier，压缩）。</p><p>2021.5.29：配置Markdown语法公式块与Hexo兼容。<a href="https://www.dazhuanlan.com/2020/06/09/5edf70eb9e803/">https://www.dazhuanlan.com/2020/06/09/5edf70eb9e803/</a></p><p>2021.5.31：根据日期top值设定置顶日志，添加左侧Music博客主题音乐。</p><p>2021.6.3:发布一篇新博客2021.6.3。</p>]]></content>
+        <content type="html"><![CDATA[<p>2021.8.25：替换了所有文章的封面图片，更有识别性。</p><p>2021.8.3：博客整体弄完了，接下来就是优化速度和专注学习写博客了。折腾了几天发现我对博客这东西有了更深入的认识，自己还不太好说，来自黑石博客的一位博友说：“Wordpress,hexo都是很不错的博客系统，我觉得虽然现在短视频非常流行，但是要想把学到的知识和技能形成自己真正的能力，减少碎片化信息对大脑的刺激，就必须在一个相对安静的环境中学习。而博客这样的平台可以很好的记录自己的所思所想，也能够形成系统的知识体系。同时，写博客也是不断加深自己对知识理解的程度，有句话说的好：“如果你在学习一项新知识或新技能的同时考虑如何将其教给他人，你吸收内化知识的速度将比你仅仅作为一个学习者要快得多。快速掌握新知识、新技能的方法之一就是学完以后立刻与他人分享。”从这个意义讲，学习——&gt;分享——&gt;反馈——&gt;再学习——&gt;再分享——&gt;再反馈这样一种学习模式，在博客这里就可以很好的体现，我觉得这也是博客的价值所在。许多有价值的问题和回答都是通过博客进行了详细而清楚的说明，所以获取问题答案最快最有效的办法就是看博客。<br>看了网站主人的博客，感触颇深，结合自己也在自学这方面的知识，发表下对博客的一些看法。相互学习，共同进步！”我觉得就是这个意思，接下来更深入的投入学习吧。</p><p> 2021.7.29：整体翻新博客，采用matery主题。</p><p>2021.4.11:新增并完善看板娘功能（看板娘首次登录为默认，可自行切换不同人物，下次打开即为最后一次切换的人物）。</p><p>2021.5.25：新增鼠标点击特效（额外配置时导致文件未备份，中间出了一点小差错，导致网页打开速度慢了一些）。</p><p>2021.5.27：尝试加快网页访问速度（使用hexo-all-minifier，压缩）。</p><p>2021.5.29：配置Markdown语法公式块与Hexo兼容。<a href="https://www.dazhuanlan.com/2020/06/09/5edf70eb9e803/">https://www.dazhuanlan.com/2020/06/09/5edf70eb9e803/</a></p><p>2021.5.31：根据日期top值设定置顶日志，添加左侧Music博客主题音乐。</p><p>2021.6.3:发布一篇新博客2021.6.3。</p>]]></content>
       
       
       <categories>
