@@ -6,7 +6,7 @@
   <link href="https://xuzhiwei-create.github.io/atom.xml" rel="self"/>
   
   <link href="https://xuzhiwei-create.github.io/"/>
-  <updated>2021-08-25T13:38:55.216Z</updated>
+  <updated>2021-08-27T07:36:17.199Z</updated>
   <id>https://xuzhiwei-create.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WIFI模块（ESP8266）学习5</title>
+    <link href="https://xuzhiwei-create.github.io/2021/08/27/wifi-mo-kuai-esp8266-xue-xi-5/"/>
+    <id>https://xuzhiwei-create.github.io/2021/08/27/wifi-mo-kuai-esp8266-xue-xi-5/</id>
+    <published>2021-08-27T04:57:19.000Z</published>
+    <updated>2021-08-27T07:36:17.199Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、局域网应用—炫酷RGB&quot;&gt;&lt;a href=&quot;#一、局域网应用—炫酷RGB&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="硬件" scheme="https://xuzhiwei-create.github.io/categories/%E7%A1%AC%E4%BB%B6/"/>
+    
+    
+    <category term="ESP8266" scheme="https://xuzhiwei-create.github.io/tags/ESP8266/"/>
+    
+  </entry>
   
   <entry>
     <title>硬件知识积累</title>
@@ -71,14 +96,15 @@
     <link href="https://xuzhiwei-create.github.io/2021/08/12/stm32-xue-xi-1/"/>
     <id>https://xuzhiwei-create.github.io/2021/08/12/stm32-xue-xi-1/</id>
     <published>2021-08-12T12:43:46.000Z</published>
-    <updated>2021-08-25T13:51:50.335Z</updated>
+    <updated>2021-09-25T01:11:24.611Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;芯片选型：&quot;&gt;&lt;a href=&quot;#芯片选型：&quot; class=&quot;headerlink&quot; title=&quot;芯片选型：&quot;&gt;&lt;/a&gt;芯片选型：&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://imgtu.com/i/f0LXkj&quot;&gt;&lt;img</summary>
+    <summary type="html">&lt;p&gt;2021年推出&lt;a href=&quot;https://studio.keil.arm.com/&quot;&gt;Keil Studio Cloud&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;芯片选型：&quot;&gt;&lt;a href=&quot;#芯片选型：&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -121,7 +147,7 @@
     <link href="https://xuzhiwei-create.github.io/2021/08/09/wifi-mo-kuai-esp8266-xue-xi-4/"/>
     <id>https://xuzhiwei-create.github.io/2021/08/09/wifi-mo-kuai-esp8266-xue-xi-4/</id>
     <published>2021-08-09T03:31:34.000Z</published>
-    <updated>2021-08-25T14:38:02.501Z</updated>
+    <updated>2021-08-27T04:55:44.571Z</updated>
     
     
       
@@ -146,7 +172,7 @@
     <link href="https://xuzhiwei-create.github.io/2021/08/04/wifi-mo-kuai-esp8266-xue-xi-3/"/>
     <id>https://xuzhiwei-create.github.io/2021/08/04/wifi-mo-kuai-esp8266-xue-xi-3/</id>
     <published>2021-08-04T08:57:52.000Z</published>
-    <updated>2021-08-25T14:38:30.481Z</updated>
+    <updated>2021-08-26T12:43:28.423Z</updated>
     
     
       
@@ -488,31 +514,6 @@
     
     
     <category term="树莓派" scheme="https://xuzhiwei-create.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Github上搭建Hexo个人博客</title>
-    <link href="https://xuzhiwei-create.github.io/2021/04/11/github-shang-da-jian-hexo-ge-ren-bo-ke/"/>
-    <id>https://xuzhiwei-create.github.io/2021/04/11/github-shang-da-jian-hexo-ge-ren-bo-ke/</id>
-    <published>2021-04-11T13:19:59.000Z</published>
-    <updated>2021-07-31T07:20:52.534Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Hexo简介：&quot;&gt;&lt;a href=&quot;#Hexo简介：&quot; class=&quot;headerlink&quot; title=&quot;Hexo简介：&quot;&gt;&lt;/a&gt;Hexo简介：&lt;/h1&gt;&lt;p&gt;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用</summary>
-        
-      
-    
-    
-    
-    <category term="计算机知识" scheme="https://xuzhiwei-create.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"/>
-    
-    
-    <category term="博客" scheme="https://xuzhiwei-create.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   

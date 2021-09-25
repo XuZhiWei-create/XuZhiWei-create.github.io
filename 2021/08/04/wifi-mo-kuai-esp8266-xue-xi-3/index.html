@@ -466,14 +466,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-08-25
+                    2021-08-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.8k
+                    9k
                 </div>
                 
 
@@ -951,7 +951,8 @@ bool <span class="token function">smartConfigDone</span><span class="token punct
 </ul>
 </li>
 </ol>
-<h3 id="④、WiFi扫描库（ESP8266WiFiScan）"><a href="#④、WiFi扫描库（ESP8266WiFiScan）" class="headerlink" title="④、WiFi扫描库（ESP8266WiFiScan）:"></a>④、WiFi扫描库（ESP8266WiFiScan）:</h3><ol>
+<h3 id="④、WiFi扫描库（ESP8266WiFiScan）"><a href="#④、WiFi扫描库（ESP8266WiFiScan）" class="headerlink" title="④、WiFi扫描库（ESP8266WiFiScan）:"></a>④、WiFi扫描库（ESP8266WiFiScan）:</h3><p>一般使用异步扫描（不影响代码运行）</p>
+<ol>
 <li>扫描操作：<ul>
 <li>同步扫描周边有效wifi网络（<code>scanNetworks()</code>）  <strong>源码：</strong>  <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/**
  * Start scan WiFi networks available
@@ -1098,7 +1099,11 @@ bool <span class="token function">isHidden</span><span class="token punctuation"
 </ul>
 </li>
 </ol>
-<h3 id="⑤、TCP客户端（WiFiClient）"><a href="#⑤、TCP客户端（WiFiClient）" class="headerlink" title="⑤、TCP客户端（WiFiClient）:"></a>⑤、TCP客户端（WiFiClient）:</h3><ol>
+<h3 id="⑤、TCP客户端（WiFiClient）"><a href="#⑤、TCP客户端（WiFiClient）" class="headerlink" title="⑤、TCP客户端（WiFiClient）:"></a>⑤、TCP客户端（WiFiClient）:</h3><p><strong>TCP与HTTP关系：</strong></p>
+<p>TCP是底层通讯协议，定义的是数据传输和连接方式的规范；</p>
+<p>HTTP是应用层协议，定义的是传输数据的内容规范；</p>
+<p>HTTP协议中的数据是利用TCP协议传输的，所以支持HTTP就支持TCP。</p>
+<ol>
 <li>连接操作：<ul>
 <li>启动tcp连接（<code>connect(host,port)</code>）</li>
 <li>判断client是否还在连接（<code>connected()</code>）</li>
@@ -1664,7 +1669,7 @@ WiFiEventHandler STAGotIP<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="5、TCP客户端（client）"><a href="#5、TCP客户端（client）" class="headerlink" title="5、TCP客户端（client）"></a>5、TCP客户端（client）</h2><ol>
-<li>演视WiFiClient与TCP server之间通信功能（使用TCP调试助手（TCP/UDP Socket调试工具））</li>
+<li>演视WiFiClient与TCP server之间通信功能（使用TCP调试助手（TCP/UDP Socket调试工具））在TCP调试助手上建立一个TCP server, IP地址是192.168.1.102，端口号是8234。</li>
 </ol>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/**
  * Demo：
@@ -1738,7 +1743,9 @@ WiFiClient client<span class="token punctuation">;</span><span class="token comm
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="2">
-<li>通过TCP client包装Http请求协议去调用天气接口获取天气信息</li>
+<li><p>通过TCP client包装Http请求协议去调用天气接口获取天气信息</p>
+<p> （使用ArduinoJson库，尽量使用5.X版本）</p>
+</li>
 </ol>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/**
  * Demo：
@@ -2237,7 +2244,8 @@ WiFiServer <span class="token function">server</span><span class="token punctuat
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="7、Smartconfig智能配网："><a href="#7、Smartconfig智能配网：" class="headerlink" title="7、Smartconfig智能配网："></a>7、Smartconfig智能配网：</h2><p>手机软件esptouch:</p>
+<h2 id="7、Smartconfig智能配网："><a href="#7、Smartconfig智能配网：" class="headerlink" title="7、Smartconfig智能配网："></a>7、Smartconfig智能配网：</h2><p>收集APP端发送包含WIFI用户名和密码的UDP广播包，智能终端的WIFI芯片接收到UDP包，解密配置连接。</p>
+<p>手机软件esptouch:</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;ESP8266WiFi.h></span></span>
  
 <span class="token keyword">void</span> <span class="token function">smartConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -2862,7 +2870,7 @@ WiFiServer <span class="token function">server</span><span class="token punctuat
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            网络篇：
+                            网络篇：HTTP；UDP；WebServer；mDNS；SPIFFS文件系统；web配网；NTP时间服务；DNS；OTA无线更新；WebSocket全双工通信
                         
                     </div>
                     <div class="publish-info">
@@ -3123,7 +3131,7 @@ WiFiServer <span class="token function">server</span><span class="token punctuat
             
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">40.1k</span>&nbsp;字
+                class="white-color">45.9k</span>&nbsp;字
             
             <br>
             

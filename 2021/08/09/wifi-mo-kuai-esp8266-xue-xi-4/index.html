@@ -466,14 +466,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-08-25
+                    2021-08-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8k
+                    9.5k
                 </div>
                 
 
@@ -498,11 +498,63 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、HttpClient—–ESP8266HTTPClient库的使用"><a href="#一、HttpClient—–ESP8266HTTPClient库的使用" class="headerlink" title="一、HttpClient—–ESP8266HTTPClient库的使用"></a>一、HttpClient—–ESP8266HTTPClient库的使用</h1><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/f3MpdO"><img src="https://z3.ax1x.com/2021/08/09/f3MpdO.png" alt="f3MpdO.png"></a></p>
+                <h1 id="一、HttpClient—–ESP8266HTTPClient库的使用"><a href="#一、HttpClient—–ESP8266HTTPClient库的使用" class="headerlink" title="一、HttpClient—–ESP8266HTTPClient库的使用"></a>一、HttpClient—–ESP8266HTTPClient库的使用</h1><h2 id="HTTP知识："><a href="#HTTP知识：" class="headerlink" title="HTTP知识："></a>HTTP知识：</h2><h3 id="1、概述："><a href="#1、概述：" class="headerlink" title="1、概述："></a>1、概述：</h3><p><em><strong>HTTP协议（Hyper Text Transfer Protocol）超文本传输协议</strong></em>，用于从WWW服务器传输文本到本地浏览器的传送协议。基于TCP/IP通信协议：浏览器作为HTTP客户端通过URL向HTTP服务端即WEB服务器发送所有请求。WEB服务器根据接收到的请求后，向客户端发送响应信息；</p>
+<p>HTTP协议作为TCP/IP模型中<strong>应用层</strong>的协议，承载与TCP协议上，有时也承载与TLS或者SSL协议层之上，这时就是<strong>HTTPS</strong>；</p>
+<p>HTTP由<strong>请求</strong>与<strong>响应</strong>构成，是一个标准的客户端服务器模型，默认端口号80，HTTPS是443；</p>
+<p>浏览网页时HTTP主要应用（不只是这个功能，只是一种协议，只要通信双方都支持这个协议，HTTP就能用）</p>
+<p>特点：HTTP0.9与1.0使用非持续连接；1.1使用持续连接。</p>
+<p>无状态，无记忆能力</p>
+<h3 id="2、工作流程：-一次HTTP操作称位一个事务，可分4步"><a href="#2、工作流程：-一次HTTP操作称位一个事务，可分4步" class="headerlink" title="2、工作流程：(一次HTTP操作称位一个事务，可分4步)"></a>2、工作流程：(一次HTTP操作称位一个事务，可分4步)</h3><ol>
+<li><p>client与server建立连接；</p>
+</li>
+<li><p>连接后，client发送一个请求给server，请求方法格式：统一资源标示符（URL）、HTTP协议版本号、请求头、请求内容等；</p>
+</li>
+<li><p>server接收到请求后，给予响应，格式：状态行（包括协议版本、成功或者失败代码、服务器信息、实体信息等）</p>
+</li>
+<li><p>client接收到server返回信息，通过浏览器显示在用户显示屏上，然后client与server断开连接</p>
+</li>
+</ol>
+<h3 id="3、HTTP请求："><a href="#3、HTTP请求：" class="headerlink" title="3、HTTP请求："></a>3、HTTP请求：</h3><p>Get请求：</p>
+<ul>
+<li>请求行（request line）：说明请求类型，要访问的资源及HTTP版本</li>
+<li>请求头部（header）：说明服务器要使用的附加信息（第二行起位请求头部，HOST指出目的地；User-Agent是client与server脚本都能访问，是浏览器检测逻辑的重要基础）（该信息由浏览器定义，并在每个请求中自动发送）</li>
+<li>空行（empty line）：请求头部后空行是必须的（即使第四部分请求数据为空，也必须有空行）</li>
+<li>请求数据（request body）：主体，可添加任意其他数据（下面例子中请求数据为空）</li>
+</ul>
+<p>请求例子（Gharles抓取的request）</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">GET <span class="token operator">/</span><span class="token number">562f</span><span class="token number">25980001</span>b1b106000338<span class="token punctuation">.</span>jpg HTTP<span class="token operator">/</span><span class="token number">1.1</span>
+Host    img<span class="token punctuation">.</span>mukewang<span class="token punctuation">.</span>com
+User<span class="token operator">-</span>Agent    Mozilla<span class="token operator">/</span><span class="token number">5.0</span> <span class="token punctuation">(</span>Windows NT <span class="token number">10.0</span><span class="token punctuation">;</span> WOW64<span class="token punctuation">)</span> AppleWebKit<span class="token operator">/</span><span class="token number">537.36</span> <span class="token punctuation">(</span>KHTML<span class="token punctuation">,</span> like Gecko<span class="token punctuation">)</span> Chrome<span class="token operator">/</span><span class="token number">51.0</span><span class="token number">.2704</span><span class="token number">.106</span> Safari<span class="token operator">/</span><span class="token number">537.36</span>
+Accept    image<span class="token operator">/</span>webp<span class="token punctuation">,</span>image<span class="token comment">/*,*/</span><span class="token operator">*</span><span class="token punctuation">;</span>q<span class="token operator">=</span><span class="token number">0.8</span>
+Referer    http<span class="token operator">:</span><span class="token comment">//www.imooc.com/</span>
+Accept<span class="token operator">-</span>Encoding    gzip<span class="token punctuation">,</span> deflate<span class="token punctuation">,</span> sdch
+Accept<span class="token operator">-</span>Language    zh<span class="token operator">-</span>CN<span class="token punctuation">,</span>zh<span class="token punctuation">;</span>q<span class="token operator">=</span><span class="token number">0.8</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>POST请求：</p>
+<p>请求例子（Gharles抓取的request）</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">POST <span class="token operator">/</span> HTTP1<span class="token punctuation">.</span><span class="token number">1</span>
+Host<span class="token operator">:</span>www<span class="token punctuation">.</span>wrox<span class="token punctuation">.</span>com
+User<span class="token operator">-</span>Agent<span class="token operator">:</span>Mozilla<span class="token operator">/</span><span class="token number">4.0</span> <span class="token punctuation">(</span>compatible<span class="token punctuation">;</span> MSIE <span class="token number">6.0</span><span class="token punctuation">;</span> Windows NT <span class="token number">5.1</span><span class="token punctuation">;</span> SV1<span class="token punctuation">;</span> <span class="token punctuation">.</span>NET CLR <span class="token number">2.0</span><span class="token number">.50727</span><span class="token punctuation">;</span> <span class="token punctuation">.</span>NET CLR <span class="token number">3.0</span><span class="token number">.04506</span><span class="token number">.648</span><span class="token punctuation">;</span> <span class="token punctuation">.</span>NET CLR <span class="token number">3.5</span><span class="token number">.21022</span><span class="token punctuation">)</span>
+Content<span class="token operator">-</span>Type<span class="token operator">:</span>application<span class="token operator">/</span>x<span class="token operator">-</span>www<span class="token operator">-</span>form<span class="token operator">-</span>urlencoded
+Content<span class="token operator">-</span>Length<span class="token operator">:</span><span class="token number">40</span>
+Connection<span class="token operator">:</span> Keep<span class="token operator">-</span>Alive
+ 
+name<span class="token operator">=</span>Professional<span class="token operator">%</span><span class="token number">20</span>Ajax<span class="token operator">&amp;</span>publisher<span class="token operator">=</span>Wiley<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4、HTTP-Response响应信息"><a href="#4、HTTP-Response响应信息" class="headerlink" title="4、HTTP Response响应信息"></a>4、HTTP Response响应信息</h3><ul>
+<li>状态行</li>
+<li>消息报头</li>
+<li>空行</li>
+<li>响应正文</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/huf9qH"><img src="https://z3.ax1x.com/2021/08/26/huf9qH.jpg" alt="huf9qH.jpg"></a></p>
+<p>HTTP状态码</p>
+<h2 id="库"><a href="#库" class="headerlink" title="库"></a>库</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/f3MpdO"><img src="https://z3.ax1x.com/2021/08/09/f3MpdO.png" alt="f3MpdO.png"></a></p>
 <p><strong>示例：</strong></p>
 <ol>
 <li>获取天气请求（心知天气）</li>
 </ol>
+<p>setup中配置好url，串口参数和httpclient并设置client请求头。loop中每1秒请求一次get服务，把获取回来的天气信息通过json库转成具体对应的数值</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/**
  * Demo：
  *    演示Http请求天气接口信息
@@ -510,7 +562,7 @@
  */</span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;ESP8266WiFi.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;ArduinoJson.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;ESP8266HTTPClient.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;ESP8266HTTPClient.h></span>  <span class="token comment">//不属于ESP8266WiFi库的一部分</span></span>
  
 <span class="token comment">//以下三个定义为调试定义</span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">DebugBegin</span><span class="token expression"><span class="token punctuation">(</span>baud_rate<span class="token punctuation">)</span>    Serial<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span>baud_rate<span class="token punctuation">)</span></span></span>
@@ -668,7 +720,9 @@ bool <span class="token function">parseUserData</span><span class="token punctua
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="2">
-<li>演视响应头获取信息（接口限制，无法发挥作用）</li>
+<li><p>演视响应头获取信息</p>
+<p> 设置了获取四个请求头的信息，然后通过header方法获取它们的数值（接口限制，无法发挥作用）</p>
+</li>
 </ol>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/**
  * Demo：
@@ -759,8 +813,21 @@ String response<span class="token punctuation">;</span>
   <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//每1s调用一次 </span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="二、UDP服务"><a href="#二、UDP服务" class="headerlink" title="二、UDP服务"></a>二、UDP服务</h1><p>一种无连接、不可靠的协议（可能会丢包），相对于TCP而言</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/f31s6s"><img src="https://z3.ax1x.com/2021/08/09/f31s6s.png" alt="f31s6s.png"></a></p>
+<h1 id="二、UDP服务"><a href="#二、UDP服务" class="headerlink" title="二、UDP服务"></a>二、UDP服务</h1><h2 id="UDP知识："><a href="#UDP知识：" class="headerlink" title="UDP知识："></a>UDP知识：</h2><p>UDP（User Datagram Protocol）一种无连接、不可靠的协议（可能会丢包），</p>
+<p>相对于TCP而言：</p>
+<ul>
+<li><p>UDP面向无连接的，不需建立连接（TCP是面向连接的）</p>
+</li>
+<li><p>UDP尽力做到可靠，但不绝对可靠（TCP无差错、不丢失、不重复且按序到达）</p>
+</li>
+<li><p>UDP较好实时性，效率比TCP高</p>
+</li>
+<li><p>UDP支持一对一，一对多，多对一和多对多的交互通信（TCP点到点）</p>
+</li>
+<li><p>UDP对系统资源要求较少（TCP多）</p>
+</li>
+</ul>
+<h2 id="库-1"><a href="#库-1" class="headerlink" title="库"></a>库</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/f31s6s"><img src="https://z3.ax1x.com/2021/08/09/f31s6s.png" alt="f31s6s.png"></a></p>
 <ol>
 <li>通过UDP收发数据</li>
 </ol>
@@ -1438,10 +1505,14 @@ bool <span class="token function">is_authentified</span><span class="token punct
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="四、域名服务—ESP8266mDNS库"><a href="#四、域名服务—ESP8266mDNS库" class="headerlink" title="四、域名服务—ESP8266mDNS库"></a>四、域名服务—ESP8266mDNS库</h1><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/f88DBR"><img src="https://z3.ax1x.com/2021/08/09/f88DBR.png" alt="f88DBR.png"></a></p>
+<h1 id="四、域名服务—ESP8266mDNS库"><a href="#四、域名服务—ESP8266mDNS库" class="headerlink" title="四、域名服务—ESP8266mDNS库"></a>四、域名服务—ESP8266mDNS库</h1><h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><p>DNS（Domain Name System）域名系统（因特网上作为域名和IP地址相互映射的一个分布式数据库）</p>
+<p>DNS协议运行在UDP协议上，端口号53</p>
+<p>mDNS（Multicast DNS）组播dns，主要实现了在<em>没有传统DNS服务器</em>的情况下使用<em>局域网内的主机实现本地发现和域名访问</em>，端口号5353，遵从dns协议（基于UDP协议，即运用了UDP广播）</p>
+<h2 id="库-2"><a href="#库-2" class="headerlink" title="库"></a>库</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/f88DBR"><img src="https://z3.ax1x.com/2021/08/09/f88DBR.png" alt="f88DBR.png"></a></p>
 <ol>
-<li></li>
+<li>演示ESP8266 mDNS responder功能</li>
 </ol>
+<p>电脑端输入<code>http://esp8266.local/</code>以域名方式访问webserver</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/**
  * Demo：
  *    演示ESP8266 mDNS responder功能
@@ -1641,7 +1712,18 @@ ESP8266WebServer <span class="token function">server</span><span class="token pu
 <span class="token keyword">void</span> <span class="token function">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
   <span class="token comment">// put your main code here, to run repeatedly:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="五、SPIFFS—-ESP8266-SPIFFS文件系统"><a href="#五、SPIFFS—-ESP8266-SPIFFS文件系统" class="headerlink" title="五、SPIFFS—-ESP8266 SPIFFS文件系统"></a>五、SPIFFS—-ESP8266 SPIFFS文件系统</h1><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/fGpEUP"><img src="https://z3.ax1x.com/2021/08/09/fGpEUP.png" alt="fGpEUP.png"></a></p>
+<h1 id="五、SPIFFS—-ESP8266-SPIFFS文件系统"><a href="#五、SPIFFS—-ESP8266-SPIFFS文件系统" class="headerlink" title="五、SPIFFS—-ESP8266 SPIFFS文件系统"></a>五、SPIFFS—-ESP8266 SPIFFS文件系统</h1><p>概述：</p>
+<p>Arduino环境下的esp8266的flash存储分配：</p>
+<ol>
+<li>代码区：程序存储区（包含当前代码区current Sketch、更新代码区OTA update）</li>
+<li>文件系统：SPIFFS闪存文件系统（SPI Flash File System）可通过IDE配置，一般NodeMcu配置成3M```#include&lt;FS.h&gt;``</li>
+</ol>
+<p><strong>不支持目录</strong> <strong>文件名32字符限制</strong>  <strong>建议保持短文件名</strong></p>
+<ol>
+<li>EEPROM</li>
+<li>WIFI Config：设置WiFi模块配置时存储的数据</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/fGpEUP"><img src="https://z3.ax1x.com/2021/08/09/fGpEUP.png" alt="fGpEUP.png"></a></p>
 <ol>
 <li>文件操作</li>
 </ol>
@@ -2026,6 +2108,12 @@ ESP8266WebServer <span class="token function">server</span><span class="token pu
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="七、NTP—时间服务"><a href="#七、NTP—时间服务" class="headerlink" title="七、NTP—时间服务"></a>七、NTP—时间服务</h1><p>NTP（Network Time Protocol）网络时间协议，基于UDP，用于网络时间同步的协议，使网络中的计算机时钟同步到UTC,再配合各个时区的偏移调整就能实现精准同步对时功能。</p>
+<p>NTP报文协议</p>
+<p>实现:</p>
+<ol>
+<li>拼接协议</li>
+<li>使用现成NTP第三方库（NTPClient）</li>
+</ol>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;NTPClient.h></span></span>
 <span class="token comment">// change next line to use with another board/shield</span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;ESP8266WiFi.h></span></span>
@@ -2067,7 +2155,11 @@ NTPClient <span class="token function">timeClient</span><span class="token punct
   <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="八、DNSServer—-真正的域名服务"><a href="#八、DNSServer—-真正的域名服务" class="headerlink" title="八、DNSServer—-真正的域名服务"></a>八、DNSServer—-真正的域名服务</h1><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/fGI9sS"><img src="https://z3.ax1x.com/2021/08/10/fGI9sS.png" alt="fGI9sS.png"></a></p>
+<h1 id="八、DNSServer—-真正的域名服务"><a href="#八、DNSServer—-真正的域名服务" class="headerlink" title="八、DNSServer—-真正的域名服务"></a>八、DNSServer—-真正的域名服务</h1><p>建立DNS服务，使用时模块必须处于AP模式下；</p>
+<p>真正意义上的精简版DNS服务器；</p>
+<p>DNSServer运行于UDP服务；</p>
+<p>这里DNS服务器唯一的作用是把域名转成对应映射地址（只支持一个）</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/fGI9sS"><img src="https://z3.ax1x.com/2021/08/10/fGI9sS.png" alt="fGI9sS.png"></a></p>
 <ol>
 <li></li>
 </ol>
@@ -2135,6 +2227,7 @@ ESP8266WebServer <span class="token function">webServer</span><span class="token
 <ol start="2">
 <li></li>
 </ol>
+<p>Portal认证</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/**
  * 功能描述：portal认证
  */</span>
@@ -2182,7 +2275,22 @@ String responseHTML <span class="token operator">=</span> <span class="token str
   webServer<span class="token punctuation">.</span><span class="token function">handleClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="九、无线更新—–OTA固件更新"><a href="#九、无线更新—–OTA固件更新" class="headerlink" title="九、无线更新—–OTA固件更新"></a>九、无线更新—–OTA固件更新</h1><h2 id="1、ArduinoOTA"><a href="#1、ArduinoOTA" class="headerlink" title="1、ArduinoOTA:"></a>1、ArduinoOTA:</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/fGXaO1"><img src="https://z3.ax1x.com/2021/08/10/fGXaO1.png" alt="fGXaO1.png"></a></p>
+<h1 id="九、无线更新—–OTA固件更新"><a href="#九、无线更新—–OTA固件更新" class="headerlink" title="九、无线更新—–OTA固件更新"></a>九、无线更新—–OTA固件更新</h1><h2 id="1、ArduinoOTA"><a href="#1、ArduinoOTA" class="headerlink" title="1、ArduinoOTA:"></a>1、ArduinoOTA:</h2><ul>
+<li>连接WIFI；</li>
+<li>配置ArduinoOTA对象的事件函数；</li>
+<li>启动ArduinoOTA服务ArduinoOTA.begin();</li>
+<li>在loop()函数将处理权交由ArduinoOTA.handle()。</li>
+</ul>
+<p>为了区分正常工作模式以及更新模式，可以设置标志位来区分（标志位可通过其他手段修改，如按键、软件控制）</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>flag <span class="token operator">==</span><span class="token number">0</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 正常工作状态的代码</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    ArduinoOTA<span class="token punctuation">.</span><span class="token function">handle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/fGXaO1"><img src="https://z3.ax1x.com/2021/08/10/fGXaO1.png" alt="fGXaO1.png"></a></p>
 <p>python2.7环境</p>
 <p>旧代码：</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/**
@@ -2479,6 +2587,21 @@ ESP8266HTTPUpdateServer httpUpdater<span class="token punctuation">;</span>
 </ol>
 <h2 id="3-SerialUpdateOTA—OTA之服务器更新"><a href="#3-SerialUpdateOTA—OTA之服务器更新" class="headerlink" title="3.SerialUpdateOTA—OTA之服务器更新"></a>3.SerialUpdateOTA—OTA之服务器更新</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/ftmccj"><img src="https://z3.ax1x.com/2021/08/10/ftmccj.png" alt="ftmccj.png"></a></p>
 <p>放在服务器上，无感知更新</p>
+<h1 id="十、WebSocket-Client—-全双工通信"><a href="#十、WebSocket-Client—-全双工通信" class="headerlink" title="十、WebSocket Client—-全双工通信"></a>十、WebSocket Client—-全双工通信</h1><p>问题：HTTP：一个<em><strong>请求-响应</strong></em>应用层协议</p>
+<p>客户端没有主动发请求，服务器不能主动给客户端发数据</p>
+<p>方法：</p>
+<ol>
+<li><em><strong>轮询</strong></em>（浪费带宽资源）</li>
+<li>应用层协议解决<em><strong>MQTT</strong></em>协议</li>
+<li><em><strong>WebSocket</strong></em>协议：让客户端与服务器之间建立无限制的全双工通信，任何一方都可主动发消息给对方（HTML5定义的协议，更好的节省服务器资源和带宽，并实时进行通讯）</li>
+</ol>
+<p>两阶段：</p>
+<ol>
+<li><p>通过HTTP请求确认WebSocket握手协议阶段；</p>
+</li>
+<li><p>通过WebSocket交互数据阶段。</p>
+</li>
+</ol>
 
                 
             </div>
@@ -3109,7 +3232,7 @@ ESP8266HTTPUpdateServer httpUpdater<span class="token punctuation">;</span>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            网络篇：
+                            网络篇：ESP8266工作模式与8266WIFI库；AP库；STA库；WiFiScan库；WiFisGeneric库；TCP Server&TCP Client；SmartConfig一键配网。
                         
                     </div>
                     <div class="publish-info">
@@ -3321,7 +3444,7 @@ ESP8266HTTPUpdateServer httpUpdater<span class="token punctuation">;</span>
             
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">40.1k</span>&nbsp;字
+                class="white-color">45.9k</span>&nbsp;字
             
             <br>
             
