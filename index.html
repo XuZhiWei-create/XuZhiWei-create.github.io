@@ -408,7 +408,7 @@
 
 
             <div class="cover-btns">
-                <a href="#articles" class="waves-effect waves-light btn">
+                <a href="#indexCard" class="waves-effect waves-light btn">
                     <i class="fa fa-angle-double-down"></i>开始阅读
                 </a>
 
@@ -683,6 +683,38 @@
                         
 
                     
+                        <link rel="stylesheet" href="/libs/dplayer/DPlayer.min.css">
+<div class="video-player">
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="dplayer" class="dplayer-video"
+                    ></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/dplayer/DPlayer.min.js"></script>
+<script>
+    $(function () {
+        new DPlayer({
+            container: document.getElementById('dplayer'),
+            autoplay: 'false' === 'true',
+            theme: '#42b983',
+            loop: 'false' === 'true',
+            lang: 'zh-CN' === 'zh-CN' ? 'zh-cn' : 'en',
+            preload: 'none',
+            volume: Number('0.7'),
+            video: {
+                url: '/medias/video/GALA.mp4',
+                pic: '',
+                thumbnails: ''
+            }
+        });
+    });
+</script>
+
+                    
 
                     
                     <div id="recommend-sections" class="recommend">
@@ -715,7 +747,9 @@
                 </a>
                 <p class="post-description">
                     
-                        20218月：2021.8.8：系统学习8266系列模组，了解相关网络协议（淘了一把pocker2键盘，修了修，准备换ipad的触摸总成，了
+                        2021##10月：
+2021.10.5：开始新一阶段的学习
+8月：2021.8.8：系统学习8266系列模组，了解相关网络协议（淘了一把p
                     
                 </p>
                 <a href="/2021/03/29/ge-ren-ri-zhi/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
@@ -727,34 +761,6 @@
     
     
     <div class="col s12 m6" >
-        
-            <div class="post-card" style="background-image: url('/medias/featureimages/1.jpg')">
-            
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="category">硬件</a>
-                        
-                    
-                </div>
-                <a href="/2021/08/25/ying-jian-zhi-shi-ji-lei/">
-                    <h3 class="post-title">硬件知识积累</h3>
-                </a>
-                <p class="post-description">
-                    
-                        平常遇到的一些硬件知识积累
-                    
-                </p>
-                <a href="/2021/08/25/ying-jian-zhi-shi-ji-lei/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
         
             <div class="post-card" style="background-image: url('/medias/featureimages/10.jpg')">
             
@@ -775,7 +781,35 @@
 2021.8.3：博客整体弄完了，接下来就是优化速度和专注学习写博客了。折腾了几
                     
                 </p>
-                <a href="/2021/03/25/zhan-dian-ri-zhi/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
+                <a href="/2021/03/25/zhan-dian-ri-zhi/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
+                    <i class="icon far fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        
+            <div class="post-card" style="background-image: url('/medias/featureimages/1.jpg')">
+            
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                        
+                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="category">硬件</a>
+                        
+                    
+                </div>
+                <a href="/2021/08/25/ying-jian-zhi-shi-ji-lei/">
+                    <h3 class="post-title">硬件知识积累</h3>
+                </a>
+                <p class="post-description">
+                    
+                        平常遇到的一些硬件知识积累
+                    
+                </p>
+                <a href="/2021/08/25/ying-jian-zhi-shi-ji-lei/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
                     <i class="icon far fa-eye fa-fw"></i>阅读更多
                 </a>
             </div>
