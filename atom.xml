@@ -6,7 +6,7 @@
   <link href="https://xuzhiwei-create.github.io/atom.xml" rel="self"/>
   
   <link href="https://xuzhiwei-create.github.io/"/>
-  <updated>2021-08-27T07:36:17.199Z</updated>
+  <updated>2022-11-04T13:30:35.559Z</updated>
   <id>https://xuzhiwei-create.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>本科毕设--基于STM32/Jetson平台的无人机目标跟踪</title>
+    <link href="https://xuzhiwei-create.github.io/2022/11/04/ben-ke-bi-she-ji-yu-stm32-jetson-ping-tai-de-wu-ren-ji-mu-biao-gen-zong/"/>
+    <id>https://xuzhiwei-create.github.io/2022/11/04/ben-ke-bi-she-ji-yu-stm32-jetson-ping-tai-de-wu-ren-ji-mu-biao-gen-zong/</id>
+    <published>2022-11-04T13:27:14.000Z</published>
+    <updated>2022-11-04T13:30:35.559Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;资料&quot;&gt;&lt;a href=&quot;#资料&quot; class=&quot;headerlink&quot; title=&quot;资料&quot;&gt;&lt;/a&gt;资料&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>WIFI模块（ESP8266）学习5</title>
@@ -494,26 +515,6 @@
     
     
     <category term="51单片机" scheme="https://xuzhiwei-create.github.io/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>树莓派小电脑</title>
-    <link href="https://xuzhiwei-create.github.io/2021/04/23/shu-mei-pai-xiao-dian-nao/"/>
-    <id>https://xuzhiwei-create.github.io/2021/04/23/shu-mei-pai-xiao-dian-nao/</id>
-    <published>2021-04-23T11:41:22.000Z</published>
-    <updated>2021-07-31T07:24:10.578Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://imgtu.com/i/cXqGPU&quot;&gt;&lt;img src=&quot;https://z3.ax1x.com/2021/04/23/cXqGPU.md.jpg&quot; alt=&quot;cXqGPU.md.jpg&quot; style=&quot;zoom: 150%;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;树莓派4B4GV1.2，7寸ISP</summary>
-    
-    
-    
-    <category term="计算机知识" scheme="https://xuzhiwei-create.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"/>
-    
-    
-    <category term="树莓派" scheme="https://xuzhiwei-create.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
   </entry>
   
