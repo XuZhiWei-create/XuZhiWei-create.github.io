@@ -466,14 +466,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-23
+                    2023-03-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    65
+                    209
                 </div>
                 
 
@@ -498,10 +498,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、LTC4054"><a href="#1、LTC4054" class="headerlink" title="1、LTC4054"></a>1、LTC4054</h1><p>性质：完整的单节锂电池恒流恒压线性充电IC</p>
-<p>封装：SOT-23-5L</p>
-<p>特点：充电电流可编程，最大800ma，有充电指示灯</p>
-<h1 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h1><p><code>size = (size+3) &amp; (~3)</code>  size最终大小都是4的倍数，输入1，size位4；</p>
+                <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p><strong>①常用语法</strong></p>
+<p><strong>②Samba共享文件夹</strong>：更新<code>sudo apt-get update</code>,安装<code>sudo apt-get insatll samba</code>,新建用于共享的文件夹<code>mkdir sambashare</code>,配置文件修改<code>sudo vi /etc/samba/smb.conf</code>文件最后添加</p>
+<pre class="line-numbers language-none"><code class="language-none">[sambashare]
+   comment &#x3D; Samba on JetsonNano
+   path &#x3D; &#x2F;home&#x2F;username&#x2F;sambashare
+   read only &#x3D; no
+   browsable &#x3D; yes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>保存退出，重启Samba<code>sudo service smbd restart</code>,设置文件夹密码``sudo smbpasswd -a username<code>,电脑端文件管理器</code>\ip_address\sambashare```,完毕。</p>
+<p><strong>③xrandr</strong>是一款官方的扩展配置工具。它可以设置屏幕显示的大小、方向、镜像等，包括对多屏的设置。<code>xrandr --fb 1920x1080</code></p>
+<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p><strong>①LTC4054</strong>：完整的单节锂电池恒流恒压线性充电IC，充电电流可编程，最大800ma，有充电指示灯</p>
+<h1 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h1><p>①<code>size = (size+3) &amp; (~3)</code>  size最终大小都是4的倍数，输入1，size位4；</p>
 
                 
             </div>
@@ -1344,7 +1351,7 @@
             
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">46.5k</span>&nbsp;字
+                class="white-color">46.6k</span>&nbsp;字
             
             <br>
             
